@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Authors>Gabor Csizmadia</Authors>
     <Owners>Egonsoft.HU</Owners>
-    <Copyright>Copyright © Gabor Csizmadia 2022</Copyright>
+    <Copyright>Copyright © 2022 Gabor Csizmadia</Copyright>
     <Title>Egonsoft.HU BCL Extensions</Title>
     <Description>Extension methods for BCL types (String, Type, etc.)</Description>
     <Summary>Extension methods for BCL types</Summary>
@@ -16,6 +16,7 @@
     <PackageReleaseNotes>Please visit https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl/releases to view the release notes.</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <MinClientVersion>2.8</MinClientVersion>
     <DevelopmentDependency>false</DevelopmentDependency>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl</RepositoryUrl>
