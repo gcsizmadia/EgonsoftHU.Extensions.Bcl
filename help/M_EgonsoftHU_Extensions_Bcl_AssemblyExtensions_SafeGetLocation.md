@@ -3,7 +3,7 @@
 
 Gets the full path or UNC location of the loaded file that contains the manifest.
 
-**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 1.0.0+57d106ced6f68f75c199e9a058b20d290f7a3f96@@+105
+**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 1.0.0+9325be82c553e7a30a21061ab8fcab78fd7db9a2
 
 ## Syntax
 
