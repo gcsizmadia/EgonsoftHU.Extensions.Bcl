@@ -21,9 +21,8 @@ Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "EgonsoftHU.Extensions.Bcl.D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{498BDE0B-C1B2-4233-9DEB-56FD73C77231}"
 	ProjectSection(SolutionItems) = preProject
-		..\LICENSE.md = ..\LICENSE.md
+		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
-		..\RELEASENOTES.md = ..\RELEASENOTES.md
 	EndProjectSection
 EndProject
 Global
