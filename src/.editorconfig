@@ -20,7 +20,7 @@ insert_final_newline = true
 # Organize usings
 dotnet_separate_import_directive_groups = true
 dotnet_sort_system_directives_first = true
-file_header_template = Copyright © 2022 Gabor Csizmadia\nThis code is licensed under MIT license (see LICENSE.md for details)
+file_header_template = Copyright © 2022 Gabor Csizmadia\nThis code is licensed under MIT license (see LICENSE for details)
 
 # this. and Me. preferences
 dotnet_style_qualification_for_event = false:warning

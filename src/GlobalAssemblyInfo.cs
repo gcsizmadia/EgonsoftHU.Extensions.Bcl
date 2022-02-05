@@ -1,5 +1,5 @@
 ﻿// Copyright © 2022 Gabor Csizmadia
-// This code is licensed under MIT license (see LICENSE.md for details)
+// This code is licensed under MIT license (see LICENSE for details)
 
 using System.Reflection;
 using System.Runtime.InteropServices;
