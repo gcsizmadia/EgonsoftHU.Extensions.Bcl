@@ -3,7 +3,7 @@
 
 Gets the location of the assembly as specified originally, for example, in an <a href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyname" target="_blank" rel="noopener noreferrer">AssemblyName</a> object.
 
-**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 1.0.0+8dbe53a3adf2b338787cb77a4494c53711ab963e
+**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 1.0.1+b716ea9c75b4bd4a667742952fc891e476cb893d
 
 ## Syntax
 
@@ -28,7 +28,7 @@ Public Shared Function SafeGetCodeBase (
 
 #### Return Value
 Type: <a href="https://docs.microsoft.com/dotnet/api/system.string" target="_blank" rel="noopener noreferrer">String</a><br />The location of the assembly as specified originally. 
-If the assembly is a dynamic assembly (represented by an System.Reflection.Emit.AssemblyBuilder object), the value returned is an empty string ("").
+If the assembly is null or a dynamic assembly (represented by an System.Reflection.Emit.AssemblyBuilder object), the value returned is an empty string ("").
 
 
 #### Usage Note
