@@ -25,7 +25,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// method overload, the value returned is an empty string ("").
         /// </para>
         /// <para>
-        /// If the assembly is a dynamic assembly (represented by an System.Reflection.Emit.AssemblyBuilder object),
+        /// If the assembly is null or a dynamic assembly (represented by an System.Reflection.Emit.AssemblyBuilder object),
         /// the value returned is an empty string ("").
         /// </para>
         /// </returns>
@@ -33,7 +33,7 @@ namespace EgonsoftHU.Extensions.Bcl
         {
             try
             {
-                return assembly?.IsDynamic ?? false ? String.Empty : assembly.Location;
+                return IsDynamicAssembly(assembly) ? String.Empty : assembly.Location;
             }
             catch (NotSupportedException)
             {
@@ -48,7 +48,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns>
         /// The location of the assembly as specified originally.
         /// <para>
-        /// If the assembly is a dynamic assembly (represented by an System.Reflection.Emit.AssemblyBuilder object),
+        /// If the assembly is null or a dynamic assembly (represented by an System.Reflection.Emit.AssemblyBuilder object),
         /// the value returned is an empty string ("").
         /// </para>
         /// </returns>
@@ -56,12 +56,17 @@ namespace EgonsoftHU.Extensions.Bcl
         {
             try
             {
-                return assembly?.IsDynamic ?? false ? String.Empty : assembly.CodeBase;
+                return IsDynamicAssembly(assembly) ? String.Empty : assembly.CodeBase;
             }
             catch (NotSupportedException)
             {
                 return String.Empty;
             }
+        }
+
+        private static bool IsDynamicAssembly(Assembly assembly)
+        {
+            return assembly?.IsDynamic ?? true;
         }
     }
 }
