@@ -18,7 +18,8 @@
     <HtmlHelpName>Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\EgonsoftHU.Extensions.Bcl\EgonsoftHU.Extensions.Bcl.csproj" />
+      <DocumentationSource sourceFile="..\EgonsoftHU.Extensions.Bcl\bin\Release\netstandard2.0\EgonsoftHU.Extensions.Bcl.dll" />
+      <DocumentationSource sourceFile="..\EgonsoftHU.Extensions.Bcl\bin\Release\netstandard2.0\EgonsoftHU.Extensions.Bcl.xml" />
     </DocumentationSources>
     <HelpFileFormat>Markdown</HelpFileFormat>
     <SyntaxFilters>C#, Visual Basic</SyntaxFilters>
@@ -56,7 +57,7 @@
     <CopyrightText>Copyright &amp;#169%3b 2022 Gabor Csizmadia</CopyrightText>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
-			 the build.  The others are optional common platform types that may appear. -->
+       the build.  The others are optional common platform types that may appear. -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -77,8 +78,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="'$(MSBuildRestoreSessionId)' != ''" />
   <!-- Import the SHFB build targets during build -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" Condition="'$(MSBuildRestoreSessionId)' == ''" />
-  <!-- The pre-build and post-build event properties must appear *after* the targets file import in order to be
-			 evaluated correctly. -->
+  <!-- The pre-build and post-build event properties must appear *after* the targets file import in order to be evaluated correctly. -->
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
