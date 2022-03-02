@@ -44,7 +44,8 @@ This code is licensed under MIT license (see LICENSE for details)
   </PropertyGroup>
 
   <PropertyGroup>
-    <GeneratePackageOnBuild>$(IsNormalProject)</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="$(IsNormalProject) And $(Configuration) == 'Release'">true</GeneratePackageOnBuild>
     <PackageOutputPath>$(SolutionDir)..\nupkgs\</PackageOutputPath>
     <PackageTags>EgonsoftHU egonsoft.hu egonsoft</PackageTags>
   </PropertyGroup>
