@@ -1,7 +1,7 @@
-# ThrowExtensions.ThrowIfNullOrWhiteSpace Method 
+# ThrowExtensions.ThrowIfNullOrEmpty Method 
  
 
-Throws <a href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception" target="_blank" rel="noopener noreferrer">ArgumentNullException</a> if *param* is `null`, <a href="https://docs.microsoft.com/dotnet/api/system.string.empty" target="_blank" rel="noopener noreferrer">Empty</a> or consists only of white-space characters.
+Throws <a href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception" target="_blank" rel="noopener noreferrer">ArgumentNullException</a> if *param* is `null` or <a href="https://docs.microsoft.com/dotnet/api/system.string.empty" target="_blank" rel="noopener noreferrer">Empty</a>.
 
 **Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 1.0.2+e8b59cc7854e9943402e9b0b9a39741fce47cfc0
 
@@ -9,7 +9,7 @@ Throws <a href="https://docs.microsoft.com/dotnet/api/system.argumentnullexcepti
 
 **C#**<br />
 ``` C#
-public static void ThrowIfNullOrWhiteSpace(
+public static void ThrowIfNullOrEmpty(
 	this string param,
 	string paramName
 )
@@ -18,7 +18,7 @@ public static void ThrowIfNullOrWhiteSpace(
 **VB**<br />
 ``` VB
 <ExtensionAttribute>
-Public Shared Sub ThrowIfNullOrWhiteSpace ( 
+Public Shared Sub ThrowIfNullOrEmpty ( 
 	param As String,
 	paramName As String
 )
