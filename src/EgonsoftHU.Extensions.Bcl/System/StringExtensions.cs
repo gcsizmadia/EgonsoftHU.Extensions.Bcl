@@ -29,5 +29,27 @@ namespace EgonsoftHU.Extensions.Bcl
         {
             return String.IsNullOrWhiteSpace(value);
         }
+
+        /// <summary>
+        /// Gets the specified default value if the specified string is <c>null</c> or <see cref="String.Empty"/>.
+        /// </summary>
+        /// <param name="value">The string to test.</param>
+        /// <param name="defaultValue">The default value if <paramref name="value"/> is <c>null</c> or <see cref="String.Empty"/>.</param>
+        /// <returns><paramref name="defaultValue"/> if <paramref name="value"/> is <c>null</c> or <see cref="String.Empty"/>; otherwise, <paramref name="value"/> itself.</returns>
+        public static string DefaultIfNullOrEmpty(this string value, string defaultValue = null)
+        {
+            return value.IsNullOrEmpty() ? defaultValue : value;
+        }
+
+        /// <summary>
+        /// Gets the specified default value if the specified string is <c>null</c>, <see cref="String.Empty"/>, or consists only of white-space characters.
+        /// </summary>
+        /// <param name="value">The string to test.</param>
+        /// <param name="defaultValue">The default value if <paramref name="value"/> is <c>null</c>, <see cref="String.Empty"/>, or consists only of white-space characters.</param>
+        /// <returns><paramref name="defaultValue"/> if <paramref name="value"/> is <c>null</c>, <see cref="String.Empty"/>, or if <paramref name="value"/> consists exclusively of white-space characters; otherwise, <paramref name="value"/> itself.</returns>
+        public static string DefaultIfNullOrWhiteSpace(this string value, string defaultValue = null)
+        {
+            return value.IsNullOrWhiteSpace() ? defaultValue : value;
+        }
     }
 }
