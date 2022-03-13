@@ -28,7 +28,6 @@ This code is licensed under MIT license (see LICENSE for details)
   </ItemGroup>
 
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
     <RootNamespace>EgonsoftHU.Extensions.Bcl</RootNamespace>
   </PropertyGroup>
 
