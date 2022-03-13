@@ -33,6 +33,8 @@ namespace EgonsoftHU.Extensions.Bcl
         public static bool Is(this ParameterInfo parameter, Type parameterType, string parameterName)
         {
             return
+                !(parameter is null)
+                &&
                 parameterType == parameter.ParameterType
                 &&
                 String.Equals(parameterName, parameter.Name, StringComparison.Ordinal);
