@@ -41,6 +41,20 @@ namespace EgonsoftHU.Extensions.Bcl
         }
 
         /// <summary>
+        /// Throws <see cref="ArgumentNullException"/> if <paramref name="param"/> is <c>null</c> or <see cref="String.Empty"/>.
+        /// </summary>
+        /// <param name="param">The parameter to check.</param>
+        /// <param name="paramName">The name of the parameter.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void ThrowIfNullOrEmpty(this string param, string paramName)
+        {
+            if (param.IsNullOrEmpty())
+            {
+                throw new ArgumentNullException(paramName);
+            }
+        }
+
+        /// <summary>
         /// Throws <see cref="ArgumentNullException"/> if <paramref name="param"/> is <c>null</c>, <see cref="String.Empty"/> or 
         /// consists only of white-space characters.
         /// </summary>
