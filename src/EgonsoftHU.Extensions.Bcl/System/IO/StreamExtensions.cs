@@ -1,6 +1,7 @@
 ﻿// Copyright © 2022 Gabor Csizmadia
 // This code is licensed under MIT license (see LICENSE for details)
 
+using System;
 using System.IO;
 
 namespace EgonsoftHU.Extensions.Bcl
@@ -10,7 +11,7 @@ namespace EgonsoftHU.Extensions.Bcl
     /// </summary>
     public static class StreamExtensions
     {
-        private static byte[] Empty { get; } = new byte[0];
+        private static byte[] Empty { get; } = Array.Empty<byte>();
 
         /// <summary>
         /// Converts a stream to byte array using <see cref="MemoryStream"/>.
