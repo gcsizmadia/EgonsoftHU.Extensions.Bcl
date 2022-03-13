@@ -4,6 +4,8 @@
 using System;
 using System.Reflection;
 
+using static EgonsoftHU.Extensions.Bcl.Constants;
+
 namespace EgonsoftHU.Extensions.Bcl
 {
     /// <summary>
@@ -11,8 +13,6 @@ namespace EgonsoftHU.Extensions.Bcl
     /// </summary>
     public static class TypeExtensions
     {
-        private static readonly Type nullableGenericTypeDefinition = typeof(Nullable<>);
-
         /// <summary>
         /// Gets a constructed <see cref="Nullable{T}"/> type where T is a specified value type.
         /// </summary>
@@ -20,7 +20,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns>
         /// Returns itself if <paramref name="type"/> is already a <see cref="Nullable{T}"/> type; 
         /// a constructed <see cref="Nullable{T}"/> type if <paramref name="type"/> is a value type; 
-        /// otherwise, null.
+        /// otherwise, <c>null</c>.
         /// </returns>
         public static Type AsNullableValueType(this Type type)
         {
@@ -40,7 +40,7 @@ namespace EgonsoftHU.Extensions.Bcl
             {
                 Type genericTypeDefinition = type.GetGenericTypeDefinition();
 
-                if (genericTypeDefinition == nullableGenericTypeDefinition)
+                if (GenericTypeDefinitions.Nullable == genericTypeDefinition)
                 {
                     return type;
                 }
@@ -57,7 +57,7 @@ namespace EgonsoftHU.Extensions.Bcl
 
         private static Type CreateNullableType(Type type)
         {
-            Type constructedType = nullableGenericTypeDefinition.MakeGenericType(type);
+            Type constructedType = GenericTypeDefinitions.Nullable.MakeGenericType(type);
             return constructedType;
         }
     }
