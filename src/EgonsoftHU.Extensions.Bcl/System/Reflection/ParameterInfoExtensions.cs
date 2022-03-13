@@ -20,10 +20,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns>true if parameter type and name meet the expectations; otherwise, false.</returns>
         public static bool Is<TParameterType>(this ParameterInfo parameter, string parameterName)
         {
-            return
-                typeof(TParameterType) == parameter.ParameterType
-                &&
-                String.Equals(parameterName, parameter.Name, StringComparison.Ordinal);
+            return parameter.Is(typeof(TParameterType), parameterName);
         }
 
         /// <summary>
@@ -40,6 +37,5 @@ namespace EgonsoftHU.Extensions.Bcl
                 &&
                 String.Equals(parameterName, parameter.Name, StringComparison.Ordinal);
         }
-
     }
 }
