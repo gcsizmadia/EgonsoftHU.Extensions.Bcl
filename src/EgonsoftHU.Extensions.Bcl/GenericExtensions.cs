@@ -13,8 +13,6 @@ namespace EgonsoftHU.Extensions.Bcl
     /// </summary>
     public static class GenericExtensions
     {
-        private static readonly Dictionary<Type, bool> isValueTypeCacheByType = new Dictionary<Type, bool>();
-
         /// <summary>
         /// Determines whether a specified <paramref name="value"/> is the default value of its <see cref="Type"/>.
         /// </summary>
@@ -23,17 +21,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns>Returns true for value types if default(<typeparamref name="T"/>) equals to <paramref name="value"/>; true for reference types if <paramref name="value"/> is null; otherwise, false.</returns>
         public static bool IsDefaultValue<T>(this T value)
         {
-            Type type = typeof(T);
-
-            if (!isValueTypeCacheByType.TryGetValue(type, out bool isValueType))
-            {
-                isValueType = type.GetTypeInfo().IsValueType;
-                isValueTypeCacheByType[type] = isValueType;
-            }
-
-            var defaultValue = default(T);
-
-            return isValueType ? defaultValue.Equals(value) : value is null;
+            return
+                typeof(T).GetTypeInfo().IsValueType
+                    ? default(T).Equals(value)
+                    : value == null;
         }
 
         /// <summary>
@@ -45,10 +36,13 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="equalityComparer">An equality comparer to compare values.</param>
         /// <param name="acceptedValues">A collection in which to locate a value.</param>
         /// <returns>Returns true if the specified collection contains an element that has the specified value; otherwise, false.</returns>
-        public static bool IsIn<T>(this T value, IEqualityComparer<T> equalityComparer, params T[] acceptedValues) =>
-            equalityComparer is null
-                ? acceptedValues.Contains(value)
-                : acceptedValues.Contains(value, equalityComparer);
+        public static bool IsIn<T>(this T value, IEqualityComparer<T> equalityComparer, params T[] acceptedValues)
+        {
+            return
+                equalityComparer is null
+                    ? acceptedValues.Contains(value)
+                    : acceptedValues.Contains(value, equalityComparer);
+        }
 
         /// <summary>
         /// Determines whether a specified collection contains the current value by using the default equality comparer.
@@ -57,8 +51,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="value">The value to locate in the collection.</param>
         /// <param name="acceptedValues">A collection in which to locate a value.</param>
         /// <returns>Returns true if the specified collection contains an element that has the specified value; otherwise, false.</returns>
-        public static bool IsIn<T>(this T value, params T[] acceptedValues) =>
-            value.IsIn(equalityComparer: null, acceptedValues);
+        public static bool IsIn<T>(this T value, params T[] acceptedValues)
+        {
+            return value.IsIn(equalityComparer: null, acceptedValues);
+        }
 
         /// <summary>
         /// Determines whether a specified collection does not contain the current value by using a specified <see cref="IEqualityComparer{T}"/>.
@@ -68,8 +64,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="value">The value to locate in the collection.</param>
         /// <param name="deniedValues">A collection in which to locate a value.</param>
         /// <returns>Returns true if the specified collection does not contain an element that has the specified value; otherwise, false.</returns>
-        public static bool IsNotIn<T>(this T value, params T[] deniedValues) =>
-            !value.IsIn(deniedValues);
+        public static bool IsNotIn<T>(this T value, params T[] deniedValues)
+        {
+            return !value.IsIn(deniedValues);
+        }
 
         /// <summary>
         /// Determines whether a specified collection does not contain the current value by using the default equality comparer.
@@ -79,8 +77,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="equalityComparer">An equality comparer to compare values.</param>
         /// <param name="deniedValues">A collection in which to locate a value.</param>
         /// <returns>Returns true if the specified collection does not contain an element that has the specified value; otherwise, false.</returns>
-        public static bool IsNotIn<T>(this T value, IEqualityComparer<T> equalityComparer, params T[] deniedValues) =>
-            !value.IsIn(equalityComparer, deniedValues);
+        public static bool IsNotIn<T>(this T value, IEqualityComparer<T> equalityComparer, params T[] deniedValues)
+        {
+            return !value.IsIn(equalityComparer, deniedValues);
+        }
 
         /// <summary>
         /// Returns a value as a sequence that contains only that value.
