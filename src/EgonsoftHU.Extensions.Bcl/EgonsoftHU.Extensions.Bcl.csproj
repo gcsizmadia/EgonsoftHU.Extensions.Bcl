@@ -3,22 +3,33 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <PropertyGroup>
+    <PackageId>EgonsoftHU.Extensions.Bcl</PackageId>
+    <VersionPrefix>1.0.2</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
     <Authors>Gabor Csizmadia</Authors>
     <Owners>Egonsoft.HU</Owners>
-    <Copyright>Copyright © 2022 Gabor Csizmadia</Copyright>
     <Title>Egonsoft.HU BCL Extensions</Title>
     <Description>Extension methods for BCL types (String, Type, etc.)</Description>
     <Summary>Extension methods for BCL types</Summary>
-    <PackageId>EgonsoftHU.Extensions.Bcl</PackageId>
-    <VersionPrefix>1.0.1</VersionPrefix>
-    <PackageTags>$(PackageTags) extensions extension bcl object string type assembly parameterinfo</PackageTags>
-    <PackageProjectUrl>https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl</PackageProjectUrl>
-    <PackageReleaseNotes>Please visit https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl/releases to view the release notes.</PackageReleaseNotes>
+    <Copyright>Copyright © 2022 Gabor Csizmadia</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <MinClientVersion>2.8</MinClientVersion>
-    <DevelopmentDependency>false</DevelopmentDependency>
+    <PackageProjectUrl>https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl</PackageProjectUrl>
+    <!--
+    <PackageIcon></PackageIcon>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageReadmeFile></PackageReadmeFile>
+    -->
+    <PackageTags>$(PackageTags) extensions extension bcl object string type assembly parameterinfo</PackageTags>
+    <PackageReleaseNotes>Please visit https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl/releases to view the release notes.</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl</RepositoryUrl>
+    <!--
+    <RepositoryBranch></RepositoryBranch>
+    <RepositoryCommit></RepositoryCommit>
+    -->
+    <PackageType>Dependency</PackageType>
+    <DevelopmentDependency>false</DevelopmentDependency>
+    <MinClientVersion>2.8</MinClientVersion>
   </PropertyGroup>
 </Project>
