@@ -12,6 +12,31 @@ namespace EgonsoftHU.Extensions.Bcl
     public static class ParameterInfoExtensions
     {
         /// <summary>
+        /// Indicates whether a parameter has the specified type.
+        /// </summary>
+        /// <typeparam name="TParameterType">The expected parameter type.</typeparam>
+        /// <param name="parameter">The parameter to test.</param>
+        /// <returns>true if parameter type meets the expectation; otherwise, false.</returns>
+        public static bool Is<TParameterType>(this ParameterInfo parameter)
+        {
+            return parameter.Is(typeof(TParameterType));
+        }
+
+        /// <summary>
+        /// Indicates whether a parameter has the specified type.
+        /// </summary>
+        /// <param name="parameter">The parameter to test.</param>
+        /// <param name="parameterType">The expected type of the parameter.</param>
+        /// <returns>true if parameter type meets the expectation; otherwise, false.</returns>
+        public static bool Is(this ParameterInfo parameter, Type parameterType)
+        {
+            return
+                !(parameter is null)
+                &&
+                parameterType == parameter.ParameterType;
+        }
+
+        /// <summary>
         /// Indicates whether a parameter has the specified type and name.
         /// </summary>
         /// <typeparam name="TParameterType">The expected parameter type.</typeparam>
