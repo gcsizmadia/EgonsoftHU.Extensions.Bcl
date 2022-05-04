@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1;$(NetCoreAppCurrent)</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>EgonsoftHU.Extensions.Bcl</PackageId>
-    <VersionPrefix>1.0.2</VersionPrefix>
+    <VersionPrefix>1.0.3</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <Authors>Gabor Csizmadia</Authors>
     <Owners>Egonsoft.HU</Owners>
@@ -30,6 +30,9 @@
     -->
     <PackageType>Dependency</PackageType>
     <DevelopmentDependency>false</DevelopmentDependency>
-    <MinClientVersion>2.8</MinClientVersion>
+    <MinClientVersion>4.1.0</MinClientVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 </Project>

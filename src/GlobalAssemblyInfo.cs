@@ -13,6 +13,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration(".NETStandard,Version=v2.0,Configuration=Debug")]
 #elif NET48
 [assembly: AssemblyConfiguration(".NETFramework,Version=v4.8,Configuration=Debug")]
+#elif NETCOREAPP3_1
+[assembly: AssemblyConfiguration(".NETCoreApp,Version=v3.1,Configuration=Debug")]
 #elif NET6_0
 [assembly: AssemblyConfiguration(".NETCoreApp,Version=v6.0,Configuration=Debug")]
 #else
@@ -23,6 +25,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration(".NETStandard,Version=v2.0,Configuration=Release")]
 #elif NET48
 [assembly: AssemblyConfiguration(".NETFramework,Version=v4.8,Configuration=Release")]
+#elif NETCOREAPP3_1
+[assembly: AssemblyConfiguration(".NETCoreApp,Version=v3.1,Configuration=Release")]
 #elif NET6_0
 [assembly: AssemblyConfiguration(".NETCoreApp,Version=v6.0,Configuration=Release")]
 #else
