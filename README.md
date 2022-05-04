@@ -53,11 +53,35 @@ you can write
 ```C#
 using EgonsoftHU.Extensions.Bcl;
 
-void DoSomething<T>(T foo, string bar, Guid baz) where T : class
+void DoSomething<T>(T foo, string bar, int? baz, Guid? qux, Guid quux) where T : class
 {
+    // In case of using the package targeted for .NET Core 3.1
+    foo.ThrowIfNull();
+
+    bar.ThrowIfNull();
+    bar.ThrowIfNullOrEmpty();
+    bar.ThrowIfNullOrWhiteSpace();
+
+    baz.ThrowIfNull();
+
+    qux.ThrowIfNull();
+    qux.ThrowIfEmptyGuid();
+
+    quux.ThrowIfEmptyGuid();
+
+    // In case of using the package targeted for .NET Standard 2.0
     foo.ThrowIfNull(nameof(foo));
+
+    bar.ThrowIfNull(nameof(bar));
     bar.ThrowIfNullOrEmpty(nameof(bar));
-    baz.ThrowIfEmptyGuid(nameof(baz));
+    bar.ThrowIfNullOrWhiteSpace(nameof(bar));
+
+    baz.ThrowIfNull(nameof(baz));
+
+    qux.ThrowIfNull(nameof(qux));
+    qux.ThrowIfEmptyGuid(nameof(qux));
+
+    quux.ThrowIfEmptyGuid(nameof(quux));
 }
 ```
 
@@ -161,8 +185,8 @@ bool IsNonProductionEnvironment(string environment)
     return
         environment.IsIn(
             StringComparer.OrdinalIgnoreCase,
-            "Development",
-            "Staging"
+            Development,
+            Staging
         );
 }
 ```
