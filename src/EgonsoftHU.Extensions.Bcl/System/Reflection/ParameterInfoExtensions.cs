@@ -17,6 +17,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <typeparam name="TParameterType">The expected parameter type.</typeparam>
         /// <param name="parameter">The parameter to test.</param>
         /// <returns>true if parameter type meets the expectation; otherwise, false.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="parameter"/> is <c>null</c>.</exception>
         public static bool Is<TParameterType>(this ParameterInfo parameter)
         {
             return parameter.Is(typeof(TParameterType));
@@ -28,12 +29,15 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="parameter">The parameter to test.</param>
         /// <param name="parameterType">The expected type of the parameter.</param>
         /// <returns>true if parameter type meets the expectation; otherwise, false.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// Either <paramref name="parameter"/> or <paramref name="parameterType"/> is <c>null</c>.
+        /// </exception>
         public static bool Is(this ParameterInfo parameter, Type parameterType)
         {
-            return
-                !(parameter is null)
-                &&
-                parameterType == parameter.ParameterType;
+            parameter.ThrowIfNull();
+            parameterType.ThrowIfNull();
+
+            return parameterType == parameter.ParameterType;
         }
 
         /// <summary>
@@ -43,6 +47,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="parameter">The parameter to test.</param>
         /// <param name="parameterName">The expected name of the parameter.</param>
         /// <returns>true if parameter type and name meet the expectations; otherwise, false.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// Either <paramref name="parameter"/> is <c>null</c>
+        /// or <paramref name="parameterName"/> is <c>null</c>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// </exception>
         public static bool Is<TParameterType>(this ParameterInfo parameter, string parameterName)
         {
             return parameter.Is(typeof(TParameterType), parameterName);
@@ -55,11 +63,17 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="parameterType">The expected type of the parameter.</param>
         /// <param name="parameterName">The expected name of the parameter.</param>
         /// <returns>true if parameter type and name meet the expectations; otherwise, false.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// Either <paramref name="parameter"/> or <paramref name="parameterType"/> is <c>null</c>
+        /// or <paramref name="parameterName"/> is <c>null</c>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// </exception>
         public static bool Is(this ParameterInfo parameter, Type parameterType, string parameterName)
         {
+            parameter.ThrowIfNull();
+            parameterType.ThrowIfNull();
+            parameterName.ThrowIfNullOrWhiteSpace();
+
             return
-                !(parameter is null)
-                &&
                 parameterType == parameter.ParameterType
                 &&
                 String.Equals(parameterName, parameter.Name, StringComparison.Ordinal);

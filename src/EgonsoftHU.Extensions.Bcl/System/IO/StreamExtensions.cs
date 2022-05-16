@@ -11,41 +11,46 @@ namespace EgonsoftHU.Extensions.Bcl
     /// </summary>
     public static class StreamExtensions
     {
-        private static byte[] Empty { get; } = Array.Empty<byte>();
-
         /// <summary>
         /// Converts a stream to byte array using <see cref="MemoryStream"/>.
         /// </summary>
         /// <param name="stream">The stream to convert.</param>
-        /// <returns>a byte array that contains the content of the stream.</returns>
+        /// <returns>A byte array that contains the content of the <paramref name="stream"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="stream"/> is <c>null</c>.</exception>
+        /// <exception cref="NotSupportedException"><paramref name="stream"/> does not support seeking.</exception>
         public static byte[] ToByteArray(this Stream stream)
         {
-            if (stream is null)
+            stream.ThrowIfNull();
+            
+            if (!stream.TryResetStreamPosition())
             {
-                return Empty;
+                throw new NotSupportedException("The specified stream does not support seeking.");
             }
-
-            byte[] result = Empty;
 
             using (var resultStream = new MemoryStream())
             {
-                ResetStreamPosition(stream);
-
                 stream.CopyTo(resultStream);
-                result = resultStream.ToArray();
+                stream.TryResetStreamPosition();
 
-                ResetStreamPosition(stream);
+                return resultStream.ToArray();
             }
-
-            return result;
         }
 
-        private static void ResetStreamPosition(Stream stream)
+        /// <summary>
+        /// Sets the position to the beginning within the current stream.
+        /// A return value indicates whether seeking succeeded.
+        /// </summary>
+        /// <param name="stream">A stream the position of which should be reset.</param>
+        /// <returns><c>true</c> if seeking was successful; otherwise, <c>false</c>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="stream"/> is <c>null</c>.</exception>
+        public static bool TryResetStreamPosition(this Stream stream)
         {
-            if (stream.CanSeek)
-            {
-                stream.Seek(0, SeekOrigin.Begin);
-            }
+            stream.ThrowIfNull();
+
+            return
+                stream.CanSeek
+                &&
+                stream.Seek(0, SeekOrigin.Begin) == 0;
         }
     }
 }

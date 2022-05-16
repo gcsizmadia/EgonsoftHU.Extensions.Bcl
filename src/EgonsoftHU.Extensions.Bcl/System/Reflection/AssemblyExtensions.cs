@@ -2,6 +2,7 @@
 // This code is licensed under MIT license (see LICENSE for details)
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace EgonsoftHU.Extensions.Bcl
@@ -29,7 +30,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// the value returned is an empty string ("").
         /// </para>
         /// </returns>
-        public static string SafeGetLocation(this Assembly assembly)
+        public static string SafeGetLocation(this Assembly? assembly)
         {
             try
             {
@@ -52,8 +53,16 @@ namespace EgonsoftHU.Extensions.Bcl
         /// the value returned is an empty string ("").
         /// </para>
         /// </returns>
-        public static string SafeGetCodeBase(this Assembly assembly)
+        /// <remarks>
+        /// In case of .NET Core and .NET 5+
+        /// <br/>- the <see cref="Assembly.CodeBase"/> property always throws <see cref="NotImplementedException"/>
+        /// <br/>- this method always returns <see cref="String.Empty"/>.
+        /// </remarks>
+        public static string SafeGetCodeBase(this Assembly? assembly)
         {
+#if NET || NETCOREAPP
+            return String.Empty;
+#else
             try
             {
                 return IsDynamicAssembly(assembly) ? String.Empty : assembly.CodeBase;
@@ -62,9 +71,10 @@ namespace EgonsoftHU.Extensions.Bcl
             {
                 return String.Empty;
             }
+#endif
         }
 
-        private static bool IsDynamicAssembly(Assembly assembly)
+        private static bool IsDynamicAssembly([NotNullWhen(false)] Assembly? assembly)
         {
             return assembly?.IsDynamic ?? true;
         }

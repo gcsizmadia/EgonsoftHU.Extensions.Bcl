@@ -11,6 +11,8 @@ using System.Runtime.InteropServices;
 #if DEBUG
 #if NETSTANDARD2_0
 [assembly: AssemblyConfiguration(".NETStandard,Version=v2.0,Configuration=Debug")]
+#elif NET461
+[assembly: AssemblyConfiguration(".NETFramework,Version=v4.6.1,Configuration=Debug")]
 #elif NET48
 [assembly: AssemblyConfiguration(".NETFramework,Version=v4.8,Configuration=Debug")]
 #elif NETCOREAPP3_1
@@ -23,6 +25,8 @@ using System.Runtime.InteropServices;
 #else
 #if NETSTANDARD2_0
 [assembly: AssemblyConfiguration(".NETStandard,Version=v2.0,Configuration=Release")]
+#elif NET461
+[assembly: AssemblyConfiguration(".NETFramework,Version=v4.6.1,Configuration=Release")]
 #elif NET48
 [assembly: AssemblyConfiguration(".NETFramework,Version=v4.8,Configuration=Release")]
 #elif NETCOREAPP3_1

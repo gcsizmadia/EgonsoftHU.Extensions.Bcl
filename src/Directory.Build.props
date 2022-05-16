@@ -28,12 +28,13 @@ This code is licensed under MIT license (see LICENSE for details)
   </ItemGroup>
 
   <PropertyGroup>
-    <RootNamespace>EgonsoftHU.Extensions.Bcl</RootNamespace>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <IsNormalProject>true</IsNormalProject>
     <IsNormalProject Condition="$(MSBuildProjectName.EndsWith('Tests'))">false</IsNormalProject>
+    <IsNormalProject Condition="$(MSBuildProjectName.EndsWith('Documentation'))">false</IsNormalProject>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <RootNamespace>EgonsoftHU.Extensions.Bcl</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>

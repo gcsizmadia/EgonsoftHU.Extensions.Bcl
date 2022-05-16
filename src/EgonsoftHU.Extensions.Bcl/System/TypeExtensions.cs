@@ -2,6 +2,7 @@
 // This code is licensed under MIT license (see LICENSE for details)
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 using static EgonsoftHU.Extensions.Bcl.Constants;
@@ -14,20 +15,20 @@ namespace EgonsoftHU.Extensions.Bcl
     public static class TypeExtensions
     {
         /// <summary>
-        /// Gets a constructed <see cref="Nullable{T}"/> type where T is a specified value type.
+        /// Gets the <see cref="Nullable{T}"/> type based on the specified <paramref name="type"/>.
         /// </summary>
         /// <param name="type">The value type from which a new nullable type should be constructed.</param>
         /// <returns>
-        /// Returns itself if <paramref name="type"/> is already a <see cref="Nullable{T}"/> type; 
-        /// a constructed <see cref="Nullable{T}"/> type if <paramref name="type"/> is a value type; 
+        /// A <see cref="Nullable{T}"/> type that is
+        /// the specified <paramref name="type"/> itself if it is a <see cref="Nullable{T}"/> type;
+        /// a constructed <see cref="Nullable{T}"/> type if <paramref name="type"/> is a value type;
         /// otherwise, <c>null</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is <c>null</c>.</exception>
+        [return: MaybeNull]
         public static Type AsNullableValueType(this Type type)
         {
-            if (type is null)
-            {
-                return null;
-            }
+            type.ThrowIfNull();
 
             TypeInfo typeInfo = type.GetTypeInfo();
 
@@ -36,23 +37,10 @@ namespace EgonsoftHU.Extensions.Bcl
                 return null;
             }
 
-            if (typeInfo.IsGenericType)
-            {
-                Type genericTypeDefinition = type.GetGenericTypeDefinition();
-
-                if (GenericTypeDefinitions.Nullable == genericTypeDefinition)
-                {
-                    return type;
-                }
-                else
-                {
-                    return CreateNullableType(type);
-                }
-            }
-            else
-            {
-                return CreateNullableType(type);
-            }
+            return
+                !typeInfo.IsGenericType || GenericTypeDefinitions.Nullable != type.GetGenericTypeDefinition()
+                    ? CreateNullableType(type)
+                    : type;
         }
 
         private static Type CreateNullableType(Type type)

@@ -7,9 +7,22 @@ This code is licensed under MIT license (see LICENSE for details)
   <PropertyGroup>
     <EgonsoftHUAssemblyVersionTargetsFile>$(MSBuildThisFileDirectory)..\..\..\build\EgonsoftHU.AssemblyVersion.targets</EgonsoftHUAssemblyVersionTargetsFile>
     <EgonsoftHUNuspecPropertiesTargetsFile>$(MSBuildThisFileDirectory)..\..\..\build\EgonsoftHU.NuspecProperties.targets</EgonsoftHUNuspecPropertiesTargetsFile>
+    <EgonsoftHUNullableAttributesTargetsFile>$(MSBuildThisFileDirectory)..\..\..\build\EgonsoftHU.NullableAttributes.targets</EgonsoftHUNullableAttributesTargetsFile>
+    <EgonsoftHUCallerArgumentExpressionAttributeTargetsFile>$(MSBuildThisFileDirectory)..\..\..\build\EgonsoftHU.CallerArgumentExpressionAttribute.targets</EgonsoftHUCallerArgumentExpressionAttributeTargetsFile>
   </PropertyGroup>
 
   <Import Project="$(EgonsoftHUAssemblyVersionTargetsFile)" Condition="Exists('$(EgonsoftHUAssemblyVersionTargetsFile)')" />
   <Import Project="$(EgonsoftHUNuspecPropertiesTargetsFile)" Condition="Exists('$(EgonsoftHUNuspecPropertiesTargetsFile)')" />
+  <Import Project="$(EgonsoftHUNullableAttributesTargetsFile)" Condition="Exists('$(EgonsoftHUNullableAttributesTargetsFile)')" />
+  <Import Project="$(EgonsoftHUCallerArgumentExpressionAttributeTargetsFile)" Condition="Exists('$(EgonsoftHUCallerArgumentExpressionAttributeTargetsFile)')" />
+
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+    <LangVersion Condition=" '$(TargetFramework)' == 'net6.0' ">10.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
 
 </Project>

@@ -3,7 +3,7 @@
   <assemblyIdentity
     type="win32"
     name="EgonsoftHU.Extensions.Bcl"
-    version="1.0.3.0"
+    version="2.0.0.0"
   />
   <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
     <security>

@@ -2,9 +2,8 @@
 // This code is licensed under MIT license (see LICENSE for details)
 
 using System;
-#if NETCOREAPP3_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-#endif
 
 namespace EgonsoftHU.Extensions.Bcl
 {
@@ -19,36 +18,14 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <typeparam name="T">The type of the <paramref name="param"/></typeparam>
         /// <param name="param">The parameter to check.</param>
         /// <param name="paramName">The name of the parameter.</param>
-        /// <exception cref="ArgumentNullException"></exception>
-#if NETCOREAPP3_0_OR_GREATER
-        public static void ThrowIfNull<T>(this T param, [CallerArgumentExpression("param")] string paramName = null) where T : class
-#else
-        public static void ThrowIfNull<T>(this T param, string paramName) where T : class
-#endif
+        /// <exception cref="ArgumentNullException"><paramref name="param"/> is <c>null</c>.</exception>
+        public static void ThrowIfNull<T>([NotNull] this T? param, [CallerArgumentExpression("param")] string? paramName = null)
         {
-            if (param is null)
-            {
-                throw new ArgumentNullException(paramName);
-            }
-        }
-
-        /// <summary>
-        /// Throws <see cref="ArgumentNullException"/> if <paramref name="param"/> is <c>null</c>.
-        /// </summary>
-        /// <typeparam name="T">The type of the <paramref name="param"/></typeparam>
-        /// <param name="param">The parameter to check.</param>
-        /// <param name="paramName">The name of the parameter.</param>
-        /// <exception cref="ArgumentNullException"></exception>
-#if NETCOREAPP3_0_OR_GREATER
-        public static void ThrowIfNull<T>(this T? param, [CallerArgumentExpression("param")] string paramName = null) where T : struct
+#if NET6_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull(param, paramName);
 #else
-        public static void ThrowIfNull<T>(this T? param, string paramName) where T : struct
+            paramName.ThrowIf(param is null);
 #endif
-        {
-            if (param is null)
-            {
-                throw new ArgumentNullException(paramName);
-            }
         }
 
         /// <summary>
@@ -56,17 +33,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// </summary>
         /// <param name="param">The parameter to check.</param>
         /// <param name="paramName">The name of the parameter.</param>
-        /// <exception cref="ArgumentNullException"></exception>
-#if NETCOREAPP3_0_OR_GREATER
-        public static void ThrowIfNullOrEmpty(this string param, [CallerArgumentExpression("param")] string paramName = null)
-#else
-        public static void ThrowIfNullOrEmpty(this string param, string paramName)
-#endif
+        /// <exception cref="ArgumentNullException"><paramref name="param"/> is <c>null</c> or <see cref="String.Empty"/>.</exception>
+        public static void ThrowIfNullOrEmpty([NotNull] this string? param, [CallerArgumentExpression("param")] string? paramName = null)
         {
-            if (param.IsNullOrEmpty())
-            {
-                throw new ArgumentNullException(paramName);
-            }
+            paramName.ThrowIf(param.IsNullOrEmpty());
         }
 
         /// <summary>
@@ -75,17 +45,12 @@ namespace EgonsoftHU.Extensions.Bcl
         /// </summary>
         /// <param name="param">The parameter to check.</param>
         /// <param name="paramName">The name of the parameter.</param>
-        /// <exception cref="ArgumentNullException"></exception>
-#if NETCOREAPP3_0_OR_GREATER
-        public static void ThrowIfNullOrWhiteSpace(this string param, [CallerArgumentExpression("param")] string paramName = null)
-#else
-        public static void ThrowIfNullOrWhiteSpace(this string param, string paramName)
-#endif
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="param"/> is <c>null</c>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// </exception>
+        public static void ThrowIfNullOrWhiteSpace([NotNull] this string? param, [CallerArgumentExpression("param")] string? paramName = null)
         {
-            if (param.IsNullOrWhiteSpace())
-            {
-                throw new ArgumentNullException(paramName);
-            }
+            paramName.ThrowIf(param.IsNullOrWhiteSpace());
         }
 
         /// <summary>
@@ -93,14 +58,15 @@ namespace EgonsoftHU.Extensions.Bcl
         /// </summary>
         /// <param name="param">The parameter to check.</param>
         /// <param name="paramName">The name of the parameter.</param>
-        /// <exception cref="ArgumentNullException"></exception>
-#if NETCOREAPP3_0_OR_GREATER
-        public static void ThrowIfEmptyGuid(this Guid param, [CallerArgumentExpression("param")] string paramName = null)
-#else
-        public static void ThrowIfEmptyGuid(this Guid param, string paramName)
-#endif
+        /// <exception cref="ArgumentNullException"><paramref name="param"/> is <see cref="Guid.Empty"/>.</exception>
+        public static void ThrowIfEmptyGuid(this Guid param, [CallerArgumentExpression("param")] string? paramName = null)
         {
-            if (Guid.Empty == param)
+            paramName.ThrowIf(Guid.Empty == param);
+        }
+
+        private static void ThrowIf(this string? paramName, [DoesNotReturnIf(true)] bool condition)
+        {
+            if (condition)
             {
                 throw new ArgumentNullException(paramName);
             }
