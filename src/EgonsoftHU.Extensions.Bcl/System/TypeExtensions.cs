@@ -5,7 +5,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-using static EgonsoftHU.Extensions.Bcl.Constants;
+using EgonsoftHU.Extensions.Bcl.Constants;
 
 namespace EgonsoftHU.Extensions.Bcl
 {
