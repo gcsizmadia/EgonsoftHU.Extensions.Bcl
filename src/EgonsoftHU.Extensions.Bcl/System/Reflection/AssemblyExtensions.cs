@@ -58,6 +58,9 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <br/>- the <see cref="Assembly.CodeBase"/> property always throws <see cref="NotImplementedException"/>
         /// <br/>- this method always returns <see cref="String.Empty"/>.
         /// </remarks>
+#if NET || NETCOREAPP
+        [Obsolete("This method uses Assembly.CodeBase property that is only included for .NET Framework compatibility. Use AssemblyExtensions.SafeGetLocation(Assembly) extension method instead.")]
+#endif
         public static string SafeGetCodeBase(this Assembly? assembly)
         {
 #if NET || NETCOREAPP
