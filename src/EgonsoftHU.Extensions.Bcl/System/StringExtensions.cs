@@ -12,42 +12,42 @@ namespace EgonsoftHU.Extensions.Bcl
     public static class StringExtensions
     {
         /// <summary>
-        /// Indicates whether the specified string is <c>null</c> or <see cref="String.Empty"/>.
+        /// Indicates whether the specified string is <see langword="null"/> or <see cref="String.Empty"/>.<see langword="null"/>
         /// </summary>
         /// <param name="value">The string to test.</param>
-        /// <returns><c>true</c> if <paramref name="value"/> is <c>null</c> or <see cref="String.Empty"/>; otherwise, <c>false</c>.</returns>
+        /// <returns><see langword="true"/> if <paramref name="value"/> is <see langword="null"/> or <see cref="String.Empty"/>; otherwise, <see langword="false"/>.</returns>
         public static bool IsNullOrEmpty([NotNullWhen(false)] this string? value)
         {
             return String.IsNullOrEmpty(value);
         }
 
         /// <summary>
-        /// Indicates whether a specified string is <c>null</c>, <see cref="String.Empty"/>, or consists only of white-space characters.
+        /// Indicates whether a specified string is <see langword="null"/>, <see cref="String.Empty"/>, or consists only of white-space characters.
         /// </summary>
         /// <param name="value">The string to test.</param>
-        /// <returns><c>true</c> if <paramref name="value"/> is <c>null</c>, <see cref="String.Empty"/>, or if <paramref name="value"/> consists exclusively of white-space characters.</returns>
+        /// <returns><see langword="true"/> if <paramref name="value"/> is <see langword="null"/>, <see cref="String.Empty"/>, or if <paramref name="value"/> consists exclusively of white-space characters.</returns>
         public static bool IsNullOrWhiteSpace([NotNullWhen(false)] this string? value)
         {
             return String.IsNullOrWhiteSpace(value);
         }
 
         /// <summary>
-        /// Gets the specified default value if the specified string is <c>null</c> or <see cref="String.Empty"/>.
+        /// Gets the specified default value if the specified string is <see langword="null"/> or <see cref="String.Empty"/>.
         /// </summary>
         /// <param name="value">The string to test.</param>
-        /// <param name="defaultValue">The default value if <paramref name="value"/> is <c>null</c> or <see cref="String.Empty"/>.</param>
-        /// <returns><paramref name="defaultValue"/> if <paramref name="value"/> is <c>null</c> or <see cref="String.Empty"/>; otherwise, <paramref name="value"/> itself.</returns>
+        /// <param name="defaultValue">The default value if <paramref name="value"/> is <see langword="null"/> or <see cref="String.Empty"/>.</param>
+        /// <returns><paramref name="defaultValue"/> if <paramref name="value"/> is <see langword="null"/> or <see cref="String.Empty"/>; otherwise, <paramref name="value"/> itself.</returns>
         public static string? DefaultIfNullOrEmpty(this string? value, string? defaultValue = null)
         {
             return value.IsNullOrEmpty() ? defaultValue : value;
         }
 
         /// <summary>
-        /// Gets the specified default value if the specified string is <c>null</c>, <see cref="String.Empty"/>, or consists only of white-space characters.
+        /// Gets the specified default value if the specified string is <see langword="null"/>, <see cref="String.Empty"/>, or consists only of white-space characters.
         /// </summary>
         /// <param name="value">The string to test.</param>
-        /// <param name="defaultValue">The default value if <paramref name="value"/> is <c>null</c>, <see cref="String.Empty"/>, or consists only of white-space characters.</param>
-        /// <returns><paramref name="defaultValue"/> if <paramref name="value"/> is <c>null</c>, <see cref="String.Empty"/>, or if <paramref name="value"/> consists exclusively of white-space characters; otherwise, <paramref name="value"/> itself.</returns>
+        /// <param name="defaultValue">The default value if <paramref name="value"/> is <see langword="null"/>, <see cref="String.Empty"/>, or consists only of white-space characters.</param>
+        /// <returns><paramref name="defaultValue"/> if <paramref name="value"/> is <see langword="null"/>, <see cref="String.Empty"/>, or if <paramref name="value"/> consists exclusively of white-space characters; otherwise, <paramref name="value"/> itself.</returns>
         public static string? DefaultIfNullOrWhiteSpace(this string? value, string? defaultValue = null)
         {
             return value.IsNullOrWhiteSpace() ? defaultValue : value;

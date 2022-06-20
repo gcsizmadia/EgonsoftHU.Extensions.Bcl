@@ -16,7 +16,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// </summary>
         /// <param name="stream">The stream to convert.</param>
         /// <returns>A byte array that contains the content of the <paramref name="stream"/>.</returns>
-        /// <exception cref="ArgumentNullException"><paramref name="stream"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="stream"/> is <see langword="null"/>.</exception>
         /// <exception cref="NotSupportedException"><paramref name="stream"/> does not support seeking.</exception>
         public static byte[] ToByteArray(this Stream stream)
         {
@@ -41,8 +41,8 @@ namespace EgonsoftHU.Extensions.Bcl
         /// A return value indicates whether seeking succeeded.
         /// </summary>
         /// <param name="stream">A stream the position of which should be reset.</param>
-        /// <returns><c>true</c> if seeking was successful; otherwise, <c>false</c>.</returns>
-        /// <exception cref="ArgumentNullException"><paramref name="stream"/> is <c>null</c>.</exception>
+        /// <returns><see langword="true"/> if seeking was successful; otherwise, <see langword="false"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="stream"/> is <see langword="null"/>.</exception>
         public static bool TryResetStreamPosition(this Stream stream)
         {
             stream.ThrowIfNull();

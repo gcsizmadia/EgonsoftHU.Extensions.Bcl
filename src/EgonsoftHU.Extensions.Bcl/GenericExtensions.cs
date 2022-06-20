@@ -18,9 +18,9 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <param name="value">The value to check.</param>
         /// <returns>
-        /// <c>true</c> for value types if default(<typeparamref name="T"/>) equals to <paramref name="value"/>;
-        /// <c>true</c> for reference types if <paramref name="value"/> is <c>null</c>;
-        /// otherwise, <c>false</c>.
+        /// <see langword="true"/> for value types if default(<typeparamref name="T"/>) equals to <paramref name="value"/>;
+        /// <see langword="true"/> for reference types if <paramref name="value"/> is <see langword="null"/>;
+        /// otherwise, <see langword="false"/>.
         /// </returns>
         public static bool IsDefaultValue<T>([NotNullWhen(false)] this T? value)
         {

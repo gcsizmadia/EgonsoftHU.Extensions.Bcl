@@ -14,13 +14,14 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="sourceObject">The source object that can be used by a value selector.</param>
         /// <param name="valueSelector">A value selector that gets the source object as input parameter and returns a value.</param>
         /// <returns>
-        /// A string value returned by the <paramref name="valueSelector"/> if it is not equal to <c>null</c>;
-        /// otherwise, <c>null</c>.
+        /// A string value returned by the <paramref name="valueSelector"/> if it is not equal to <see langword="null"/>;
+        /// otherwise, <see langword="null"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// Either <paramref name="sourceObject"/> or <paramref name="valueSelector"/> is <c>null</c>.
+        /// Either <paramref name="sourceObject"/> or <paramref name="valueSelector"/> is <see langword="null"/>.
         /// </exception>
         public static string? GetStringValueOrNull<TSource>(this TSource sourceObject, Func<TSource, string?> valueSelector)
+            where TSource : class?
         {
             sourceObject.ThrowIfNull();
             valueSelector.ThrowIfNull();
@@ -35,13 +36,14 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="sourceObject">The source object that can be used by a value selector.</param>
         /// <param name="valueSelector">A value selector that gets the source object as input parameter and returns a value.</param>
         /// <returns>
-        /// A string value returned by the <paramref name="valueSelector"/> if it is not equal to <c>null</c>;
+        /// A string value returned by the <paramref name="valueSelector"/> if it is not equal to <see langword="null"/>;
         /// otherwise, the <see cref="String.Empty"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// Either <paramref name="sourceObject"/> or <paramref name="valueSelector"/> is <c>null</c>.
+        /// Either <paramref name="sourceObject"/> or <paramref name="valueSelector"/> is <see langword="null"/>.
         /// </exception>
         public static string GetStringValueOrEmptyString<TSource>(this TSource sourceObject, Func<TSource, string?> valueSelector)
+            where TSource : class?
         {
             sourceObject.ThrowIfNull();
             valueSelector.ThrowIfNull();
@@ -65,13 +67,14 @@ namespace EgonsoftHU.Extensions.Bcl
         /// otherwise, the <paramref name="defaultValue"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// Either <paramref name="sourceObject"/> or <paramref name="valueSelector"/> is <c>null</c>.
+        /// Either <paramref name="sourceObject"/> or <paramref name="valueSelector"/> is <see langword="null"/>.
         /// </exception>
         public static TResult? GetValueOrDefault<TSource, TResult>(
             this TSource sourceObject,
             Func<TSource, TResult?> valueSelector,
             TResult? defaultValue
         )
+            where TSource : class?
         {
             sourceObject.ThrowIfNull();
             valueSelector.ThrowIfNull();
@@ -90,9 +93,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="valueSelector">A value selector that gets the source object as input parameter and returns a value.</param>
         /// <returns>A value returned by the <paramref name="valueSelector"/>.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Either <paramref name="sourceObject"/> or <paramref name="valueSelector"/> is <c>null</c>.
+        /// Either <paramref name="sourceObject"/> or <paramref name="valueSelector"/> is <see langword="null"/>.
         /// </exception>
         public static TResult? GetValue<TSource, TResult>(this TSource sourceObject, Func<TSource, TResult?> valueSelector)
+            where TSource : class?
         {
             sourceObject.ThrowIfNull();
             valueSelector.ThrowIfNull();

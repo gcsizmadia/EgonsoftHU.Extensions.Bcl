@@ -13,12 +13,12 @@ namespace EgonsoftHU.Extensions.Bcl
     public static class ThrowExtensions
     {
         /// <summary>
-        /// Throws <see cref="ArgumentNullException"/> if <paramref name="param"/> is <c>null</c>.
+        /// Throws <see cref="ArgumentNullException"/> if <paramref name="param"/> is <see langword="null"/>.
         /// </summary>
         /// <typeparam name="T">The type of the <paramref name="param"/></typeparam>
         /// <param name="param">The parameter to check.</param>
         /// <param name="paramName">The name of the parameter.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="param"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="param"/> is <see langword="null"/>.</exception>
         public static void ThrowIfNull<T>([NotNull] this T? param, [CallerArgumentExpression("param")] string? paramName = null)
         {
 #if NET6_0_OR_GREATER
@@ -29,24 +29,24 @@ namespace EgonsoftHU.Extensions.Bcl
         }
 
         /// <summary>
-        /// Throws <see cref="ArgumentNullException"/> if <paramref name="param"/> is <c>null</c> or <see cref="String.Empty"/>.
+        /// Throws <see cref="ArgumentNullException"/> if <paramref name="param"/> is <see langword="null"/> or <see cref="String.Empty"/>.
         /// </summary>
         /// <param name="param">The parameter to check.</param>
         /// <param name="paramName">The name of the parameter.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="param"/> is <c>null</c> or <see cref="String.Empty"/>.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="param"/> is <see langword="null"/> or <see cref="String.Empty"/>.</exception>
         public static void ThrowIfNullOrEmpty([NotNull] this string? param, [CallerArgumentExpression("param")] string? paramName = null)
         {
             paramName.ThrowIf(param.IsNullOrEmpty());
         }
 
         /// <summary>
-        /// Throws <see cref="ArgumentNullException"/> if <paramref name="param"/> is <c>null</c>, <see cref="String.Empty"/> or 
+        /// Throws <see cref="ArgumentNullException"/> if <paramref name="param"/> is <see langword="null"/>, <see cref="String.Empty"/> or 
         /// consists only of white-space characters.
         /// </summary>
         /// <param name="param">The parameter to check.</param>
         /// <param name="paramName">The name of the parameter.</param>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="param"/> is <c>null</c>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// <paramref name="param"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
         public static void ThrowIfNullOrWhiteSpace([NotNull] this string? param, [CallerArgumentExpression("param")] string? paramName = null)
         {

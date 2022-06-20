@@ -22,9 +22,9 @@ namespace EgonsoftHU.Extensions.Bcl
         /// A <see cref="Nullable{T}"/> type that is
         /// the specified <paramref name="type"/> itself if it is a <see cref="Nullable{T}"/> type;
         /// a constructed <see cref="Nullable{T}"/> type if <paramref name="type"/> is a value type;
-        /// otherwise, <c>null</c>.
+        /// otherwise, <see langword="null"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="type"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is <see langword="null"/>.</exception>
         [return: MaybeNull]
         public static Type AsNullableValueType(this Type type)
         {

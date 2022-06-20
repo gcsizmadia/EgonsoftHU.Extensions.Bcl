@@ -17,7 +17,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="propertyName">The name of the property whose value should be get.</param>
         /// <returns>A property value of the source object if the property exists; otherwise, null.</returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="propertyName"/> is <c>null</c>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// <paramref name="propertyName"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
         /// <exception cref="ArgumentException">
         /// No property is declared in <typeparamref name="TSource"/> type with the specified <paramref name="propertyName"/>.
@@ -42,7 +42,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="value">The value of a property of the source object.</param>
         /// <returns>Returns true if the property exists; otherwise, false.</returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="propertyName"/> is <c>null</c>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// <paramref name="propertyName"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
         public static bool TryGetPropertyValue<TSource>(this TSource? sourceObject, string propertyName, out object? value)
         {
@@ -64,7 +64,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="propertyName">The name of the property whose value should be set.</param>
         /// <param name="value">The value to be set as the value of the property of the source object.</param>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="propertyName"/> is <c>null</c>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// <paramref name="propertyName"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
         /// <exception cref="ArgumentException">
         /// No property is declared in <typeparamref name="TSource"/> type with the specified <paramref name="propertyName"/>.
@@ -89,7 +89,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="value">The value to be set as the value of the property of the source object.</param>
         /// <returns>Returns true if the property value has been set; otherwise, false.</returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="propertyName"/> is <c>null</c>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// <paramref name="propertyName"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
         public static bool TrySetPropertyValue<TSource>(this TSource? sourceObject, string propertyName, object? value)
             where TSource : class?
