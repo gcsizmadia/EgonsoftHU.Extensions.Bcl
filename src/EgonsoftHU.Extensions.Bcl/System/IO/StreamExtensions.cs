@@ -22,6 +22,11 @@ namespace EgonsoftHU.Extensions.Bcl
         {
             stream.ThrowIfNull();
             
+            if (stream is MemoryStream memoryStream)
+            {
+                return memoryStream.ToArray();
+            }
+
             if (!stream.TryResetStreamPosition())
             {
                 throw new NotSupportedException("The specified stream does not support seeking.");
