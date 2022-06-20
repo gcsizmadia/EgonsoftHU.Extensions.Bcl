@@ -1,0 +1,63 @@
+﻿<!--
+Copyright © 2022 Gabor Csizmadia
+This code is licensed under MIT license (see LICENSE for details)
+-->
+<Project>
+
+  <!-- Support for dotnet CLI commands -->
+  <PropertyGroup>
+    <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ProjectFolder>src</ProjectFolder>
+    <ProjectFolder Condition="$(MSBuildProjectName.EndsWith('Documentation'))">docs</ProjectFolder>
+    <ProjectFolder Condition="$(MSBuildProjectName.EndsWith('Tests'))">test</ProjectFolder>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(ProjectFolder)' == 'src'">
+    <ApplicationManifest>$(SolutionDir)src\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <RootNamespace>EgonsoftHU.Extensions.Bcl</RootNamespace>
+    <RootNamespace Condition="'$(ProjectFolder)' == 'test'">$(RootNamespace).UnitTests</RootNamespace>
+    <RootNamespace Condition="'$(ProjectFolder)' == 'docs'">$(RootNamespace).Documentation</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn Condition="'$(ProjectFolder)' != 'src'">CS1591</NoWarn>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <GenerateDocumentationFile Condition="'$(ProjectFolder)' == 'src'">true</GenerateDocumentationFile>
+    <!-- We can safely set it here as Csc task will set DocumentationFile property to empty if GenerateDocumentationFile is not true. -->
+    <DocumentationFile>obj\$(Configuration)\$(MSBuildProjectName).xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="'$(ProjectFolder)' == 'src' And '$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+    <PackageOutputPath>$(SolutionDir)nupkgs\</PackageOutputPath>
+    <PackageTags>EgonsoftHU egonsoft.hu egonsoft</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Company>Egonsoft.HU</Company>
+    <Product>Egonsoft.HU BCL Extensions</Product>
+    <Copyright>Copyright © 2022 Gabor Csizmadia</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Reflection.AssemblyConfigurationAttribute">
+      <_Parameter1>$([MSBuild]::GetTargetFrameworkIdentifier($(TargetFramework))),Version=$(TargetFrameworkVersion),Configuration=$(Configuration)</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.InteropServices.ComVisibleAttribute">
+      <_Parameter1>false</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+</Project>

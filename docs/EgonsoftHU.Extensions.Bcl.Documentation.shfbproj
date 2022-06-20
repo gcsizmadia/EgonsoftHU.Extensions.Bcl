@@ -14,12 +14,11 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
-    <OutputPath>..\..\help\</OutputPath>
+    <OutputPath>..\help\</OutputPath>
     <HtmlHelpName>Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\EgonsoftHU.Extensions.Bcl\bin\Release\netstandard2.0\EgonsoftHU.Extensions.Bcl.dll" />
-      <DocumentationSource sourceFile="..\EgonsoftHU.Extensions.Bcl\bin\Release\netstandard2.0\EgonsoftHU.Extensions.Bcl.xml" />
+      <DocumentationSource sourceFile="..\src\EgonsoftHU.Extensions.Bcl\EgonsoftHU.Extensions.Bcl.csproj" />
     </DocumentationSources>
     <HelpFileFormat>Markdown</HelpFileFormat>
     <SyntaxFilters>C#, Visual Basic</SyntaxFilters>
@@ -86,4 +85,10 @@
     </PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\EgonsoftHU.Extensions.Bcl\EgonsoftHU.Extensions.Bcl.csproj">
+      <Name>EgonsoftHU.Extensions.Bcl</Name>
+      <Project>00000000-0000-0000-0000-000000000000</Project>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
