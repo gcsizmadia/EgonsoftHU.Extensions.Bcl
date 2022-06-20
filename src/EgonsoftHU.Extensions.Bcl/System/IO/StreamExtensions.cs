@@ -3,6 +3,8 @@
 
 using System;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EgonsoftHU.Extensions.Bcl
 {
@@ -38,6 +40,52 @@ namespace EgonsoftHU.Extensions.Bcl
                 stream.TryResetStreamPosition();
 
                 return resultStream.ToArray();
+            }
+        }
+
+#if NETSTANDARD2_1 || NETCOREAPP2_1_OR_GREATER
+        /// <summary>
+        /// Converts a stream to byte array using <see cref="MemoryStream"/>.
+        /// </summary>
+        /// <param name="stream">The stream to convert.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns>A byte array that contains the content of the <paramref name="stream"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="stream"/> is <see langword="null"/>.</exception>
+        /// <exception cref="NotSupportedException"><paramref name="stream"/> does not support seeking.</exception>
+        public static async Task<byte[]> ToByteArrayAsync(this Stream stream, CancellationToken cancellationToken = default)
+#else
+        /// <summary>
+        /// Converts a stream to byte array using <see cref="MemoryStream"/>.
+        /// </summary>
+        /// <param name="stream">The stream to convert.</param>
+        /// <returns>A byte array that contains the content of the <paramref name="stream"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="stream"/> is <see langword="null"/>.</exception>
+        /// <exception cref="NotSupportedException"><paramref name="stream"/> does not support seeking.</exception>
+        public static async Task<byte[]> ToByteArrayAsync(this Stream stream)
+#endif
+        {
+            stream.ThrowIfNull();
+
+            if (stream is MemoryStream memoryStream)
+            {
+                return memoryStream.ToArray();
+            }
+
+            if (!stream.TryResetStreamPosition())
+            {
+                throw new NotSupportedException("The specified stream does not support seeking.");
+            }
+
+            using (memoryStream = new MemoryStream())
+            {
+#if NETSTANDARD2_1 || NETCOREAPP2_1_OR_GREATER
+                await stream.CopyToAsync(memoryStream, cancellationToken);
+#else
+                await stream.CopyToAsync(memoryStream);
+#endif
+                stream.TryResetStreamPosition();
+
+                return memoryStream.ToArray();
             }
         }
 
