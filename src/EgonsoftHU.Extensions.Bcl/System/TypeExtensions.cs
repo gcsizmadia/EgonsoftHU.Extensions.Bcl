@@ -37,10 +37,27 @@ namespace EgonsoftHU.Extensions.Bcl
                 return null;
             }
 
+            return type.IsNullableValueType() ? type : CreateNullableType(type);
+        }
+
+        /// <summary>
+        /// Indicates whether the current <paramref name="type"/> is a nullable value type.
+        /// </summary>
+        /// <param name="type">The type to check if it is a nullable value type.</param>
+        /// <returns><see langword="true"/> if <paramref name="type"/> is a nullable value type; otherwise, <see langword="false"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is <see langword="null"/>.</exception>
+        public static bool IsNullableValueType(this Type type)
+        {
+            type.ThrowIfNull();
+
+            TypeInfo typeInfo = type.GetTypeInfo();
+
             return
-                !typeInfo.IsGenericType || GenericTypeDefinitions.Nullable != type.GetGenericTypeDefinition()
-                    ? CreateNullableType(type)
-                    : type;
+                typeInfo.IsValueType
+                &&
+                typeInfo.IsGenericType
+                &&
+                GenericTypeDefinitions.Nullable == type.GetGenericTypeDefinition();
         }
 
         private static Type CreateNullableType(Type type)
