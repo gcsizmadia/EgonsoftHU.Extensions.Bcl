@@ -12,7 +12,7 @@ namespace EgonsoftHU.Extensions.Bcl
     public static class StringExtensions
     {
         /// <summary>
-        /// Indicates whether the specified string is <see langword="null"/> or <see cref="String.Empty"/>.<see langword="null"/>
+        /// Indicates whether the specified string is <see langword="null"/> or <see cref="String.Empty"/>.
         /// </summary>
         /// <param name="value">The string to test.</param>
         /// <returns><see langword="true"/> if <paramref name="value"/> is <see langword="null"/> or <see cref="String.Empty"/>; otherwise, <see langword="false"/>.</returns>
