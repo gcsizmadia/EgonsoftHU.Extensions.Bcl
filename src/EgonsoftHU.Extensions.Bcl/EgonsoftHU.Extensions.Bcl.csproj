@@ -9,8 +9,8 @@
     <Authors>Gabor Csizmadia</Authors>
     <Owners>Egonsoft.HU</Owners>
     <Title>Egonsoft.HU BCL Extensions</Title>
-    <Description>Extension methods for BCL types (String, Type, etc.)</Description>
-    <Summary>Extension methods for BCL types</Summary>
+    <Description>C# extension methods for BCL types (String, Type, etc.)</Description>
+    <Summary>C# extension methods for BCL types</Summary>
     <Copyright>Copyright © 2022 Gabor Csizmadia</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -20,7 +20,7 @@
     <PackageIconUrl></PackageIconUrl>
     <PackageReadmeFile></PackageReadmeFile>
     -->
-    <PackageTags>$(PackageTags) extensions extension bcl object string type assembly parameterinfo</PackageTags>
+    <PackageTags>$(PackageTags) extensions extension bcl object string type assembly parameterinfo stream ienumerable icollection idictionary</PackageTags>
     <PackageReleaseNotes>Please visit https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl/releases to view the release notes.</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
