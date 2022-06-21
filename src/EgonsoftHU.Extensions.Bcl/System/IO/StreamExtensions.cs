@@ -3,7 +3,9 @@
 
 using System;
 using System.IO;
+#if NETSTANDARD2_1 || NETCOREAPP2_1_OR_GREATER
 using System.Threading;
+#endif
 using System.Threading.Tasks;
 
 namespace EgonsoftHU.Extensions.Bcl
