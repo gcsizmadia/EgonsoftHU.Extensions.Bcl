@@ -3,14 +3,14 @@
 
 Gets the full path or UNC location of the loaded file that contains the manifest.
 
-**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 1.0.3+7c3db8b47afa440894a65166a8832e2048327025
+**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 2.0.0+92afa6294581b57a0a05c47f5fa89680af93d830
 
 ## Syntax
 
 **C#**<br />
 ``` C#
 public static string SafeGetLocation(
-	this Assembly assembly
+	this Assembly? assembly
 )
 ```
 

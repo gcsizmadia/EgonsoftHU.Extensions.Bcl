@@ -1,22 +1,26 @@
 # AssemblyExtensions.SafeGetCodeBase Method 
  
 
+**Note: This API is now obsolete.**
+
 Gets the location of the assembly as specified originally, for example, in an <a href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyname" target="_blank" rel="noopener noreferrer">AssemblyName</a> object.
 
-**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 1.0.3+7c3db8b47afa440894a65166a8832e2048327025
+**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 2.0.0+92afa6294581b57a0a05c47f5fa89680af93d830
 
 ## Syntax
 
 **C#**<br />
 ``` C#
+[ObsoleteAttribute("This method uses Assembly.CodeBase property that is only included for .NET Framework compatibility. Use AssemblyExtensions.SafeGetLocation(Assembly) extension method instead.")]
 public static string SafeGetCodeBase(
-	this Assembly assembly
+	this Assembly? assembly
 )
 ```
 
 **VB**<br />
 ``` VB
 <ExtensionAttribute>
+<ObsoleteAttribute("This method uses Assembly.CodeBase property that is only included for .NET Framework compatibility. Use AssemblyExtensions.SafeGetLocation(Assembly) extension method instead.")>
 Public Shared Function SafeGetCodeBase ( 
 	assembly As Assembly
 ) As String
@@ -33,6 +37,9 @@ If the assembly is null or a dynamic assembly (represented by an System.Reflecti
 
 #### Usage Note
 In Visual Basic and C#, you can call this method as an instance method on any object of type <a href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly" target="_blank" rel="noopener noreferrer">Assembly</a>. When you use instance method syntax to call this method, omit the first parameter. For more information, see <a href="https://docs.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/extension-methods" target="_blank" rel="noopener noreferrer">Extension Methods (Visual Basic)</a> or <a href="https://docs.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/extension-methods" target="_blank" rel="noopener noreferrer">Extension Methods (C# Programming Guide)</a>.
+
+## Remarks
+In case of .NET Core and .NET 5+ <br />- the <a href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.codebase#system-reflection-assembly-codebase" target="_blank" rel="noopener noreferrer">CodeBase</a> property always throws <a href="https://docs.microsoft.com/dotnet/api/system.notimplementedexception" target="_blank" rel="noopener noreferrer">NotImplementedException</a><br />- this method always returns <a href="https://docs.microsoft.com/dotnet/api/system.string.empty" target="_blank" rel="noopener noreferrer">Empty</a>.
 
 ## See Also
 

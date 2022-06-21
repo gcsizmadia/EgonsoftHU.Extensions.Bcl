@@ -3,7 +3,7 @@
 
 Gets a string value using a specified value selector or <a href="https://docs.microsoft.com/dotnet/api/system.string.empty" target="_blank" rel="noopener noreferrer">Empty</a>. The value selector gets the source object as input parameter.
 
-**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 1.0.3+7c3db8b47afa440894a65166a8832e2048327025
+**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 2.0.0+92afa6294581b57a0a05c47f5fa89680af93d830
 
 ## Syntax
 
@@ -11,7 +11,7 @@ Gets a string value using a specified value selector or <a href="https://docs.mi
 ``` C#
 public static string GetStringValueOrEmptyString<TSource>(
 	this TSource sourceObject,
-	Func<TSource, string> valueSelector
+	Func<TSource, string?> valueSelector
 )
 where TSource : class
 
@@ -34,13 +34,13 @@ Public Shared Function GetStringValueOrEmptyString(Of TSource As Class) (
 &nbsp;<dl><dt>TSource</dt><dd>The type of the source object.</dd></dl>
 
 #### Return Value
-Type: <a href="https://docs.microsoft.com/dotnet/api/system.string" target="_blank" rel="noopener noreferrer">String</a><br />Returns a string value returned by the specified value selector if source object is not null and the returned value is not null; otherwise, <a href="https://docs.microsoft.com/dotnet/api/system.string.empty" target="_blank" rel="noopener noreferrer">Empty</a>.
+Type: <a href="https://docs.microsoft.com/dotnet/api/system.string" target="_blank" rel="noopener noreferrer">String</a><br />A string value returned by the *valueSelector* if it is not equal to a null reference (`Nothing` in Visual Basic); otherwise, the <a href="https://docs.microsoft.com/dotnet/api/system.string.empty" target="_blank" rel="noopener noreferrer">Empty</a>.
 
 #### Usage Note
 In Visual Basic and C#, you can call this method as an instance method on any object of type . When you use instance method syntax to call this method, omit the first parameter. For more information, see <a href="https://docs.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/extension-methods" target="_blank" rel="noopener noreferrer">Extension Methods (Visual Basic)</a> or <a href="https://docs.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/extension-methods" target="_blank" rel="noopener noreferrer">Extension Methods (C# Programming Guide)</a>.
 
 ## Exceptions
-&nbsp;<table><tr><th>Exception</th><th>Condition</th></tr><tr><td><a href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception" target="_blank" rel="noopener noreferrer">ArgumentNullException</a></td><td>Thrown when the value selector is null.</td></tr></table>
+&nbsp;<table><tr><th>Exception</th><th>Condition</th></tr><tr><td><a href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception" target="_blank" rel="noopener noreferrer">ArgumentNullException</a></td><td>Either *sourceObject* or *valueSelector* is a null reference (`Nothing` in Visual Basic).</td></tr></table>
 
 ## See Also
 

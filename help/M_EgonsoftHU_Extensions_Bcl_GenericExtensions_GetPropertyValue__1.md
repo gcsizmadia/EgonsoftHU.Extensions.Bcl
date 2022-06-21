@@ -3,24 +3,23 @@
 
 Gets the value of an instance property of the source object using reflection.
 
-**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 1.0.3+7c3db8b47afa440894a65166a8832e2048327025
+**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 2.0.0+92afa6294581b57a0a05c47f5fa89680af93d830
 
 ## Syntax
 
 **C#**<br />
 ``` C#
-public static Object GetPropertyValue<TSource>(
+public static Object? GetPropertyValue<TSource>(
 	this TSource sourceObject,
 	string propertyName
 )
-where TSource : class
 
 ```
 
 **VB**<br />
 ``` VB
 <ExtensionAttribute>
-Public Shared Function GetPropertyValue(Of TSource As Class) ( 
+Public Shared Function GetPropertyValue(Of TSource) ( 
 	sourceObject As TSource,
 	propertyName As String
 ) As Object
@@ -38,6 +37,9 @@ Type: <a href="https://docs.microsoft.com/dotnet/api/system.object" target="_bla
 
 #### Usage Note
 In Visual Basic and C#, you can call this method as an instance method on any object of type . When you use instance method syntax to call this method, omit the first parameter. For more information, see <a href="https://docs.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/extension-methods" target="_blank" rel="noopener noreferrer">Extension Methods (Visual Basic)</a> or <a href="https://docs.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/extension-methods" target="_blank" rel="noopener noreferrer">Extension Methods (C# Programming Guide)</a>.
+
+## Exceptions
+&nbsp;<table><tr><th>Exception</th><th>Condition</th></tr><tr><td><a href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception" target="_blank" rel="noopener noreferrer">ArgumentNullException</a></td><td>*propertyName* is a null reference (`Nothing` in Visual Basic), <a href="https://docs.microsoft.com/dotnet/api/system.string.empty" target="_blank" rel="noopener noreferrer">Empty</a> or consists only of white-space characters.</td></tr><tr><td><a href="https://docs.microsoft.com/dotnet/api/system.argumentexception" target="_blank" rel="noopener noreferrer">ArgumentException</a></td><td>No property is declared in *TSource* type with the specified *propertyName*.</td></tr></table>
 
 ## See Also
 
