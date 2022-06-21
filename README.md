@@ -23,212 +23,35 @@ You can download the package from [nuget.org](https://www.nuget.org/).
 
 You can find the release notes [here](https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl/releases).
 
-## Usage Examples
+## Package Contents
 
 There are examples below only for some of the methods. Feel free to discover all the methods in the documentation.
 
-### [ThrowExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_ThrowExtensions.md)
+### Extension methods for throwing `ArgumentNullException`
 
-Instead of
-```C#
-void DoSomething<T>(T foo, string bar, Guid baz) where T : class
-{
-    if (foo is null)
-    {
-        throw new ArgumentNullException(nameof(foo));
-    }
+- `ThrowExtensions` ([examples](EXAMPLES_ThrowExtensions.md))
+  - `T` generic type: `null`
+  - `string`: `null`, `String.Empty` or white-space only
+  - `Guid`: `Guid.Empty`
 
-    if (String.IsNullOrEmpty(bar))
-    {
-        throw new ArgumentNullException(nameof(bar));
-    }
+### Extension methods for the following types
 
-    if (Guid.Empty == baz)
-    {
-        throw new ArgumentNullException(nameof(baz));
-    }
-}
-```
-you can write
-```C#
-using EgonsoftHU.Extensions.Bcl;
+- `System.String` ([examples](EXAMPLES_StringExtensions.md))
+- `System.Type`
+- `System.Collections.Generic.ICollection<T>`
+- `System.Collections.Generic.IDictionary<TKey, TValue>`
+- `System.Collections.Generic.IEnumerable<T>`
+- `System.IO.Stream`
+- `System.Reflection.Assembly`
+- `System.Reflection.ParameterInfo` ([examples](EXAMPLES_ParameterInfoExtensions.md))
 
-void DoSomething<T>(T foo, string bar, int? baz, Guid? qux, Guid quux) where T : class
-{
-    // In case of using the package targeted for .NET Core 3.1
-    foo.ThrowIfNull();
+### Other extension methods with generic type parameters
 
-    bar.ThrowIfNull();
-    bar.ThrowIfNullOrEmpty();
-    bar.ThrowIfNullOrWhiteSpace();
+- `IEnumerable`-related ([examples](EXAMPLES_GenericExtensions.md))
+- `Reflection`-related
+- value selectors
 
-    baz.ThrowIfNull();
+### Predefined (`const` / `readonly`) values
 
-    qux.ThrowIfNull();
-    qux.ThrowIfEmptyGuid();
-
-    quux.ThrowIfEmptyGuid();
-
-    // In case of using the package targeted for .NET Standard 2.0
-    foo.ThrowIfNull(nameof(foo));
-
-    bar.ThrowIfNull(nameof(bar));
-    bar.ThrowIfNullOrEmpty(nameof(bar));
-    bar.ThrowIfNullOrWhiteSpace(nameof(bar));
-
-    baz.ThrowIfNull(nameof(baz));
-
-    qux.ThrowIfNull(nameof(qux));
-    qux.ThrowIfEmptyGuid(nameof(qux));
-
-    quux.ThrowIfEmptyGuid(nameof(quux));
-}
-```
-
-### [StringExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_StringExtensions.md)
-
-Instead of
-```C#
-string value = "foo";
-
-if (String.IsNullOrEmpty(value))
-{
-}
-
-if (String.IsNullOrWhiteSpace(value))
-{
-}
-```
-you can write
-```C#
-using EgonsoftHU.Extensions.Bcl;
-
-string value = "foo";
-
-if (value.IsNullOrEmpty())
-{
-}
-
-if (value.IsNullOrWhiteSpace())
-{
-}
-```
-
-### [GenericExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_GenericExtensions.md)
-
-#### AsEnumerable()
-
-Suppose you have a method that expects an instance of `IEnumerable<int>` type but you have only a single `int` variable.
-```C#
-int x = 42;
-
-void Process(IEnumerable<int> numbers)
-{
-}
-```
-Instead of
-```C#
-Process(new int[] { x });
-```
-you can write
-```C#
-Process(x.AsEnumerable());
-```
-
-#### IsIn()
-
-Suppose you want to check if a value matches only some specific members of an `Enum` type.
-
-Instead of
-```C#
-bool IsWeekend(DateTime date)
-{
-    return
-        date.DayOfWeek == DateOfWeek.Saturday ||
-        date.DayOfWeek == DateOfWeek.Sunday;
-}
-```
-you can write
-```C#
-using EgonsoftHU.Extensions.Bcl;
-
-bool IsWeekend(DateTime date)
-{
-    return date.DayOfWeek.IsIn(DateOfWeek.Saturday, DateOfWeek.Sunday);
-}
-```
-Suppose you want to check if a `string` value matches some specific values regardless of their casing.
-
-Instead of
-```C#
-const string Development = nameof(Development);
-const string Staging = nameof(Staging);
-
-bool IsNonProductionEnvironment(string environment)
-{
-    environment = environment?.ToLower();
-
-    return
-        Development.ToLower() == environment ||
-        Staging.ToLower() == environment;
-}
-```
-you can write
-```C#
-using EgonsoftHU.Extensions.Bcl;
-
-const string Development = nameof(Development);
-const string Staging = nameof(Staging);
-
-bool IsNonProductionEnvironment(string environment)
-{
-    return
-        environment.IsIn(
-            StringComparer.OrdinalIgnoreCase,
-            Development,
-            Staging
-        );
-}
-```
-
-### [ParameterInfoExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_ParameterInfoExtensions.md)
-
-Suppose you expect a specific parameter type and name.
-
-Instead of
-```C#
-void Process(ParameterInfo parameter)
-{
-    if (
-        parameter != null
-        &&
-        parameter.ParameterType == typeof(string)
-        &&
-        String.Equals(parameter.Name, "foo", StringComparison.Ordinal)
-    )
-    {
-    }
-}
-```
-you can write
-```C#
-void Process(ParameterInfo parameter)
-{
-    if (parameter.Is<string>("foo"))
-    {
-    }
-}
-```
-E.g. you want `Autofac` to automatically inject an instance of `Serilog.ILogger` that is specific to the target class and also you want to enforce the following convention for that constructor parameter:
-- The name must be `logger`.
-```C#
-using Autofac;
-using EgonsoftHU.Extensions.Bcl;
-using Serilog;
-
-var resolvedParameter =
-    new ResolvedParameter(
-        (parameter, context) => parameter.Is<ILogger>("logger"),
-        (parameter, context) => Log.Logger.ForContext(parameter.Member.DeclaringType)
-    );
-```
+- `GuidFormat` ([examples](EXAMPLES_GuidFormat.md))
+- `GenericTypeDefinitions`
