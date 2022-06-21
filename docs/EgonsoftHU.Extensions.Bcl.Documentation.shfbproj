@@ -51,8 +51,9 @@
     </PlugInConfigurations>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="False" />
-<NamespaceSummaryItem name="EgonsoftHU.Extensions.Bcl" isDocumented="True">Extension methods for some of the BCL types.</NamespaceSummaryItem>
-<NamespaceSummaryItem name="EgonsoftHU.Extensions.Bcl.Constants" isDocumented="True">Constants defined for some of the BCL types.</NamespaceSummaryItem></NamespaceSummaries>
+      <NamespaceSummaryItem name="EgonsoftHU.Extensions.Bcl" isDocumented="True">Extension methods for some of the BCL types.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="EgonsoftHU.Extensions.Bcl.Constants" isDocumented="True">Constants defined for some of the BCL types.</NamespaceSummaryItem>
+    </NamespaceSummaries>
     <CopyrightText>Copyright &amp;#169%3b 2022 Gabor Csizmadia</CopyrightText>
     <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <RootNamespaceTitle>EgonsoftHU.Extensions.Bcl Namespaces</RootNamespaceTitle>
