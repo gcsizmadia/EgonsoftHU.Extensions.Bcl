@@ -11,7 +11,7 @@
     <Title>Egonsoft.HU BCL Extensions</Title>
     <Description>C# extension methods for BCL types (String, Type, etc.)</Description>
     <Summary>C# extension methods for BCL types</Summary>
-    <Copyright>Copyright © 2022 Gabor Csizmadia</Copyright>
+    <Copyright>Copyright © 2022-2023 Gabor Csizmadia</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl</PackageProjectUrl>
