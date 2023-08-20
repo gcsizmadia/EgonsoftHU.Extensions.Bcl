@@ -1,6 +1,7 @@
 ﻿// Copyright © 2022-2023 Gabor Csizmadia
 // This code is licensed under MIT license (see LICENSE for details)
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,9 +15,22 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <param name="value">A value to be returned as <see cref="IEnumerable{T}"/>.</param>
         /// <returns>Returns a sequence that contains only the specified <paramref name="value"/>.</returns>
+        /// <remarks>This method has been deprecated. Use <see cref="AsSingleElementSequence{T}(T)"/> extension method instead.</remarks>
+        [Obsolete("This method has been deprecated. Use " + nameof(AsSingleElementSequence) + "<T>(T) extension method instead.")]
         public static IEnumerable<T?> AsEnumerable<T>(this T? value)
         {
             yield return value;
+        }
+
+        /// <summary>
+        /// Returns a value as a sequence that contains only that value.
+        /// </summary>
+        /// <typeparam name="T">The type of the value.</typeparam>
+        /// <param name="value">A value to be returned as <see cref="IEnumerable{T}"/>.</param>
+        /// <returns>Returns a sequence that contains only the specified <paramref name="value"/>.</returns>
+        public static IEnumerable<T> AsSingleElementSequence<T>(this T value)
+        {
+            return new SingleElementSequence<T>(value);
         }
 
         /// <summary>
