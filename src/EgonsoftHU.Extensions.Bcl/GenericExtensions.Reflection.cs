@@ -26,7 +26,8 @@ namespace EgonsoftHU.Extensions.Bcl
         {
             propertyName.ThrowIfNullOrWhiteSpace();
 
-            propertyName.ThrowIfPropertyNotFound<TSource>(
+            propertyName.ThrowIfPropertyNotFound(
+                sourceObject?.GetType() ?? typeof(TSource),
                 sourceObject.TryGetPropertyInfo(propertyName, out PropertyInfo? propertyInfo)
             );
 
@@ -73,7 +74,8 @@ namespace EgonsoftHU.Extensions.Bcl
         {
             propertyName.ThrowIfNullOrWhiteSpace();
 
-            propertyName.ThrowIfPropertyNotFound<TSource>(
+            propertyName.ThrowIfPropertyNotFound(
+                sourceObject?.GetType() ?? typeof(TSource),
                 sourceObject.TryGetPropertyInfo(propertyName, out PropertyInfo? propertyInfo)
             );
 
@@ -105,25 +107,23 @@ namespace EgonsoftHU.Extensions.Bcl
             return false;
         }
 
-        private static bool TryGetPropertyInfo<TSource>(this TSource _, string propertyName, [NotNullWhen(true)] out PropertyInfo? propertyInfo)
+        private static bool TryGetPropertyInfo<TSource>(this TSource? source, string propertyName, [NotNullWhen(true)] out PropertyInfo? propertyInfo)
         {
             propertyName.ThrowIfNullOrWhiteSpace();
 
-            Type sourceType = typeof(TSource);
+            Type sourceType = source?.GetType() ?? typeof(TSource);
 
-            propertyInfo = sourceType.GetTypeInfo().GetDeclaredProperty(propertyName);
+            propertyInfo = sourceType.GetTypeInfo().GetRuntimeProperty(propertyName);
 
             return propertyInfo.IsNotNull();
         }
 
-        private static void ThrowIfPropertyNotFound<TSource>(this string propertyName, [DoesNotReturnIf(false)] bool propertyFound)
+        private static void ThrowIfPropertyNotFound(this string propertyName, Type sourceType, [DoesNotReturnIf(false)] bool propertyFound)
         {
             propertyName.ThrowIfNullOrWhiteSpace();
 
             if (!propertyFound)
             {
-                Type sourceType = typeof(TSource);
-
                 string typeName = sourceType.FullName ?? sourceType.Name;
 
                 var ex = new ArgumentException($"[{propertyName}] property is not declared in [{typeName}] type.", nameof(propertyName));
