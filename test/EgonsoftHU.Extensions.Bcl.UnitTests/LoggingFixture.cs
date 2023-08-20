@@ -19,7 +19,7 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
         private const string OutputTemplate =
             "{Timestamp:yyyy-MM-dd HH:mm:ss.fffffff zzz} [{Level:u3}] {Message:lj} ==> {Properties}{NewLine}{Exception}";
 
-        private static readonly CompactJsonFormatter formatter = new CompactJsonFormatter();
+        private static readonly RenderedCompactJsonFormatter formatter = new();
 
         public ILogger? Logger { get; private set; }
 
