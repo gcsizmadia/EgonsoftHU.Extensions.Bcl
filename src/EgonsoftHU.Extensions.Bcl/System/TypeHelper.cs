@@ -6,7 +6,7 @@ using System;
 namespace EgonsoftHU.Extensions.Bcl
 {
     /// <summary>
-    /// 
+    /// This class contains utility methods for <see cref="Type"/> type.
     /// </summary>
     public static class TypeHelper
     {
