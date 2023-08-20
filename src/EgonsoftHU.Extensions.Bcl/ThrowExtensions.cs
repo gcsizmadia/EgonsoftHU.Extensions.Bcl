@@ -10,7 +10,7 @@ namespace EgonsoftHU.Extensions.Bcl
     /// <summary>
     /// This class contains extension methods to throw exceptions.
     /// </summary>
-    public static class ThrowExtensions
+    public static partial class ThrowExtensions
     {
         /// <summary>
         /// Throws <see cref="ArgumentNullException"/> if <paramref name="param"/> is <see langword="null"/>.
