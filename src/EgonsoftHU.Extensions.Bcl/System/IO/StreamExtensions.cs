@@ -25,7 +25,7 @@ namespace EgonsoftHU.Extensions.Bcl
         public static byte[] ToByteArray(this Stream stream)
         {
             stream.ThrowIfNull();
-            
+
             if (stream is MemoryStream memoryStream)
             {
                 return memoryStream.ToArray();
@@ -36,13 +36,12 @@ namespace EgonsoftHU.Extensions.Bcl
                 throw new NotSupportedException("The specified stream does not support seeking.");
             }
 
-            using (var resultStream = new MemoryStream())
-            {
-                stream.CopyTo(resultStream);
-                stream.TryResetStreamPosition();
+            using var resultStream = new MemoryStream();
 
-                return resultStream.ToArray();
-            }
+            stream.CopyTo(resultStream);
+            stream.TryResetStreamPosition();
+
+            return resultStream.ToArray();
         }
 
 #if NETSTANDARD2_1 || NETCOREAPP2_1_OR_GREATER
