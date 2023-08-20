@@ -30,14 +30,12 @@ namespace EgonsoftHU.Extensions.Bcl
         {
             type.ThrowIfNull();
 
-            TypeInfo typeInfo = type.GetTypeInfo();
-
-            if (!typeInfo.IsValueType)
+            return type switch
             {
-                return null;
-            }
-
-            return type.IsNullableValueType() ? type : CreateNullableType(type);
+                { IsValueType: true } when type.IsNullableValueType() => type,
+                { IsValueType: true } => CreateNullableType(type),
+                _ => null
+            };
         }
 
         /// <summary>
