@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace EgonsoftHU.Extensions.Bcl
 {
-    partial class GenericExtensions
+    public partial class GenericExtensions
     {
         /// <summary>
         /// Returns a value as a sequence that contains only that value.

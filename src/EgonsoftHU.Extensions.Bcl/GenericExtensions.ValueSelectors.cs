@@ -5,7 +5,7 @@ using System;
 
 namespace EgonsoftHU.Extensions.Bcl
 {
-    partial class GenericExtensions
+    public partial class GenericExtensions
     {
         /// <summary>
         /// Gets a string value using a specified value selector or null. The value selector gets the source object as input parameter.

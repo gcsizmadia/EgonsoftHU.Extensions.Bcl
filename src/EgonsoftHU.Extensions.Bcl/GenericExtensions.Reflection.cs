@@ -7,7 +7,7 @@ using System;
 
 namespace EgonsoftHU.Extensions.Bcl
 {
-    partial class GenericExtensions
+    public partial class GenericExtensions
     {
         /// <summary>
         /// Gets the value of an instance property of the source object using reflection.
