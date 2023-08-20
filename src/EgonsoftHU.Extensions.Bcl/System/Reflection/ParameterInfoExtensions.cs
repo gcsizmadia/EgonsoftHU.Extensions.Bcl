@@ -16,7 +16,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// </summary>
         /// <typeparam name="TParameterType">The expected parameter type.</typeparam>
         /// <param name="parameter">The parameter to test.</param>
-        /// <returns>true if parameter type meets the expectation; otherwise, false.</returns>
+        /// <returns><see langword="true"/> if parameter type meets the expectation; otherwise, <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="parameter"/> is <see langword="null"/>.</exception>
         public static bool Is<TParameterType>(this ParameterInfo parameter)
         {
@@ -28,7 +28,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// </summary>
         /// <param name="parameter">The parameter to test.</param>
         /// <param name="parameterType">The expected type of the parameter.</param>
-        /// <returns>true if parameter type meets the expectation; otherwise, false.</returns>
+        /// <returns><see langword="true"/> if parameter type meets the expectation; otherwise, <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException">
         /// Either <paramref name="parameter"/> or <paramref name="parameterType"/> is <see langword="null"/>.
         /// </exception>
@@ -46,14 +46,15 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <typeparam name="TParameterType">The expected parameter type.</typeparam>
         /// <param name="parameter">The parameter to test.</param>
         /// <param name="parameterName">The expected name of the parameter.</param>
-        /// <returns>true if parameter type and name meet the expectations; otherwise, false.</returns>
+        /// <param name="stringComparison">The string comparison mode for <paramref name="parameterName"/> parameter.</param>
+        /// <returns><see langword="true"/> if parameter type meets the expectation; otherwise, <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException">
         /// Either <paramref name="parameter"/> is <see langword="null"/>
         /// or <paramref name="parameterName"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
-        public static bool Is<TParameterType>(this ParameterInfo parameter, string parameterName)
+        public static bool Is<TParameterType>(this ParameterInfo parameter, string parameterName, StringComparison stringComparison = StringComparison.Ordinal)
         {
-            return parameter.Is(typeof(TParameterType), parameterName);
+            return parameter.Is(typeof(TParameterType), parameterName, stringComparison);
         }
 
         /// <summary>
@@ -62,12 +63,13 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="parameter">The parameter to test.</param>
         /// <param name="parameterType">The expected type of the parameter.</param>
         /// <param name="parameterName">The expected name of the parameter.</param>
-        /// <returns>true if parameter type and name meet the expectations; otherwise, false.</returns>
+        /// <param name="stringComparison">The string comparison mode for <paramref name="parameterName"/> parameter.</param>
+        /// <returns><see langword="true"/> if parameter type meets the expectation; otherwise, <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException">
         /// Either <paramref name="parameter"/> or <paramref name="parameterType"/> is <see langword="null"/>
         /// or <paramref name="parameterName"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
-        public static bool Is(this ParameterInfo parameter, Type parameterType, string parameterName)
+        public static bool Is(this ParameterInfo parameter, Type parameterType, string parameterName, StringComparison stringComparison = StringComparison.Ordinal)
         {
             parameter.ThrowIfNull();
             parameterType.ThrowIfNull();
@@ -76,7 +78,7 @@ namespace EgonsoftHU.Extensions.Bcl
             return
                 parameterType == parameter.ParameterType
                 &&
-                String.Equals(parameterName, parameter.Name, StringComparison.Ordinal);
+                String.Equals(parameterName, parameter.Name, stringComparison);
         }
     }
 }
