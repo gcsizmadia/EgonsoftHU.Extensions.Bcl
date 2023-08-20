@@ -1,4 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright © 2022-2023 Gabor Csizmadia
+This code is licensed under MIT license (see LICENSE for details)
+-->
 <assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
   <assemblyIdentity
     type="win32"
