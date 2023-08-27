@@ -46,7 +46,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <summary>Determines if a value is zero.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero; otherwise, <see langword="false" />.</returns>
-        /// <remarks>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</remarks>
         public static bool IsZero(this sbyte value)
         {
             return value == 0;
@@ -55,7 +54,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <summary>Determines if a value is zero.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero; otherwise, <see langword="false" />.</returns>
-        /// <remarks>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</remarks>
         public static bool IsZero(this short value)
         {
             return value == 0;
@@ -64,7 +62,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <summary>Determines if a value is zero.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero; otherwise, <see langword="false" />.</returns>
-        /// <remarks>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</remarks>
         public static bool IsZero(this int value)
         {
             return value == 0;
@@ -73,7 +70,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <summary>Determines if a value is zero.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero; otherwise, <see langword="false" />.</returns>
-        /// <remarks>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</remarks>
         public static bool IsZero(this long value)
         {
             return value == 0L;
@@ -82,7 +78,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <summary>Determines if a value is zero.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero; otherwise, <see langword="false" />.</returns>
-        /// <remarks>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</remarks>
         public static bool IsZero(this byte value)
         {
             return value == 0;
@@ -91,7 +86,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <summary>Determines if a value is zero.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero; otherwise, <see langword="false" />.</returns>
-        /// <remarks>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</remarks>
         public static bool IsZero(this ushort value)
         {
             return value == 0U;
@@ -100,7 +94,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <summary>Determines if a value is zero.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero; otherwise, <see langword="false" />.</returns>
-        /// <remarks>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</remarks>
         public static bool IsZero(this uint value)
         {
             return value == 0U;
@@ -109,7 +102,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <summary>Determines if a value is zero.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero; otherwise, <see langword="false" />.</returns>
-        /// <remarks>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</remarks>
         public static bool IsZero(this ulong value)
         {
             return value == 0UL;
@@ -334,7 +326,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(SByte)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this sbyte value)
@@ -347,7 +338,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(Int16)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this short value)
@@ -360,7 +350,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(Int32)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this int value)
@@ -373,7 +362,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(Int64)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this long value)
@@ -386,7 +374,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(Byte)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this byte value)
@@ -399,7 +386,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(UInt16)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this ushort value)
@@ -412,7 +398,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(UInt32)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this uint value)
@@ -425,7 +410,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(UInt64)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this ulong value)
@@ -439,7 +423,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(Half)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this Half value)
@@ -453,7 +436,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(Single)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this float value)
@@ -466,7 +448,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(Double)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this double value)
@@ -479,7 +460,6 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns><see langword="true" /> if <paramref name="value" /> is zero or represents a negative real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is also considered negative.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsPositive(Decimal)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsNegativeOrZero(this decimal value)
@@ -491,7 +471,7 @@ namespace EgonsoftHU.Extensions.Bcl
 
         #region IsPositive
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -503,7 +483,7 @@ namespace EgonsoftHU.Extensions.Bcl
             return value >= 0;
         }
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -515,7 +495,7 @@ namespace EgonsoftHU.Extensions.Bcl
             return value >= 0;
         }
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -527,7 +507,7 @@ namespace EgonsoftHU.Extensions.Bcl
             return value >= 0;
         }
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -539,7 +519,7 @@ namespace EgonsoftHU.Extensions.Bcl
             return value >= 0L;
         }
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -551,7 +531,7 @@ namespace EgonsoftHU.Extensions.Bcl
             return true;
         }
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -563,7 +543,7 @@ namespace EgonsoftHU.Extensions.Bcl
             return true;
         }
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -575,7 +555,7 @@ namespace EgonsoftHU.Extensions.Bcl
             return true;
         }
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -588,7 +568,7 @@ namespace EgonsoftHU.Extensions.Bcl
         }
 
 #if NET5_0_OR_GREATER
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -601,7 +581,7 @@ namespace EgonsoftHU.Extensions.Bcl
         }
 #endif
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -617,7 +597,7 @@ namespace EgonsoftHU.Extensions.Bcl
 #endif
         }
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
@@ -629,12 +609,13 @@ namespace EgonsoftHU.Extensions.Bcl
             return BitConverter.DoubleToInt64Bits(value) >= 0L;
         }
 
-        /// <summary>Determines if a value represents zero or a positive real number.</summary>
+        /// <summary>Determines if a value represents (positive) zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
         /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(Decimal)" /> will return <see langword="true" />.</para>
+        /// <para>Please note:<br/>C# compiler does not treat <c>-0m</c> as negative zero, although it does get both the sign and the scale correctly for <c>-0.0m</c>.</para>
         /// </remarks>
         public static bool IsPositive(this decimal value)
         {
@@ -652,10 +633,9 @@ namespace EgonsoftHU.Extensions.Bcl
 
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(SByte)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this sbyte value)
@@ -665,10 +645,9 @@ namespace EgonsoftHU.Extensions.Bcl
 
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(Int16)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this short value)
@@ -678,10 +657,9 @@ namespace EgonsoftHU.Extensions.Bcl
 
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(Int32)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this int value)
@@ -691,10 +669,9 @@ namespace EgonsoftHU.Extensions.Bcl
 
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(Int64)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this long value)
@@ -704,10 +681,9 @@ namespace EgonsoftHU.Extensions.Bcl
 
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(Byte)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this byte value)
@@ -717,10 +693,9 @@ namespace EgonsoftHU.Extensions.Bcl
 
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(UInt16)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this ushort value)
@@ -730,10 +705,9 @@ namespace EgonsoftHU.Extensions.Bcl
 
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(UInt32)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this uint value)
@@ -743,10 +717,9 @@ namespace EgonsoftHU.Extensions.Bcl
 
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(UInt64)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this ulong value)
@@ -757,10 +730,9 @@ namespace EgonsoftHU.Extensions.Bcl
 #if NET5_0_OR_GREATER
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(Half)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this Half value)
@@ -770,10 +742,9 @@ namespace EgonsoftHU.Extensions.Bcl
 #endif
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(Single)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this float value)
@@ -783,10 +754,9 @@ namespace EgonsoftHU.Extensions.Bcl
 
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(Double)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this double value)
@@ -796,10 +766,9 @@ namespace EgonsoftHU.Extensions.Bcl
 
         /// <summary>Determines if a value represents zero or a positive real number.</summary>
         /// <param name="value">The value to be checked.</param>
-        /// <returns><see langword="true" /> if <paramref name="value" /> represents (positive) zero or a positive real number; otherwise, <see langword="false" />.</returns>
+        /// <returns><see langword="true" /> if <paramref name="value" /> represents zero or a positive real number; otherwise, <see langword="false" />.</returns>
         /// <remarks>
         /// <para>This function treats both positive and negative zero as zero and so will return <see langword="true" /> for <c>+0.0</c> and <c>-0.0</c>.</para>
-        /// <para>If this type has signed zero, then <c>-0</c> is not considered positive, but <c>+0</c> is.</para>
         /// <para>This function returning <see langword="false" /> does not imply that <see cref="IsNegative(Decimal)" /> will return <see langword="true" />.</para>
         /// </remarks>
         public static bool IsPositiveOrZero(this decimal value)
