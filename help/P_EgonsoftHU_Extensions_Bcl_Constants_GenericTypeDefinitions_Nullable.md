@@ -1,9 +1,9 @@
 # GenericTypeDefinitions.Nullable Property 
  
 
-The generic type definition for the <a href="https://docs.microsoft.com/dotnet/api/system.nullable-1" target="_blank" rel="noopener noreferrer">Nullable(T)</a> type.
+The generic type definition for the <a href="https://learn.microsoft.com/dotnet/api/system.nullable-1" target="_blank" rel="noopener noreferrer">Nullable(T)</a> type.
 
-**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl_Constants.md">EgonsoftHU.Extensions.Bcl.Constants</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 2.0.0+8ead0a244466e154a5be3ab837e77f44c8ca5aac
+**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl_Constants.md">EgonsoftHU.Extensions.Bcl.Constants</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 2.1.0+c3dc2893f0812c87b63b366f67c4cfb5c4234bd9
 
 ## Syntax
 
@@ -20,7 +20,7 @@ Public Shared ReadOnly Property Nullable As Type
 
 
 #### Property Value
-Type: <a href="https://docs.microsoft.com/dotnet/api/system.type" target="_blank" rel="noopener noreferrer">Type</a>
+Type: <a href="https://learn.microsoft.com/dotnet/api/system.type" target="_blank" rel="noopener noreferrer">Type</a>
 
 ## See Also
 

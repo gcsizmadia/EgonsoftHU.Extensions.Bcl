@@ -1,9 +1,9 @@
 # GenericExtensions.IsDefaultValue(*T*) Method 
  
 
-Determines whether a specified *value* is the default value of its <a href="https://docs.microsoft.com/dotnet/api/system.type" target="_blank" rel="noopener noreferrer">Type</a>.
+Determines whether a specified *value* is the default value of its <a href="https://learn.microsoft.com/dotnet/api/system.type" target="_blank" rel="noopener noreferrer">Type</a>.
 
-**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 2.0.0+8ead0a244466e154a5be3ab837e77f44c8ca5aac
+**Namespace:**&nbsp;<a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a><br />**Assembly:**&nbsp;EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 2.1.0+c3dc2893f0812c87b63b366f67c4cfb5c4234bd9
 
 ## Syntax
 
@@ -31,7 +31,7 @@ Public Shared Function IsDefaultValue(Of T) (
 &nbsp;<dl><dt>T</dt><dd>The type of the value.</dd></dl>
 
 #### Return Value
-Type: <a href="https://docs.microsoft.com/dotnet/api/system.boolean" target="_blank" rel="noopener noreferrer">Boolean</a><br />`true` (`True` in Visual Basic) for value types if default(*T*) equals to *value*; `true` (`True` in Visual Basic) for reference types if *value* is a null reference (`Nothing` in Visual Basic); otherwise, `false` (`False` in Visual Basic).
+Type: <a href="https://learn.microsoft.com/dotnet/api/system.boolean" target="_blank" rel="noopener noreferrer">Boolean</a><br />`true` (`True` in Visual Basic) for value types if default(*T*) equals to *value*; `true` (`True` in Visual Basic) for reference types if *value* is a null reference (`Nothing` in Visual Basic); otherwise, `false` (`False` in Visual Basic).
 
 #### Usage Note
 In Visual Basic and C#, you can call this method as an instance method on any object of type . When you use instance method syntax to call this method, omit the first parameter. For more information, see <a href="https://docs.microsoft.com/dotnet/visual-basic/programming-guide/language-features/procedures/extension-methods" target="_blank" rel="noopener noreferrer">Extension Methods (Visual Basic)</a> or <a href="https://docs.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/extension-methods" target="_blank" rel="noopener noreferrer">Extension Methods (C# Programming Guide)</a>.
