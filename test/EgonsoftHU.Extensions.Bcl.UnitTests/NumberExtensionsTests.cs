@@ -396,7 +396,8 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             decimal positiveZero = +0.0m;
 
             // C# compiler does not treat "-0m" as negative zero, although it does get both the sign and the scale correctly for "-0.0m".
-            decimal negativeZero = -0.0m;
+            decimal negativeZeroIntegerFormat = -0m;
+            decimal negativeZeroFractionalFormat = -0.0m;
 
             decimal negatedZero = Decimal.Negate(Decimal.Zero);
             decimal minusOne = -1m;
@@ -407,7 +408,9 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             zero.IsNegative().Should().BeFalse();
             positiveZero.IsNegative().Should().BeFalse();
 
-            negativeZero.IsNegative().Should().BeTrue();
+            negativeZeroIntegerFormat.IsNegative().Should().BeFalse();
+
+            negativeZeroFractionalFormat.IsNegative().Should().BeTrue();
             negatedZero.IsNegative().Should().BeTrue();
             minusOne.IsNegative().Should().BeTrue();
 
@@ -869,7 +872,8 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             decimal positiveZero = +0.0m;
 
             // C# compiler does not treat "-0m" as negative zero, although it does get both the sign and the scale correctly for "-0.0m".
-            decimal negativeZero = -0.0m;
+            decimal negativeZeroIntegerFormat = -0m;
+            decimal negativeZeroFractionalFormat = -0.0m;
 
             decimal negatedZero = Decimal.Negate(Decimal.Zero);
             decimal minusOne = -1m;
@@ -881,7 +885,9 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             zero.IsPositive().Should().BeTrue();
             positiveZero.IsPositive().Should().BeTrue();
 
-            negativeZero.IsPositive().Should().BeFalse();
+            negativeZeroIntegerFormat.IsPositive().Should().BeTrue();
+
+            negativeZeroFractionalFormat.IsPositive().Should().BeFalse();
             negatedZero.IsPositive().Should().BeFalse();
             minusOne.IsPositive().Should().BeFalse();
 
