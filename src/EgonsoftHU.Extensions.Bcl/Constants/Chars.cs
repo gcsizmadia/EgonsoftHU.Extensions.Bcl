@@ -3,10 +3,8 @@
 
 namespace EgonsoftHU.Extensions.Bcl.Constants
 {
-    internal static class Strings
+    internal static class Chars
     {
-        internal const string NullString = "(null)";
-
-        internal const string Slash = "/";
+        internal const char Slash = '/';
     }
 }

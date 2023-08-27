@@ -4,6 +4,8 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
+using EgonsoftHU.Extensions.Bcl.Constants;
+
 namespace EgonsoftHU.Extensions.Bcl
 {
     /// <summary>
@@ -51,6 +53,35 @@ namespace EgonsoftHU.Extensions.Bcl
         public static string? DefaultIfNullOrWhiteSpace(this string? value, string? defaultValue = null)
         {
             return value.IsNullOrWhiteSpace() ? defaultValue : value;
+        }
+
+        /// <summary>
+        /// Ensures that the specified <paramref name="value"/> ends with a slash '<c>/</c>' character.
+        /// </summary>
+        /// <param name="value">The value that needs to end with a slash '<c>/</c>' character.</param>
+        /// <returns><paramref name="value"/> itself if it ends with a slash '<c>/</c>' character; otherwise, appends a slash '<c>/</c>' character at the end of it.</returns>
+        public static string EnsureTrailingSlash(this string? value)
+        {
+            if (value.IsNullOrEmpty())
+            {
+                return Strings.Slash;
+            }
+
+#if NETFRAMEWORK || NETSTANDARD
+            return value.EndsWith(Strings.Slash) ? value : $"{value}{Strings.Slash}";
+#else
+            return value.EndsWith(Chars.Slash) ? value : $"{value}{Chars.Slash}";
+#endif
+        }
+
+        /// <summary>
+        /// Ensures that the specified <paramref name="value"/> does not end with a slash '<c>/</c>' character.
+        /// </summary>
+        /// <param name="value">The value that must not end with a slash '<c>/</c>' character.</param>
+        /// <returns><paramref name="value"/> itself if it does not end with a slash '<c>/</c>' character; otherwise, trims the slash '<c>/</c>' character from the end of it.</returns>
+        public static string? EnsureNoTrailingSlash(this string? value)
+        {
+            return value?.TrimEnd(Chars.Slash);
         }
     }
 }
