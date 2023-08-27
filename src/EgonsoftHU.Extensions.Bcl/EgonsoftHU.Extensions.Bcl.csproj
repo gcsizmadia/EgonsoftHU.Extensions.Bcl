@@ -18,9 +18,9 @@
     <!--
     <PackageIcon></PackageIcon>
     <PackageIconUrl></PackageIconUrl>
-    <PackageReadmeFile></PackageReadmeFile>
     -->
-    <PackageTags>$(PackageTags) extensions extension bcl object string type assembly parameterinfo stream ienumerable icollection idictionary</PackageTags>
+    <PackageReadmeFile>PACKAGE_README.md</PackageReadmeFile>
+    <PackageTags>$(PackageTags) extensions extension bcl object datetimeoffset string type assembly memberinfo parameterinfo stream numeric ienumerable icollection idictionary</PackageTags>
     <PackageReleaseNotes>Please visit https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl/releases to view the release notes.</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -32,6 +32,9 @@
     <DevelopmentDependency>false</DevelopmentDependency>
     <MinClientVersion>4.1.0</MinClientVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(SolutionDir)PACKAGE_README.md" Pack="True" PackagePath="\" />
+  </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' Or '$(TargetFramework)' == 'netstandard2.1'">
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
