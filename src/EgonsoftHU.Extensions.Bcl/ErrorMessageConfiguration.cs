@@ -117,15 +117,24 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <remarks>
         /// This method is intended to be used for localizable error messages.<br/>
         /// Use <see cref="ConfigureErrorMessage(String, String)"/> for non-localized error messages.
+        /// <para>
+        /// If <paramref name="errorMessageResourceName"/> is <see langword="null"/>, <see cref="String.Empty"/>,
+        /// or if <paramref name="errorMessageResourceName"/> consists exclusively of white-space characters
+        /// then the value of <paramref name="errorMessageKey"/> will be used.
+        /// </para>
         /// </remarks>
 #if NET6_0_OR_GREATER
         [SuppressMessage("Performance", "CA1822:Mark members as static")]
 #endif
-        public void ConfigureErrorMessage(string errorMessageKey, Type errorMessageResourceType, string errorMessageResourceName)
+        public void ConfigureErrorMessage(string errorMessageKey, Type errorMessageResourceType, string? errorMessageResourceName = null)
         {
             errorMessageKey.ThrowIfNullOrWhiteSpace();
             errorMessageResourceType.ThrowIfNull();
-            errorMessageResourceName.ThrowIfNullOrWhiteSpace();
+
+            if (errorMessageResourceName.IsNullOrWhiteSpace())
+            {
+                errorMessageResourceName = errorMessageKey;
+            }
 
             ThrowIfKeyNotFound(errorMessageKey, errorMessages.ContainsKey(errorMessageKey));
 
