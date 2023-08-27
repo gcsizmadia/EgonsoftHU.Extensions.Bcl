@@ -1,4 +1,4 @@
-# Egonsoft.HU BCL Extensions
+﻿# Egonsoft.HU BCL Extensions
 
 [![GitHub](https://img.shields.io/github/license/gcsizmadia/EgonsoftHU.Extensions.Bcl?label=License)](https://opensource.org/licenses/MIT)
 [![Nuget](https://img.shields.io/nuget/v/EgonsoftHU.Extensions.Bcl?label=NuGet)](https://www.nuget.org/packages/EgonsoftHU.Extensions.Bcl)
@@ -34,16 +34,57 @@ There are examples below only for some of the methods. Feel free to discover all
   - `string`: `null`, `String.Empty` or white-space only
   - `Guid`: `Guid.Empty`
 
+### Extension methods for throwing `ArgumentOutOfRangeException`
+
+- `ThrowExtensions` ([examples](EXAMPLES_ThrowExtensions.md))
+  - The exception messages are in English but they can be configured.
+    ```csharp
+    using EgonsoftHU.Extensions.Bcl;
+
+    // This method is intended to be used for non-localizable error messages.
+    ErrorMessageConfiguration.Current.ConfigureErrorMessage(
+        errorMessageKey: ErrorMessageKey.ArgumentOutOfRange_MustBeNonZero,
+        errorMessage: "The parameter '{0}' must be non-zero. Actual value: {1}"
+    );
+
+    // This method is intended to be used for localizable error messages.
+    ErrorMessageConfiguration.Current.ConfigureErrorMessage(
+        errorMessageKey: ErrorMessageKey.ArgumentOutOfRange_MustBeNonZero,
+        errorMessageResourceType: typeof(YourCustomValidationResources),
+        // This parameter is optional. If not specified then the value of errorMessageKey is used.
+        errorMessageResourceName: "YourCustomResourceName"
+    );
+    ```
+
+|CLR Type|C# keyword|Extension methods|
+|-|-|-|
+|`System.SByte`<br/>`System.Int16`<br/>`System.Int32`<br/>`System.Int64`<br/>`System.Byte`<br/>`System.UInt16`<br/>`System.UInt32`<br/>`System.UInt64`<br/>`System.Half`<br/>`System.Single`<br/>`System.Double`<br/>`System.Decimal`|`sbyte`<br/>`short`<br/>`int`<br/>`long`<br/>`byte`<br/>`ushort`<br/>`uint`<br/>`ulong`<br/>`-`<br/>`float`<br/>`double`<br/>`decimal`|`ThrowIfZero()`<br/>`ThrowIfNegative()`<br/>`ThrowIfNegativeOrZero()`<br/>`ThrowIfPositive()`<br/>`ThrowIfPositiveOrZero()`<br/>`ThrowIfGreaterThan()`<br/>`ThrowIfGreaterThanOrEqualTo()`<br/>`ThrowIfLessThan()`<br/>`ThrowIfLessThanOrEqualTo()`<br/>`ThrowIfEqualTo()`<br/>`ThrowIfNotEqualTo()`|  
+
 ### Extension methods for the following types
 
-- `System.String` ([examples](EXAMPLES_StringExtensions.md))
-- `System.Type`
 - `System.Collections.Generic.ICollection<T>`
 - `System.Collections.Generic.IDictionary<TKey, TValue>`
 - `System.Collections.Generic.IEnumerable<T>`
+- `System.DateTimeOffset`
 - `System.IO.Stream`
 - `System.Reflection.Assembly`
+- `System.Reflection.MemberInfo`
 - `System.Reflection.ParameterInfo` ([examples](EXAMPLES_ParameterInfoExtensions.md))
+- `System.String` ([examples](EXAMPLES_StringExtensions.md))
+- `System.Type`
+- Numeric types:
+  - `System.SByte`
+  - `System.Int16`
+  - `System.Int32`
+  - `System.Int64`
+  - `System.Byte`
+  - `System.UInt16`
+  - `System.UInt32`
+  - `System.UInt64`
+  - `System.Half`
+  - `System.Single`
+  - `System.Double`
+  - `System.Decimal`
 
 ### Other extension methods with generic type parameters
 

@@ -1,10 +1,10 @@
-# [ThrowExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_ThrowExtensions.md)
+﻿# [ThrowExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_ThrowExtensions.md)
 
 Back to [Package Contents](https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl#package-contents)
 
 Instead of
 ```C#
-void DoSomething<T>(T foo, string bar, Guid baz) where T : class
+void DoSomething<T>(T foo, string bar, Guid baz, int qux) where T : class
 {
     if (foo is null)
     {
@@ -20,13 +20,18 @@ void DoSomething<T>(T foo, string bar, Guid baz) where T : class
     {
         throw new ArgumentNullException(nameof(baz));
     }
+
+    if (qux <= 0)
+    {
+        throw new ArgumentOutOfRangeException(nameof(qux));
+    }
 }
 ```
 you can write
 ```C#
 using EgonsoftHU.Extensions.Bcl;
 
-void DoSomething<T>(T foo, string bar, int? baz, Guid? qux, Guid quux) where T : class
+void DoSomething<T>(T foo, string bar, int? baz, Guid? qux, Guid quux, int quuz) where T : class
 {
     // These methods use CallerArgumentExpressionAttribute
     // (introduced in C# 10 / .NET 6)
@@ -49,6 +54,18 @@ void DoSomething<T>(T foo, string bar, int? baz, Guid? qux, Guid quux) where T :
     qux.ThrowIfEmptyGuid();
 
     quux.ThrowIfEmptyGuid();
+
+    quuz.ThrowIfZero();
+    quuz.ThrowIfNegative();
+    quuz.ThrowIfNegativeOrZero();
+    quuz.ThrowIfPositive();
+    quuz.ThrowIfPositiveOrZero();
+    quuz.ThrowIfEqualTo(0);
+    quuz.ThrowIfNotEqualTo(0);
+    quuz.ThrowIfLessThan(0);
+    quuz.ThrowIfLessThanOrEqualTo(0);
+    quuz.ThrowIfGreaterThan(0);
+    quuz.ThrowIfGreaterThanOrEqualTo(0);
 
     // If the ArgumentNullException.ParamName property remains unset
     // (i.e. the compiler you use does not support this attribute yet)
