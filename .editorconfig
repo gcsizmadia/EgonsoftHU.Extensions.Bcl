@@ -160,7 +160,7 @@ dotnet_style_prefer_is_null_check_over_reference_equality_method = true
 
 # Language rules (file header preferences)
 # ------------------------------------------------------------------------------------------------------------------------------------------
-file_header_template = Copyright © 2022-2023 Gabor Csizmadia\nThis code is licensed under MIT license (see LICENSE for details)
+file_header_template = Copyright © 2022-2024 Gabor Csizmadia\nThis code is licensed under MIT license (see LICENSE for details)
 #dotnet_diagnostic.IDE0073.severity = none # Require file header
 
 # Language rules (Namespace naming preferences)
