@@ -12,6 +12,7 @@
     <AssemblyName>Documentation</AssemblyName>
     <RootNamespace>Documentation</RootNamespace>
     <Name>Documentation</Name>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
     <OutputPath>..\help\</OutputPath>
