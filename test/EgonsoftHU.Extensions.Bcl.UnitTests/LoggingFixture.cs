@@ -1,19 +1,22 @@
 ﻿// Copyright © 2022-2024 Gabor Csizmadia
 // This code is licensed under MIT license (see LICENSE for details)
 
-using Serilog;
-using Serilog.Events;
-using Serilog.Formatting.Compact;
-
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 
+using Serilog;
+using Serilog.Events;
+using Serilog.Formatting.Compact;
+
 using Xunit.Abstractions;
 
 namespace EgonsoftHU.Extensions.Bcl.UnitTests
 {
+#if NETFRAMEWORK
+    [ExcludeFromCodeCoverage]
+#endif
     public class LoggingFixture<T> : IDisposable
     {
         private const string OutputTemplate =

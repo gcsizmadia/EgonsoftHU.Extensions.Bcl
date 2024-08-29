@@ -3,6 +3,9 @@
 
 using System;
 using System.Collections.Generic;
+#if NETFRAMEWORK
+using System.Diagnostics.CodeAnalysis;
+#endif
 
 using FluentAssertions;
 
@@ -11,6 +14,9 @@ using Xunit.Abstractions;
 
 namespace EgonsoftHU.Extensions.Bcl.UnitTests
 {
+#if NETFRAMEWORK
+    [ExcludeFromCodeCoverage]
+#endif
     public class ThrowExtensionsTests : UnitTest<ThrowExtensionsTests>
     {
         public ThrowExtensionsTests(ITestOutputHelper output, LoggingFixture<ThrowExtensionsTests> fixture)

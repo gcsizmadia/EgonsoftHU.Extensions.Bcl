@@ -1,6 +1,10 @@
 ﻿// Copyright © 2022-2024 Gabor Csizmadia
 // This code is licensed under MIT license (see LICENSE for details)
 
+#if NETFRAMEWORK
+using System.Diagnostics.CodeAnalysis;
+#endif
+
 using Serilog;
 
 using Xunit;
@@ -8,6 +12,9 @@ using Xunit.Abstractions;
 
 namespace EgonsoftHU.Extensions.Bcl.UnitTests
 {
+#if NETFRAMEWORK
+    [ExcludeFromCodeCoverage]
+#endif
     public abstract class UnitTest<T> : IClassFixture<LoggingFixture<T>>
     {
         protected UnitTest(ITestOutputHelper output, LoggingFixture<T> fixture)

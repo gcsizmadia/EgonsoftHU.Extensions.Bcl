@@ -2,6 +2,9 @@
 // This code is licensed under MIT license (see LICENSE for details)
 
 using System;
+#if NETFRAMEWORK
+using System.Diagnostics.CodeAnalysis;
+#endif
 using System.Threading.Tasks;
 
 using FluentAssertions;
@@ -11,6 +14,9 @@ using Xunit.Abstractions;
 
 namespace EgonsoftHU.Extensions.Bcl.UnitTests
 {
+#if NETFRAMEWORK
+    [ExcludeFromCodeCoverage]
+#endif
     public class TypeExtensionsTests : UnitTest<TypeExtensionsTests>
     {
         public TypeExtensionsTests(ITestOutputHelper output, LoggingFixture<TypeExtensionsTests> fixture)
