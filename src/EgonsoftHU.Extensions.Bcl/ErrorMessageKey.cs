@@ -9,6 +9,26 @@ namespace EgonsoftHU.Extensions.Bcl
     public static class ErrorMessageKey
     {
         /// <summary>
+        /// The default error message template for this error is:<br/><c>The value cannot be an empty sequence.</c>
+        /// </summary>
+        public const string Argument_EmptyEnumerable = nameof(Argument_EmptyEnumerable);
+
+        /// <summary>
+        /// The default error message template for this error is:<br/><c>The value cannot be an empty Guid.</c>
+        /// </summary>
+        public const string Argument_EmptyGuid = nameof(Argument_EmptyGuid);
+
+        /// <summary>
+        /// The default error message template for this error is:<br/><c>The value cannot be an empty string.</c>
+        /// </summary>
+        public const string Argument_EmptyString = nameof(Argument_EmptyString);
+
+        /// <summary>
+        /// The default error message template for this error is:<br/><c>The value cannot be an empty string or composed entirely of whitespace.</c>
+        /// </summary>
+        public const string Argument_EmptyOrWhiteSpaceString = nameof(Argument_EmptyOrWhiteSpaceString);
+
+        /// <summary>
         /// The default error message template for this error is:<br/><c>{0} ('{1}') must be a non-zero value.</c>
         /// </summary>
         public const string ArgumentOutOfRange_MustBeNonZero = nameof(ArgumentOutOfRange_MustBeNonZero);
