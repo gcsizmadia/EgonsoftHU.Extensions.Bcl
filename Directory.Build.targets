@@ -5,36 +5,9 @@ This code is licensed under MIT license (see LICENSE for details)
 <Project>
 
   <PropertyGroup>
-    <EgonsoftHUAssemblyVersionTargetsFile>$(MSBuildThisFileDirectory)..\..\build\EgonsoftHU.AssemblyVersion.targets</EgonsoftHUAssemblyVersionTargetsFile>
-    <EgonsoftHUNuspecPropertiesTargetsFile>$(MSBuildThisFileDirectory)..\..\build\EgonsoftHU.NuspecProperties.targets</EgonsoftHUNuspecPropertiesTargetsFile>
-    <EgonsoftHULangVersion90TargetsFile>$(MSBuildThisFileDirectory)..\..\build\EgonsoftHU.LangVersion_9.0.targets</EgonsoftHULangVersion90TargetsFile>
+    <EgonsoftHUCommonTargetsFile>$(MSBuildThisFileDirectory)..\..\build\EgonsoftHU.Common.targets</EgonsoftHUCommonTargetsFile>
   </PropertyGroup>
 
-  <Import Project="$(EgonsoftHUAssemblyVersionTargetsFile)" Condition="Exists('$(EgonsoftHUAssemblyVersionTargetsFile)')" />
-  <Import Project="$(EgonsoftHUNuspecPropertiesTargetsFile)" Condition="Exists('$(EgonsoftHUNuspecPropertiesTargetsFile)')" />
-  <Import Project="$(EgonsoftHULangVersion90TargetsFile)" Condition="Exists('$(EgonsoftHULangVersion90TargetsFile)')" />
-
-  <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
-    <LangVersion Condition=" $([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0')) ">10.0</LangVersion>
-    <LangVersion Condition=" $([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0')) ">11.0</LangVersion>
-    <LangVersion Condition=" $([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0')) ">12.0</LangVersion>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>disable</ImplicitUsings>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="IsExternalInit" Version="1.0.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Nullable" Version="1.3.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+  <Import Project="$(EgonsoftHUCommonTargetsFile)" Condition="Exists('$(EgonsoftHUCommonTargetsFile)')" />
 
 </Project>

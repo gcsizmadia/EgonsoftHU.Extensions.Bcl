@@ -4,11 +4,6 @@ This code is licensed under MIT license (see LICENSE for details)
 -->
 <Project>
 
-  <!-- Support for dotnet CLI commands -->
-  <PropertyGroup>
-    <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
-  </PropertyGroup>
-
   <PropertyGroup>
     <RootNamespace>EgonsoftHU.Extensions.Bcl</RootNamespace>
   </PropertyGroup>
@@ -22,5 +17,11 @@ This code is licensed under MIT license (see LICENSE for details)
   </PropertyGroup>
 
   <Import Project="$(EgonsoftHUCommonPropsFile)" Condition="Exists('$(EgonsoftHUCommonPropsFile)')" />
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>EgonsoftHU.Extensions.Bcl.UnitTests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
 
 </Project>
