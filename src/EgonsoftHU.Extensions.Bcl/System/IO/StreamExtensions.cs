@@ -8,6 +8,8 @@ using System.Threading;
 #endif
 using System.Threading.Tasks;
 
+using EgonsoftHU.Extensions.Bcl.Exceptions;
+
 namespace EgonsoftHU.Extensions.Bcl
 {
     /// <summary>
@@ -33,7 +35,7 @@ namespace EgonsoftHU.Extensions.Bcl
 
             if (!stream.TryResetStreamPosition())
             {
-                throw new NotSupportedException("The specified stream does not support seeking.");
+                throw NotSupportedExceptions.SeekNotSupported(stream.GetType());
             }
 
             using var resultStream = new MemoryStream();
@@ -74,7 +76,7 @@ namespace EgonsoftHU.Extensions.Bcl
 
             if (!stream.TryResetStreamPosition())
             {
-                throw new NotSupportedException("The specified stream does not support seeking.");
+                throw NotSupportedExceptions.SeekNotSupported(stream.GetType());
             }
 
             using (memoryStream = new MemoryStream())

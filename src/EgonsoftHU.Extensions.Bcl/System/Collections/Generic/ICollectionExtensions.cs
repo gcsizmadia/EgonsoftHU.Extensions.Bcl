@@ -4,6 +4,8 @@
 using System;
 using System.Collections.Generic;
 
+using EgonsoftHU.Extensions.Bcl.Exceptions;
+
 namespace EgonsoftHU.Extensions.Bcl
 {
     /// <summary>
@@ -30,7 +32,7 @@ namespace EgonsoftHU.Extensions.Bcl
 
             if (collection.IsReadOnly)
             {
-                throw new ArgumentException("The collection is read-only.", nameof(collection));
+                throw ArgumentExceptions.CollectionIsReadOnly(nameof(collection));
             }
 
             if (collection is List<T> list)

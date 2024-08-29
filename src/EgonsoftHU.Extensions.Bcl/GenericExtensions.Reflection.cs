@@ -4,6 +4,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System;
+using EgonsoftHU.Extensions.Bcl.Exceptions;
 
 namespace EgonsoftHU.Extensions.Bcl
 {
@@ -124,13 +125,7 @@ namespace EgonsoftHU.Extensions.Bcl
 
             if (!propertyFound)
             {
-                string typeName = sourceType.FullName ?? sourceType.Name;
-
-                var ex = new ArgumentException($"[{propertyName}] property is not declared in [{typeName}] type.", nameof(propertyName));
-                ex.Data["TypeName"] = typeName;
-                ex.Data["PropertyName"] = propertyName;
-
-                throw ex;
+                throw ArgumentExceptions.PropertyNotFound(sourceType, propertyName);
             }
         }
     }
