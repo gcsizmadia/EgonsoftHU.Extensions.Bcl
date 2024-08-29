@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using EgonsoftHU.Extensions.Bcl.Collections.Generic;
+
 namespace EgonsoftHU.Extensions.Bcl
 {
     public partial class GenericExtensions
