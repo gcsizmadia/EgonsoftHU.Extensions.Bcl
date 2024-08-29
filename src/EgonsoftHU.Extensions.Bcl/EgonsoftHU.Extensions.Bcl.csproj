@@ -3,17 +3,22 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net462;netcoreapp3.1;net6.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup>
+    <IsPackable>true</IsPackable>
     <PackageId>EgonsoftHU.Extensions.Bcl</PackageId>
     <VersionPrefix>2.1.0</VersionPrefix>
     <VersionSuffix></VersionSuffix>
-    <Authors>Gabor Csizmadia</Authors>
-    <Owners>Egonsoft.HU</Owners>
+    <!--
+    <Authors></Authors>
+    <Owners></Owners>
+    -->
     <Title>Egonsoft.HU BCL Extensions</Title>
     <Description>C# extension methods for BCL types (String, Type, etc.)</Description>
     <Summary>C# extension methods for BCL types</Summary>
-    <Copyright>Copyright © 2022-2023 Gabor Csizmadia</Copyright>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <!--
+    <Copyright></Copyright>
+    <PackageRequireLicenseAcceptance></PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    -->
     <PackageProjectUrl>https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl</PackageProjectUrl>
     <!--
     <PackageIcon></PackageIcon>
@@ -23,14 +28,14 @@
     <PackageTags>$(PackageTags) extensions extension bcl object datetimeoffset string type assembly memberinfo parameterinfo stream numeric ienumerable icollection idictionary</PackageTags>
     <PackageReleaseNotes>Please visit https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl/releases to view the release notes.</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
     <!--
+    <RepositoryType></RepositoryType>
     <RepositoryBranch></RepositoryBranch>
     <RepositoryCommit></RepositoryCommit>
+    <PackageType></PackageType>
+    <DevelopmentDependency></DevelopmentDependency>
+    <MinClientVersion></MinClientVersion>
     -->
-    <PackageType>Dependency</PackageType>
-    <DevelopmentDependency>false</DevelopmentDependency>
-    <MinClientVersion>4.1.0</MinClientVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(SolutionDir)PACKAGE_README.md" Pack="True" PackagePath="\" />
