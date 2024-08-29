@@ -49,8 +49,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="stringComparison">The string comparison mode for <paramref name="memberName"/> parameter.</param>
         /// <returns><see langword="true"/> if member type and name meet the expectations; otherwise, <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Either <paramref name="member"/> is <see langword="null"/>
-        /// or <paramref name="memberName"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// Either <paramref name="member"/> or <paramref name="memberName"/> is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="memberName"/> is <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
         public static bool Is<TMemberType>(this MemberInfo member, string memberName, StringComparison stringComparison = StringComparison.Ordinal)
         {
@@ -66,8 +68,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="stringComparison">The string comparison mode for <paramref name="memberName"/> parameter.</param>
         /// <returns><see langword="true"/> if member type and name meet the expectations; otherwise, <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Either <paramref name="member"/> or <paramref name="memberType"/> is <see langword="null"/>
-        /// or <paramref name="memberName"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// Either <paramref name="member"/> or <paramref name="memberName"/> is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="memberName"/> is <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
         public static bool Is(this MemberInfo member, Type memberType, string memberName, StringComparison stringComparison = StringComparison.Ordinal)
         {

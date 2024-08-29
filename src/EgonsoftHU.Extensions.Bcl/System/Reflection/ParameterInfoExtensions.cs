@@ -49,8 +49,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="stringComparison">The string comparison mode for <paramref name="parameterName"/> parameter.</param>
         /// <returns><see langword="true"/> if parameter type meets the expectation; otherwise, <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Either <paramref name="parameter"/> is <see langword="null"/>
-        /// or <paramref name="parameterName"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// Either <paramref name="parameter"/> or <paramref name="parameterName"/> is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="parameterName"/> is <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
         public static bool Is<TParameterType>(this ParameterInfo parameter, string parameterName, StringComparison stringComparison = StringComparison.Ordinal)
         {
@@ -66,8 +68,10 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="stringComparison">The string comparison mode for <paramref name="parameterName"/> parameter.</param>
         /// <returns><see langword="true"/> if parameter type meets the expectation; otherwise, <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException">
-        /// Either <paramref name="parameter"/> or <paramref name="parameterType"/> is <see langword="null"/>
-        /// or <paramref name="parameterName"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters.
+        /// Either <paramref name="parameter"/> or <paramref name="parameterName"/> is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="parameterName"/> is <see cref="String.Empty"/> or consists only of white-space characters.
         /// </exception>
         public static bool Is(this ParameterInfo parameter, Type parameterType, string parameterName, StringComparison stringComparison = StringComparison.Ordinal)
         {
