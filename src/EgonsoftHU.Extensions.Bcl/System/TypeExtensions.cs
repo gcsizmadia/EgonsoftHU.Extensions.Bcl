@@ -65,9 +65,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns>The full name of the <see cref="Type"/>, if available; otherwise, the name of the <see cref="Type"/>.</returns>
         public static string GetName(this Type type)
         {
-            type.ThrowIfNull();
-
-            return type.FullName ?? type.Name;
+            return TypeHelper.GetTypeName(type);
         }
 
         private static Type CreateNullableType(Type type)
