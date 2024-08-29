@@ -2,7 +2,10 @@
 // This code is licensed under MIT license (see LICENSE for details)
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+
+using EgonsoftHU.Extensions.Bcl.Enumerations;
 
 namespace EgonsoftHU.Extensions.Bcl
 {
@@ -776,6 +779,250 @@ namespace EgonsoftHU.Extensions.Bcl
             return value.IsZero() || value.IsPositive();
         }
 
+        #endregion
+
+        #region IsInRange
+        /// <summary>
+        /// Indicates whether the specified <see cref="SByte"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this sbyte value,
+            sbyte lowerBound,
+            sbyte upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+        /// <summary>
+        /// Indicates whether the specified <see cref="Int16"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this short value,
+            short lowerBound,
+            short upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+        /// <summary>
+        /// Indicates whether the specified <see cref="Int32"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this int value,
+            int lowerBound,
+            int upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+        /// <summary>
+        /// Indicates whether the specified <see cref="Int64"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this long value,
+            long lowerBound,
+            long upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+        /// <summary>
+        /// Indicates whether the specified <see cref="Byte"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this byte value,
+            byte lowerBound,
+            byte upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+        /// <summary>
+        /// Indicates whether the specified <see cref="UInt16"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this ushort value,
+            ushort lowerBound,
+            ushort upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+        /// <summary>
+        /// Indicates whether the specified <see cref="UInt32"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this uint value,
+            uint lowerBound,
+            uint upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+        /// <summary>
+        /// Indicates whether the specified <see cref="UInt64"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this ulong value,
+            ulong lowerBound,
+            ulong upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+#if NET5_0_OR_GREATER
+        /// <summary>
+        /// Indicates whether the specified <see cref="Half"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this Half value,
+            Half lowerBound,
+            Half upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+#endif
+
+        /// <summary>
+        /// Indicates whether the specified <see cref="Single"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this float value,
+            float lowerBound,
+            float upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+        /// <summary>
+        /// Indicates whether the specified <see cref="Double"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this double value,
+            double lowerBound,
+            double upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+        /// <summary>
+        /// Indicates whether the specified <see cref="Decimal"/> value is in the specified interval.
+        /// </summary>
+        /// <param name="value">The value to compare against the lower bound and the upper bound.</param>
+        /// <param name="lowerBound">The beginning of the interval.</param>
+        /// <param name="upperBound">The end of the interval.</param>
+        /// <param name="options">Specifies whether to treat the lower and upper bounds as inclusive or exclusive. By default, both are treated as inclusive.</param>
+        /// <returns><see langword="true"/>, if <paramref name="value"/> is in the specified interval; otherwise, <see langword="false"/>.</returns>
+        public static bool IsInRange(
+            this decimal value,
+            decimal lowerBound,
+            decimal upperBound,
+            IntervalBoundsOptions options = default
+        )
+        {
+            return value.IsInRangeCore(lowerBound, upperBound, options);
+        }
+
+        private static bool IsInRangeCore<T>(
+            this T value,
+            T lowerBound,
+            T upperBound,
+            IntervalBoundsOptions options = default
+        )
+            where T : struct, IComparable<T>
+        {
+            Comparer<T> comparer = Comparer<T>.Default;
+
+            return
+                (
+                    options.HasFlag(IntervalBoundsOptions.LeftOpen)
+                        ? comparer.Compare(value, lowerBound) > 0
+                        : comparer.Compare(value, lowerBound) >= 0
+                )
+                &&
+                (
+                    options.HasFlag(IntervalBoundsOptions.RightOpen)
+                        ? comparer.Compare(value, lowerBound) < 0
+                        : comparer.Compare(value, lowerBound) <= 0
+                );
+        }
         #endregion
     }
 }
