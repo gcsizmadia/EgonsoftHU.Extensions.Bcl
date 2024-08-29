@@ -17,7 +17,19 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <returns>The full name of the <see cref="Type"/>, if available; otherwise, the name of the <see cref="Type"/>.</returns>
         public static string GetTypeName<T>()
         {
-            return typeof(T).GetName();
+            return GetTypeName(typeof(T));
+        }
+
+        /// <summary>
+        /// Gets the full name of the <see cref="Type"/>, if available; otherwise, the name of the <see cref="Type"/>.
+        /// </summary>
+        /// <param name="type">The <see cref="Type"/> the name of which to get.</param>
+        /// <returns>The full name of the <see cref="Type"/>, if available; otherwise, the name of the <see cref="Type"/>.</returns>
+        public static string GetTypeName(Type type)
+        {
+            type.ThrowIfNull();
+
+            return type.FullName ?? type.Name;
         }
     }
 }
