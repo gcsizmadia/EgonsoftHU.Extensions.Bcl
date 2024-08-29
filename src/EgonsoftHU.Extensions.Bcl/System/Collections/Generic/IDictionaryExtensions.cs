@@ -3,7 +3,9 @@
 
 using System;
 using System.Collections.Generic;
+#if !NET7_0_OR_GREATER
 using System.Collections.ObjectModel;
+#endif
 
 using EgonsoftHU.Extensions.Bcl.Exceptions;
 
@@ -14,6 +16,9 @@ namespace EgonsoftHU.Extensions.Bcl
     /// </summary>
     public static class IDictionaryExtensions
     {
+#if NET7_0_OR_GREATER
+        // System.Collections.Generic.CollectionExtensions contains an extension method with the same signature.
+#else
         /// <summary>
         /// Returns a read-only <see cref="ReadOnlyDictionary{TKey, TValue}"/> wrapper for the current dictionary.
         /// </summary>
@@ -33,6 +38,7 @@ namespace EgonsoftHU.Extensions.Bcl
                 _ => new ReadOnlyDictionary<TKey, TValue>(dictionary)
             };
         }
+#endif
 
         /// <summary>
         /// Returns a collection of key/value pairs that are sorted on the key.
@@ -74,7 +80,7 @@ namespace EgonsoftHU.Extensions.Bcl
                 dictionary.TryGetValue(key, out TValue? value)
                     ? value
                     : throw KeyNotFoundExceptions.KeyNotFound(key);
-            }
+        }
 
         /// <summary>
         /// Gets the value associated with the specified key or a default value.
