@@ -115,12 +115,37 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             sut.Should().NotThrow<ArgumentNullException>();
         }
 
-        [Theory]
-        [InlineData(null)]
-        [InlineData("")]
-        public void ThrowIfNullOrEmpty_StringNullEmpty(string? value)
+        [Fact]
+        public void ThrowIfEmptyGuid_GuidEmpty()
         {
             // Arrange
+            Guid value = Guid.Empty;
+
+            // Act
+            Action sut = () => value.ThrowIfEmptyGuid();
+
+            // Assert
+            sut.Should().ThrowExactly<ArgumentException>().WithParameterName(nameof(value));
+        }
+
+        [Fact]
+        public void ThrowIfEmptyGuid_GuidNonEmpty()
+        {
+            // Arrange
+            var value = Guid.NewGuid();
+
+            // Act
+            Action sut = () => value.ThrowIfEmptyGuid();
+
+            // Assert
+            sut.Should().NotThrow<ArgumentException>();
+        }
+
+        [Fact]
+        public void ThrowIfNullOrEmpty_StringNull()
+        {
+            // Arrange
+            string? value = null;
 
             // Act
             Action sut = () => value.ThrowIfNullOrEmpty();
@@ -129,12 +154,37 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             sut.Should().ThrowExactly<ArgumentNullException>().WithParameterName(nameof(value));
         }
 
+        [Fact]
+        public void ThrowIfNullOrEmpty_StringEmpty()
+        {
+            // Arrange
+            string value = String.Empty;
+
+            // Act
+            Action sut = () => value.ThrowIfNullOrEmpty();
+
+            // Assert
+            sut.Should().ThrowExactly<ArgumentException>().WithParameterName(nameof(value));
+        }
+
+        [Fact]
+        public void ThrowIfNullOrWhiteSpace_StringNull()
+        {
+            // Arrange
+            string? value = null;
+
+            // Act
+            Action sut = () => value.ThrowIfNullOrWhiteSpace();
+
+            // Assert
+            sut.Should().ThrowExactly<ArgumentNullException>().WithParameterName(nameof(value));
+        }
+
         [Theory]
-        [InlineData(null)]
         [InlineData("")]
         [InlineData(" ")]
         [InlineData("\t")]
-        public void ThrowIfNullOrEmpty_StringNullEmptyWhiteSpace(string? value)
+        public void ThrowIfNullOrWhiteSpace_StringEmptyWhiteSpace(string? value)
         {
             // Arrange
 
@@ -142,7 +192,7 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             Action sut = () => value.ThrowIfNullOrWhiteSpace();
 
             // Assert
-            sut.Should().ThrowExactly<ArgumentNullException>().WithParameterName(nameof(value));
+            sut.Should().ThrowExactly<ArgumentException>().WithParameterName(nameof(value));
         }
 
         [Theory]
@@ -158,13 +208,13 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             Action sut = () => value.ThrowIfNullOrEmpty();
 
             // Assert
-            sut.Should().NotThrow<ArgumentNullException>();
+            sut.Should().NotThrow<ArgumentNullException>().And.NotThrow<ArgumentException>();
         }
 
         [Theory]
         [InlineData("A")]
         [InlineData("1")]
-        public void ThrowIfNullOrEmpty_StringNonNullNonEmptyNonWhiteSpace(string? value)
+        public void ThrowIfNullOrWhiteSpace_StringNonNullNonEmptyNonWhiteSpace(string? value)
         {
             // Arrange
 
@@ -172,7 +222,7 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             Action sut = () => value.ThrowIfNullOrWhiteSpace();
 
             // Assert
-            sut.Should().NotThrow<ArgumentNullException>();
+            sut.Should().NotThrow<ArgumentNullException>().And.NotThrow<ArgumentException>();
         }
 
         [Fact]
