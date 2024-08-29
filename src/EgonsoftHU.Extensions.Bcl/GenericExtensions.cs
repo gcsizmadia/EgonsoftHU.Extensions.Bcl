@@ -2,8 +2,8 @@
 // This code is licensed under MIT license (see LICENSE for details)
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 
 namespace EgonsoftHU.Extensions.Bcl
 {
@@ -22,19 +22,9 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <see langword="true"/> for reference types if <paramref name="value"/> is <see langword="null"/>;
         /// otherwise, <see langword="false"/>.
         /// </returns>
-        public static bool IsDefaultValue<T>([NotNullWhen(false)] this T? value)
+        public static bool IsDefaultValue<T>([NotNullWhen(false)] this T value)
         {
-            T? defaultValue = default;
-
-            return
-                IsValueType(ref defaultValue)
-                    ? defaultValue.Equals(value)
-                    : value is null;
-        }
-
-        private static bool IsValueType<T>([NotNullWhen(true)] ref T? _)
-        {
-            return typeof(T).GetTypeInfo().IsValueType;
+            return EqualityComparer<T?>.Default.Equals(default, value);
         }
 
         private static bool IsNotNull<T>([NotNullWhen(true)] this T? value)
