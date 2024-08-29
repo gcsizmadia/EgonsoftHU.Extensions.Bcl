@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
+using EgonsoftHU.Extensions.Bcl.Exceptions;
+
 namespace EgonsoftHU.Extensions.Bcl
 {
     /// <summary>
@@ -68,15 +70,31 @@ namespace EgonsoftHU.Extensions.Bcl
             dictionary.ThrowIfNull();
             key.ThrowIfNull();
 
-            if (dictionary.TryGetValue(key, out TValue? value))
-            {
-                return value;
+            return
+                dictionary.TryGetValue(key, out TValue? value)
+                    ? value
+                    : throw KeyNotFoundExceptions.KeyNotFound(key);
             }
 
-            var ex = new ArgumentException($"The given key '{key}' was not present in the dictionary.", nameof(key));
-            ex.Data["ParamValue"] = key;
+        /// <summary>
+        /// Gets the value associated with the specified key or a default value.
+        /// </summary>
+        /// <typeparam name="TKey">The type of keys in the dictionary.</typeparam>
+        /// <typeparam name="TValue">The type of values in the dictionary.</typeparam>
+        /// <param name="dictionary">The dictionary from which the value for the specified key is retrieved.</param>
+        /// <param name="key">The key whose value to get.</param>
+        /// <param name="defaultValue">The value to return if <paramref name="key"/> is not found.</param>
+        /// <returns>The value associated with the specified key, if the key is found; otherwise, <paramref name="defaultValue"/>.</returns>
+        public static TValue DefaultIfKeyNotFound<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
+            where TKey : notnull
+        {
+            dictionary.ThrowIfNull();
+            key.ThrowIfNull();
 
-            throw ex;
+            return
+                dictionary.TryGetValue(key, out TValue? value)
+                    ? value
+                    : defaultValue;
         }
     }
 }
