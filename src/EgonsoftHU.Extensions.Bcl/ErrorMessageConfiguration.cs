@@ -13,13 +13,33 @@ using EgonsoftHU.Extensions.Bcl.Constants;
 namespace EgonsoftHU.Extensions.Bcl
 {
     /// <summary>
-    /// Controls the error messages for extension methods in this assembly that throw <see cref="ArgumentOutOfRangeException"/>.
+    /// Controls the error messages for extension methods in this assembly that throw <see cref="ArgumentException"/> or <see cref="ArgumentOutOfRangeException"/>.
     /// </summary>
     public class ErrorMessageConfiguration
     {
         private static readonly Dictionary<string, ErrorMessageProviderAttribute> errorMessages =
             new()
             {
+                [ErrorMessageKey.Argument_EmptyEnumerable] =
+                    new()
+                    {
+                        ErrorMessage = "The value cannot be an empty sequence."
+                    },
+                [ErrorMessageKey.Argument_EmptyGuid] =
+                    new()
+                    {
+                        ErrorMessage = "The value cannot be an empty Guid."
+                    },
+                [ErrorMessageKey.Argument_EmptyString] =
+                    new()
+                    {
+                        ErrorMessage = "The value cannot be an empty string."
+                    },
+                [ErrorMessageKey.Argument_EmptyOrWhiteSpaceString] =
+                    new()
+                    {
+                        ErrorMessage = "The value cannot be an empty string or composed entirely of whitespace."
+                    },
                 [ErrorMessageKey.ArgumentOutOfRange_MustBeNonZero] =
                     new()
                     {
@@ -144,6 +164,26 @@ namespace EgonsoftHU.Extensions.Bcl
                     ErrorMessageResourceType = errorMessageResourceType,
                     ErrorMessageResourceName = errorMessageResourceName
                 };
+        }
+
+        internal static string Argument_EmptyEnumerable<T>(string? paramName, IEnumerable<T> value)
+        {
+            return FormatErrorMessage(paramName, value);
+        }
+
+        internal static string Argument_EmptyGuid(string? paramName, Guid value)
+        {
+            return FormatErrorMessage(paramName, value);
+        }
+
+        internal static string Argument_EmptyString(string? paramName, string value)
+        {
+            return FormatErrorMessage(paramName, value);
+        }
+
+        internal static string Argument_EmptyOrWhiteSpaceString<T>(string? paramName, T value)
+        {
+            return FormatErrorMessage(paramName, value);
         }
 
         internal static string ArgumentOutOfRange_MustBeNonZero<T>(string? paramName, T value)
