@@ -39,6 +39,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="value">The string to test.</param>
         /// <param name="defaultValue">The default value if <paramref name="value"/> is <see langword="null"/> or <see cref="String.Empty"/>.</param>
         /// <returns><paramref name="defaultValue"/> if <paramref name="value"/> is <see langword="null"/> or <see cref="String.Empty"/>; otherwise, <paramref name="value"/> itself.</returns>
+        [return: NotNullIfNotNull(nameof(defaultValue))]
         public static string? DefaultIfNullOrEmpty(this string? value, string? defaultValue = null)
         {
             return value.IsNullOrEmpty() ? defaultValue : value;
@@ -50,6 +51,7 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="value">The string to test.</param>
         /// <param name="defaultValue">The default value if <paramref name="value"/> is <see langword="null"/>, <see cref="String.Empty"/>, or consists only of white-space characters.</param>
         /// <returns><paramref name="defaultValue"/> if <paramref name="value"/> is <see langword="null"/>, <see cref="String.Empty"/>, or if <paramref name="value"/> consists exclusively of white-space characters; otherwise, <paramref name="value"/> itself.</returns>
+        [return: NotNullIfNotNull(nameof(defaultValue))]
         public static string? DefaultIfNullOrWhiteSpace(this string? value, string? defaultValue = null)
         {
             return value.IsNullOrWhiteSpace() ? defaultValue : value;
