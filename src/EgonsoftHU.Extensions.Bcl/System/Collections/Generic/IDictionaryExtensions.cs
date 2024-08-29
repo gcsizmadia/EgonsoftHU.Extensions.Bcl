@@ -15,21 +15,21 @@ namespace EgonsoftHU.Extensions.Bcl
     public static class IDictionaryExtensions
     {
         /// <summary>
-        /// Returns a read-only <see cref="IReadOnlyDictionary{TKey, TValue}"/> wrapper for the current dictionary.
+        /// Returns a read-only <see cref="ReadOnlyDictionary{TKey, TValue}"/> wrapper for the current dictionary.
         /// </summary>
         /// <typeparam name="TKey">The type of keys in the dictionary.</typeparam>
         /// <typeparam name="TValue">The type of values in the dictionary.</typeparam>
         /// <param name="dictionary">The dictionary to wrap into a read-only wrapper.</param>
         /// <returns>An object that acts as a read-only wrapper around the current <see cref="IDictionary{TKey, TValue}"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="dictionary"/> is <see langword="null"/>.</exception>
-        public static IReadOnlyDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
+        public static ReadOnlyDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
             where TKey : notnull
         {
             dictionary.ThrowIfNull();
 
             return dictionary switch
             {
-                IReadOnlyDictionary<TKey, TValue> readOnly => readOnly,
+                ReadOnlyDictionary<TKey, TValue> readOnly => readOnly,
                 _ => new ReadOnlyDictionary<TKey, TValue>(dictionary)
             };
         }
