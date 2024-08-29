@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 
 using EgonsoftHU.Extensions.Bcl.Constants;
+using EgonsoftHU.Extensions.Bcl.Exceptions;
 
 namespace EgonsoftHU.Extensions.Bcl
 {
@@ -123,7 +124,7 @@ namespace EgonsoftHU.Extensions.Bcl
             errorMessageKey.ThrowIfNullOrWhiteSpace();
             errorMessage.ThrowIfNullOrWhiteSpace();
 
-            ThrowIfKeyNotFound(errorMessageKey, errorMessages.ContainsKey(errorMessageKey));
+            ThrowIfKeyNotFound(errorMessageKey);
 
             errorMessages[errorMessageKey] = new() { ErrorMessage = errorMessage };
         }
@@ -156,7 +157,7 @@ namespace EgonsoftHU.Extensions.Bcl
                 errorMessageResourceName = errorMessageKey;
             }
 
-            ThrowIfKeyNotFound(errorMessageKey, errorMessages.ContainsKey(errorMessageKey));
+            ThrowIfKeyNotFound(errorMessageKey);
 
             errorMessages[errorMessageKey] =
                 new()
@@ -241,18 +242,10 @@ namespace EgonsoftHU.Extensions.Bcl
             return FormatErrorMessage(paramName, (object?)value ?? Strings.NullString, (object?)other ?? Strings.NullString);
         }
 
-        private static void ThrowIfKeyNotFound(string errorMessageKey, [DoesNotReturnIf(false)] bool containsKey)
-        {
-            if (!containsKey)
-            {
-                throw new ArgumentException($"The given key '{errorMessageKey}' was not present in the dictionary.", nameof(errorMessageKey));
-            }
-        }
-
         private static string FormatErrorMessage<T>(string? paramName, T value, [CallerMemberName] string? errorMessageKey = null)
         {
             errorMessageKey.ThrowIfNullOrWhiteSpace();
-            ThrowIfKeyNotFound(errorMessageKey, errorMessages.ContainsKey(errorMessageKey));
+            ThrowIfKeyNotFound(errorMessageKey);
 
             return errorMessages[errorMessageKey].FormatErrorMessage(paramName, value);
         }
@@ -260,9 +253,23 @@ namespace EgonsoftHU.Extensions.Bcl
         private static string FormatErrorMessage<T>(string? paramName, T value, T other, [CallerMemberName] string? errorMessageKey = null)
         {
             errorMessageKey.ThrowIfNullOrWhiteSpace();
-            ThrowIfKeyNotFound(errorMessageKey, errorMessages.ContainsKey(errorMessageKey));
+            ThrowIfKeyNotFound(errorMessageKey);
 
             return errorMessages[errorMessageKey].FormatErrorMessage(paramName, value, other);
+        }
+
+        private static void ThrowIfKeyNotFound(string errorMessageKey)
+        {
+            if (!errorMessages.ContainsKey(errorMessageKey))
+            {
+                ThrowKeyNotFoundException(errorMessageKey);
+            }
+        }
+
+        [DoesNotReturn]
+        private static void ThrowKeyNotFoundException(string errorMessageKey)
+        {
+            throw KeyNotFoundExceptions.KeyNotFound(errorMessageKey);
         }
 
         private sealed class ErrorMessageProviderAttribute : ValidationAttribute
