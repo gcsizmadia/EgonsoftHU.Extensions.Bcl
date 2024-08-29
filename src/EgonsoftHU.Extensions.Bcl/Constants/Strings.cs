@@ -1,12 +1,33 @@
 ﻿// Copyright © 2022-2024 Gabor Csizmadia
 // This code is licensed under MIT license (see LICENSE for details)
 
+using System;
+
 namespace EgonsoftHU.Extensions.Bcl.Constants
 {
-    internal static class Strings
+    /// <summary>
+    /// A collection of frequently used <see cref="String"/> constants.
+    /// </summary>
+    public static class Strings
     {
-        internal const string NullString = "(null)";
+        /// <summary>
+        /// A string representation of a <see langword="null"/> reference.
+        /// </summary>
+        public const string NullString = "(null)";
 
-        internal const string Slash = "/";
+        /// <summary>
+        /// A commonly used separator string for multiple values.
+        /// </summary>
+        public const string CommaSpaceSeparator = ", ";
+
+        /// <summary>
+        /// The double quotation mark (<c>"</c>) character as <see cref="String"/>.
+        /// </summary>
+        public const string DoubleQuotationMark = "\"";
+
+        /// <summary>
+        /// The slash (<c>/</c>) character as <see cref="String"/>.
+        /// </summary>
+        public const string Slash = "/";
     }
 }
