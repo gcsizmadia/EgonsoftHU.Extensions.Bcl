@@ -4,7 +4,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace EgonsoftHU.Extensions.Bcl
+namespace EgonsoftHU.Extensions.Bcl.Collections.Generic
 {
     internal struct SingleElementSequence<T> : IEnumerable<T>
     {
