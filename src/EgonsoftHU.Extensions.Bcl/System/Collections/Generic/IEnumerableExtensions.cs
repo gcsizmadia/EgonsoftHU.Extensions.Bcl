@@ -33,7 +33,9 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="existingItems">An <see cref="IEnumerable{TItem}"/> whose keys that are not also in <paramref name="incomingItems"/> will be returned as removed items.</param>
         /// <param name="incomingItems">An <see cref="IEnumerable{TItem}"/> the elements of which will be returned either as new or existing items.</param>
         /// <param name="keySelector">A function to extract the key for each element.</param>
-        /// <returns></returns>
+        /// <returns>
+        /// An instance of the <see cref="ItemsChangeResult{TItem}"/> type representing the detected changes as new, existing and removed items.
+        /// </returns>
         public static ItemsChangeResult<TItem> DetectChanges<TItem, TKey>(
             this IEnumerable<TItem>? existingItems,
             IEnumerable<TItem>? incomingItems,
@@ -80,7 +82,9 @@ namespace EgonsoftHU.Extensions.Bcl
         /// <param name="incomingItems">An <see cref="IEnumerable{TItem}"/> the elements of which will be returned either as new or existing items.</param>
         /// <param name="existingKeySelector">A function to extract the key for each existing element.</param>
         /// <param name="incomingKeySelector">A function to extract the key for each incoming element.</param>
-        /// <returns></returns>
+        /// <returns>
+        /// An instance of the <see cref="ItemsChangeResult{TIncoming, TExisting}"/> type representing the detected changes as new, existing and removed items.
+        /// </returns>
         public static ItemsChangeResult<TIncoming, TExisting> DetectChanges<TIncoming, TExisting, TKey>(
             this IEnumerable<TExisting>? existingItems,
             IEnumerable<TIncoming>? incomingItems,

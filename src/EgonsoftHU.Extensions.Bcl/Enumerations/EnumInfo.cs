@@ -15,6 +15,7 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// represents one or more constants in the <typeparamref name="TEnum"/> type
         /// the value of which equals to the specified <paramref name="value"/>.
         /// </summary>
+        /// <typeparam name="TEnum">The type of the enumeration.</typeparam>
         /// <param name="value">An enumeration value.</param>
         /// <returns>
         /// <list type="bullet">
