@@ -36,6 +36,15 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
             return !Equals(left, right);
         }
 
+        /// <summary>
+        /// Determines whether the specified <see cref="EnumInfo{TEnum}"/> instances are considered equal.
+        /// </summary>
+        /// <param name="left">The first object to compare.</param>
+        /// <param name="right">The second object to compare.</param>
+        /// <returns>
+        /// <see langword="true"/> if the objects are considered equal; otherwise, <see langword="false"/>.
+        /// If both <paramref name="left"/> and <paramref name="right"/> are <see langword="null"/>, the method returns <see langword="true"/>.
+        /// </returns>
         public static bool Equals(EnumInfo<TEnum>? left, EnumInfo<TEnum>? right)
         {
             return left is null ? right is null : ReferenceEquals(left, right) || left.Equals(right);
@@ -47,8 +56,10 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
             return Equals((object?)other);
         }
 
+        /// <inheritdoc/>
         public abstract override bool Equals([NotNullWhen(true)] object? obj);
 
+        /// <inheritdoc/>
         public abstract override int GetHashCode();
     }
 }

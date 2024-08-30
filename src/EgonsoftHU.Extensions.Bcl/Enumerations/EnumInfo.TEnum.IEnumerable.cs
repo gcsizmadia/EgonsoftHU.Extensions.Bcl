@@ -11,6 +11,7 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
 {
     public partial class EnumInfo<TEnum> : IEnumerable<EnumInfo<TEnum>>, IEnumerable
     {
+        /// <inheritdoc/>
         public IEnumerator<EnumInfo<TEnum>> GetEnumerator()
         {
             return EnumTypeCode switch
