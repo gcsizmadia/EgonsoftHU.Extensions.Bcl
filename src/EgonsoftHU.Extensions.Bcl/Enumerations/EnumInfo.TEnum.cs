@@ -438,8 +438,8 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
             Name = name;
             Value = value;
 
-            SerializedValue = name;
             Attributes = EnumerationAttributes.Empty;
+            SerializedValue = name;
         }
 
         /// <summary>

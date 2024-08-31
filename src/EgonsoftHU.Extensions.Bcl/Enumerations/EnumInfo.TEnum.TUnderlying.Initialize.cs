@@ -71,7 +71,7 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
             {
                 members.ForEach(member => member.IsDefaultValue = true);
 
-                return EnumInfo<TEnum, TUnderlying>.DeclaredMembers[0];
+                return DeclaredMembers[0];
             }
 
             if (Activator.CreateInstance(EnumInfoType, String.Empty, DefaultValue) is EnumInfo<TEnum, TUnderlying> enumeration)
