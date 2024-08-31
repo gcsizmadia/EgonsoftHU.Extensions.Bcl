@@ -8,6 +8,7 @@ using System.Linq;
 
 using EgonsoftHU.Extensions.Bcl.Constants;
 using EgonsoftHU.Extensions.Bcl.Enumerations.Internals;
+using EgonsoftHU.Extensions.Bcl.Enumerations.Serialization;
 using EgonsoftHU.Extensions.Bcl.Exceptions;
 
 namespace EgonsoftHU.Extensions.Bcl.Enumerations
@@ -207,6 +208,8 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
                     }
 
                     instance.flags = selectedMembers;
+
+                    instance.SerializedValue = EnumValueSerializer.Current.Serialize(instance);
 
                     return instance;
                 }
