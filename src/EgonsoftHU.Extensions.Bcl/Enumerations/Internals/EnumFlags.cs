@@ -42,6 +42,11 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Internals
 
         protected static IEnumerable<double> ResolveCore(double value)
         {
+            if (value <= 0)
+            {
+                return value.AsSingleElementSequence();
+            }
+
             double remainder = value;
             double maxPower = Math.Floor(Math.Log(value, PowerBase));
 
