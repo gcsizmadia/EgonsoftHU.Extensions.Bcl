@@ -2,6 +2,7 @@
 // This code is licensed under MIT license (see LICENSE for details)
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace EgonsoftHU.Extensions.Bcl.Exceptions
@@ -59,10 +60,10 @@ namespace EgonsoftHU.Extensions.Bcl.Exceptions
             return ex;
         }
 
-        internal static ArgumentException EnumMemberNotFound<TEnum>(
+        internal static ArgumentException EnumMemberNotFound<TEnum, TInvalid>(
             object? paramValue,
-            [CallerArgumentExpression(nameof(paramValue))] string? paramName = null,
-            params object[]? invalidValues
+            List<TInvalid>? invalidValues = null,
+            [CallerArgumentExpression(nameof(paramValue))] string? paramName = null
         )
             where TEnum : struct, Enum
         {
