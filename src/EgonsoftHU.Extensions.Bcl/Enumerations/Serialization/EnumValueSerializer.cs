@@ -37,6 +37,17 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Serialization
         /// <returns>A string representation of the enum member represented by the <paramref name="enumeration"/> parameter.</returns>
         public abstract string Serialize<TEnum>(EnumInfo<TEnum> enumeration) where TEnum : struct, Enum;
 
+        /// <summary>
+        /// Retrieves an <see cref="EnumInfo{TEnum}"/> instance by the specified <paramref name="serializedValue"/>.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enumeration.</typeparam>
+        /// <param name="serializedValue">The string representation of an enumeration value.</param>
+        /// <returns>
+        /// An <see cref="EnumInfo{TEnum}"/> instance if <paramref name="serializedValue"/> is recognized as a valid enumeration value;
+        /// otherwise, <see langword="null"/>.
+        /// </returns>
+        public abstract EnumInfo<TEnum>? Deserialize<TEnum>(string serializedValue) where TEnum : struct, Enum;
+
         private sealed class DefaultEnumValueSerializer : EnumValueSerializer
         {
             public override string Serialize<TEnum>(EnumInfo<TEnum> enumeration)
@@ -45,6 +56,19 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Serialization
                     enumeration.Attributes.EnumMember?.Value
                     ??
                     enumeration.Name;
+            }
+
+            public override EnumInfo<TEnum>? Deserialize<TEnum>(string serializedValue)
+            {
+                return
+                    EnumInfo<TEnum>
+                        .DeclaredMembers
+                        .SingleOrDefault(
+                            member =>
+                                String.Equals(serializedValue, member.Name, StringComparison.OrdinalIgnoreCase)
+                                ||
+                                String.Equals(serializedValue, member.Attributes.EnumMember?.Value, StringComparison.OrdinalIgnoreCase)
+                        );
             }
         }
     }
