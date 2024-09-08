@@ -2,6 +2,9 @@
 // This code is licensed under MIT license (see LICENSE for details)
 
 using System;
+using System.Linq;
+
+using EgonsoftHU.Extensions.Bcl.Constants;
 
 namespace EgonsoftHU.Extensions.Bcl.Enumerations.Serialization
 {
@@ -10,6 +13,10 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Serialization
     /// </summary>
     public abstract class EnumValueSerializer
     {
+#if NETFRAMEWORK || NETSTANDARD2_0
+        private static readonly char[] NameSeparators = new[] { Chars.Comma };
+#endif
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EnumValueSerializer"/> type.
         /// </summary>
@@ -47,6 +54,31 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Serialization
         /// otherwise, <see langword="null"/>.
         /// </returns>
         public abstract EnumInfo<TEnum>? Deserialize<TEnum>(string serializedValue) where TEnum : struct, Enum;
+
+        /// <summary>
+        /// Splits the value of the specified <paramref name="name"/> parameter by a comma.
+        /// </summary>
+        /// <param name="name">A string representation of an enumeration value.</param>
+        /// <returns>
+        /// The result of the string split operation.
+        /// </returns>
+        protected virtual string[] GetNames(string name)
+        {
+            return
+#if NET5_0_OR_GREATER
+                name.Split(Chars.Comma, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+#else
+#if NETFRAMEWORK || NETSTANDARD2_0
+                name.Split(NameSeparators, StringSplitOptions.RemoveEmptyEntries)
+#else
+                name.Split(Chars.Comma, StringSplitOptions.RemoveEmptyEntries)
+#endif
+                    .Select(value => value.Trim())
+                    .Where(value => String.Empty != value)
+#endif
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .ToArray();
+        }
 
         private sealed class DefaultEnumValueSerializer : EnumValueSerializer
         {
