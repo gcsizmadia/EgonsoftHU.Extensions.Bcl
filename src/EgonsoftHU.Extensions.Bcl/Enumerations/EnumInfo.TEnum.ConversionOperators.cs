@@ -10,9 +10,9 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="value">An enum value.</param>
         /// <returns>
-        /// The value returned by calling the <see cref="FromValue(TEnum?)"/> method with the <paramref name="value"/> parameter.
+        /// The value returned by calling the <see cref="FromValue(TEnum)"/> method with the <paramref name="value"/> parameter.
         /// </returns>
-        public static implicit operator EnumInfo<TEnum>?(TEnum value)
+        public static implicit operator EnumInfo<TEnum>(TEnum value)
         {
             return FromValue(value);
         }

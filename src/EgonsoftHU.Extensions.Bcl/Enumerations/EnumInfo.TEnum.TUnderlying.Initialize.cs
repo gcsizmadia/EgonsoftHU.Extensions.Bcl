@@ -65,13 +65,13 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
 
         private static EnumInfo<TEnum, TUnderlying> InitializeDefault()
         {
-            TUnderlying defaultUnderlyingValue = converter.ToUnderlyingType(default(TEnum));
+            TUnderlying defaultUnderlyingValue = converter.ToUnderlyingType(DefaultValue);
 
             if (membersByUnderlyingValue.TryGetValue(defaultUnderlyingValue, out List<EnumInfo<TEnum, TUnderlying>>? members))
             {
                 members.ForEach(member => member.IsDefaultValue = true);
 
-                return DeclaredMembers[0];
+                return members[0];
             }
 
             if (Activator.CreateInstance(EnumInfoType, String.Empty, DefaultValue) is EnumInfo<TEnum, TUnderlying> enumeration)
@@ -103,6 +103,11 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
                             .ToArray()
                     )
                     : memberByUnderlyingValue.Keys.Max();
+        }
+
+        private static TUnderlying InitializeMinValue()
+        {
+            return memberByUnderlyingValue.Keys.Min();
         }
     }
 }

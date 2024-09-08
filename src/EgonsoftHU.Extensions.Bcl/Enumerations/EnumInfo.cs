@@ -2,6 +2,7 @@
 // This code is licensed under MIT license (see LICENSE for details)
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EgonsoftHU.Extensions.Bcl.Enumerations
 {
@@ -19,7 +20,7 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// <param name="value">An enumeration value.</param>
         /// <returns>
         /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="value"/> is <see langword="null"/> or is greater than the greatest valid value;</item>
+        /// <item><see langword="null"/> if the <paramref name="value"/> is greater than the greatest valid value;</item>
         /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
         /// </list>
         /// </returns>
@@ -32,10 +33,29 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// If the <paramref name="value"/> represents more than one constants in the <typeparamref name="TEnum"/> and
         /// a <see cref="FlagsAttribute"/> is not applied to that type
         /// </exception>
-        public static EnumInfo<TEnum>? FromValue<TEnum>(TEnum? value)
+        public static EnumInfo<TEnum> FromValue<TEnum>(TEnum value)
             where TEnum : struct, Enum
         {
             return EnumInfo<TEnum>.FromValue(value);
+        }
+
+        /// <summary>
+        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
+        /// represents one or more constants in the <typeparamref name="TEnum"/> type
+        /// the value of which equals to the specified <paramref name="value"/>.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enumeration.</typeparam>
+        /// <param name="value">An enumeration value.</param>
+        /// <param name="result">
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="value"/> was valid; otherwise, <see langword="false"/>.
+        /// </returns>
+        public static bool TryFromValue<TEnum>(TEnum value, [NotNullWhen(true)] out EnumInfo<TEnum>? result)
+            where TEnum : struct, Enum
+        {
+            return EnumInfo<TEnum>.TryFromValue(value, out result);
         }
     }
 }

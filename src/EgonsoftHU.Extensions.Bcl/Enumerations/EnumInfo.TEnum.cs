@@ -21,404 +21,47 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
     public abstract partial class EnumInfo<TEnum> : EnumInfo
         where TEnum : struct, Enum
     {
-        private protected static readonly Type EnumType;
+        /// <summary>
+        /// The type of the enumeration specified by the <typeparamref name="TEnum"/> type parameter.
+        /// </summary>
+        public static readonly Type EnumType;
 
-        private protected static readonly TypeInfo EnumTypeInfo;
+        /// <summary>
+        /// The <see cref="TypeInfo"/> representation of the type stored in the <see cref="EnumType"/> field.
+        /// </summary>
+        public static readonly TypeInfo EnumTypeInfo;
 
-        private protected static readonly TypeCode EnumTypeCode;
+        /// <summary>
+        /// The underlying type code of the enumeration specified by the <typeparamref name="TEnum"/> type parameter.
+        /// </summary>
+        public static readonly TypeCode EnumTypeCode;
 
-        private protected static readonly Type EnumUnderlyingType;
+        /// <summary>
+        /// The underlying type of the enumeration specified by the <typeparamref name="TEnum"/> type parameter.
+        /// </summary>
+        public static readonly Type EnumUnderlyingType;
+
+        /// <summary>
+        /// Indicates whether the <see cref="FlagsAttribute"/> is applied to the enumeration type specified by the <typeparamref name="TEnum"/> type parameter.
+        /// </summary>
+        public static readonly bool HasFlagsAttribute;
+
+        /// <summary>
+        /// Indicates whether the underlying type is a signed integral numeric type.
+        /// </summary>
+        public static readonly bool IsSigned;
 
         private protected static readonly Type EnumInfoType;
-
-        private protected static readonly bool HasFlagsAttribute;
 
         private protected static readonly ReadOnlyDictionary<Type, Func<Type, Type>> ConcreteTypeFactoryByUnderlyingType;
 
         private protected static readonly ReadOnlyDictionary<string, FieldInfo> FieldsByEnumMemberName;
 
-        /// <summary>
-        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
-        /// represents one or more constants in the <typeparamref name="TEnum"/> type
-        /// that have the specified <paramref name="name"/>.
-        /// </summary>
-        /// <param name="name">The name of one or more constants in the <typeparamref name="TEnum"/> type.</param>
-        /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="name"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
-        /// </returns>
-        /// <exception cref="NotSupportedException">
-        /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
-        /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
-        /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        /// If no constant found in the <typeparamref name="TEnum"/> type that has a name specified by the <paramref name="name"/> parameter.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// If the <paramref name="name"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
-        /// </exception>
-        public static EnumInfo<TEnum>? FromName(string? name)
-        {
-            return
-                name.IsNullOrWhiteSpace()
-                    ? null
-                    : EnumTypeCode switch
-                    {
-                        TypeCode.SByte => EnumInfo<TEnum, sbyte>.FromName(name),
-                        TypeCode.Int16 => EnumInfo<TEnum, short>.FromName(name),
-                        TypeCode.Int32 => EnumInfo<TEnum, int>.FromName(name),
-                        TypeCode.Int64 => EnumInfo<TEnum, long>.FromName(name),
-                        TypeCode.Byte => EnumInfo<TEnum, byte>.FromName(name),
-                        TypeCode.UInt16 => EnumInfo<TEnum, ushort>.FromName(name),
-                        TypeCode.UInt32 => EnumInfo<TEnum, uint>.FromName(name),
-                        TypeCode.UInt64 => EnumInfo<TEnum, ulong>.FromName(name),
-                        _ => throw NotSupportedExceptions.NotSupportedEnumTypeCode<TEnum>(EnumTypeCode)
-                    };
-        }
-
-        /// <summary>
-        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
-        /// represents one or more constants in the <typeparamref name="TEnum"/> type
-        /// the value of which equals to the specified <paramref name="value"/>.
-        /// </summary>
-        /// <param name="value">An enumeration value.</param>
-        /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="value"/> is <see langword="null"/> or is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
-        /// </returns>
-        /// <exception cref="NotSupportedException">
-        /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
-        /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
-        /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// If the <paramref name="value"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
-        /// </exception>
-        public static EnumInfo<TEnum>? FromValue(TEnum? value)
-        {
-            return
-                value.HasValue
-                    ? EnumTypeCode switch
-                    {
-                        TypeCode.SByte => EnumInfo<TEnum, sbyte>.FromValue(value.Value),
-                        TypeCode.Int16 => EnumInfo<TEnum, short>.FromValue(value.Value),
-                        TypeCode.Int32 => EnumInfo<TEnum, int>.FromValue(value.Value),
-                        TypeCode.Int64 => EnumInfo<TEnum, long>.FromValue(value.Value),
-                        TypeCode.Byte => EnumInfo<TEnum, byte>.FromValue(value.Value),
-                        TypeCode.UInt16 => EnumInfo<TEnum, ushort>.FromValue(value.Value),
-                        TypeCode.UInt32 => EnumInfo<TEnum, uint>.FromValue(value.Value),
-                        TypeCode.UInt64 => EnumInfo<TEnum, ulong>.FromValue(value.Value),
-                        _ => throw NotSupportedExceptions.NotSupportedEnumTypeCode<TEnum>(EnumTypeCode)
-                    }
-                    : null;
-        }
-
-        /// <summary>
-        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
-        /// represents one or more constants in the <typeparamref name="TEnum"/> type
-        /// the underlying value of which equals to the specified <paramref name="underlyingValue"/>.
-        /// </summary>
-        /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
-        /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
-        /// </returns>
-        /// <exception cref="NotSupportedException">
-        /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
-        /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
-        /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
-        /// </exception>
-        public static EnumInfo<TEnum>? FromUnderlyingValue(sbyte underlyingValue)
-        {
-            return EnumTypeCode switch
-            {
-                TypeCode.SByte => EnumInfo<TEnum, sbyte>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Int16 => EnumInfo<TEnum, short>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Int32 => EnumInfo<TEnum, int>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Int64 => EnumInfo<TEnum, long>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Byte => throw ArgumentExceptions.ArgumentMustBeOfType<byte>(underlyingValue),
-                TypeCode.UInt16 => throw ArgumentExceptions.ArgumentMustBeOfType<ushort>(underlyingValue),
-                TypeCode.UInt32 => throw ArgumentExceptions.ArgumentMustBeOfType<uint>(underlyingValue),
-                TypeCode.UInt64 => throw ArgumentExceptions.ArgumentMustBeOfType<ulong>(underlyingValue),
-                _ => throw NotSupportedExceptions.NotSupportedEnumTypeCode<TEnum>(EnumTypeCode)
-            };
-        }
-
-        /// <summary>
-        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
-        /// represents one or more constants in the <typeparamref name="TEnum"/> type
-        /// the underlying value of which equals to the specified <paramref name="underlyingValue"/>.
-        /// </summary>
-        /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
-        /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
-        /// </returns>
-        /// <exception cref="NotSupportedException">
-        /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
-        /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
-        /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
-        /// </exception>
-        public static EnumInfo<TEnum>? FromUnderlyingValue(short underlyingValue)
-        {
-            return EnumTypeCode switch
-            {
-                TypeCode.SByte => throw ArgumentExceptions.ArgumentMustBeOfType<sbyte>(underlyingValue),
-                TypeCode.Int16 => EnumInfo<TEnum, short>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Int32 => EnumInfo<TEnum, int>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Int64 => EnumInfo<TEnum, long>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Byte => throw ArgumentExceptions.ArgumentMustBeOfType<byte>(underlyingValue),
-                TypeCode.UInt16 => throw ArgumentExceptions.ArgumentMustBeOfType<ushort>(underlyingValue),
-                TypeCode.UInt32 => throw ArgumentExceptions.ArgumentMustBeOfType<uint>(underlyingValue),
-                TypeCode.UInt64 => throw ArgumentExceptions.ArgumentMustBeOfType<ulong>(underlyingValue),
-                _ => throw NotSupportedExceptions.NotSupportedEnumTypeCode<TEnum>(EnumTypeCode)
-            };
-        }
-
-        /// <summary>
-        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
-        /// represents one or more constants in the <typeparamref name="TEnum"/> type
-        /// the underlying value of which equals to the specified <paramref name="underlyingValue"/>.
-        /// </summary>
-        /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
-        /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
-        /// </returns>
-        /// <exception cref="NotSupportedException">
-        /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
-        /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
-        /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
-        /// </exception>
-        public static EnumInfo<TEnum>? FromUnderlyingValue(int underlyingValue)
-        {
-            return EnumTypeCode switch
-            {
-                TypeCode.SByte => throw ArgumentExceptions.ArgumentMustBeOfType<sbyte>(underlyingValue),
-                TypeCode.Int16 => throw ArgumentExceptions.ArgumentMustBeOfType<short>(underlyingValue),
-                TypeCode.Int32 => EnumInfo<TEnum, int>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Int64 => EnumInfo<TEnum, long>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Byte => throw ArgumentExceptions.ArgumentMustBeOfType<byte>(underlyingValue),
-                TypeCode.UInt16 => throw ArgumentExceptions.ArgumentMustBeOfType<ushort>(underlyingValue),
-                TypeCode.UInt32 => throw ArgumentExceptions.ArgumentMustBeOfType<uint>(underlyingValue),
-                TypeCode.UInt64 => throw ArgumentExceptions.ArgumentMustBeOfType<ulong>(underlyingValue),
-                _ => throw NotSupportedExceptions.NotSupportedEnumTypeCode<TEnum>(EnumTypeCode)
-            };
-        }
-
-        /// <summary>
-        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
-        /// represents one or more constants in the <typeparamref name="TEnum"/> type
-        /// the underlying value of which equals to the specified <paramref name="underlyingValue"/>.
-        /// </summary>
-        /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
-        /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
-        /// </returns>
-        /// <exception cref="NotSupportedException">
-        /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
-        /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
-        /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
-        /// </exception>
-        public static EnumInfo<TEnum>? FromUnderlyingValue(long underlyingValue)
-        {
-            return EnumTypeCode switch
-            {
-                TypeCode.SByte => throw ArgumentExceptions.ArgumentMustBeOfType<sbyte>(underlyingValue),
-                TypeCode.Int16 => throw ArgumentExceptions.ArgumentMustBeOfType<short>(underlyingValue),
-                TypeCode.Int32 => throw ArgumentExceptions.ArgumentMustBeOfType<int>(underlyingValue),
-                TypeCode.Int64 => EnumInfo<TEnum, long>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Byte => throw ArgumentExceptions.ArgumentMustBeOfType<byte>(underlyingValue),
-                TypeCode.UInt16 => throw ArgumentExceptions.ArgumentMustBeOfType<ushort>(underlyingValue),
-                TypeCode.UInt32 => throw ArgumentExceptions.ArgumentMustBeOfType<uint>(underlyingValue),
-                TypeCode.UInt64 => throw ArgumentExceptions.ArgumentMustBeOfType<ulong>(underlyingValue),
-                _ => throw NotSupportedExceptions.NotSupportedEnumTypeCode<TEnum>(EnumTypeCode)
-            };
-        }
-
-        /// <summary>
-        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
-        /// represents one or more constants in the <typeparamref name="TEnum"/> type
-        /// the underlying value of which equals to the specified <paramref name="underlyingValue"/>.
-        /// </summary>
-        /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
-        /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
-        /// </returns>
-        /// <exception cref="NotSupportedException">
-        /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
-        /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
-        /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
-        /// </exception>
-        public static EnumInfo<TEnum>? FromUnderlyingValue(byte underlyingValue)
-        {
-            return EnumTypeCode switch
-            {
-                TypeCode.SByte => throw ArgumentExceptions.ArgumentMustBeOfType<sbyte>(underlyingValue),
-                TypeCode.Int16 => EnumInfo<TEnum, short>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Int32 => EnumInfo<TEnum, int>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Int64 => EnumInfo<TEnum, long>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Byte => EnumInfo<TEnum, byte>.FromUnderlyingValue(underlyingValue),
-                TypeCode.UInt16 => EnumInfo<TEnum, ushort>.FromUnderlyingValue(underlyingValue),
-                TypeCode.UInt32 => EnumInfo<TEnum, uint>.FromUnderlyingValue(underlyingValue),
-                TypeCode.UInt64 => EnumInfo<TEnum, ulong>.FromUnderlyingValue(underlyingValue),
-                _ => throw NotSupportedExceptions.NotSupportedEnumTypeCode<TEnum>(EnumTypeCode)
-            };
-        }
-
-        /// <summary>
-        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
-        /// represents one or more constants in the <typeparamref name="TEnum"/> type
-        /// the underlying value of which equals to the specified <paramref name="underlyingValue"/>.
-        /// </summary>
-        /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
-        /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
-        /// </returns>
-        /// <exception cref="NotSupportedException">
-        /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
-        /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
-        /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
-        /// </exception>
-        public static EnumInfo<TEnum>? FromUnderlyingValue(ushort underlyingValue)
-        {
-            return EnumTypeCode switch
-            {
-                TypeCode.SByte => throw ArgumentExceptions.ArgumentMustBeOfType<sbyte>(underlyingValue),
-                TypeCode.Int16 => throw ArgumentExceptions.ArgumentMustBeOfType<short>(underlyingValue),
-                TypeCode.Int32 => EnumInfo<TEnum, int>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Int64 => EnumInfo<TEnum, long>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Byte => throw ArgumentExceptions.ArgumentMustBeOfType<byte>(underlyingValue),
-                TypeCode.UInt16 => EnumInfo<TEnum, ushort>.FromUnderlyingValue(underlyingValue),
-                TypeCode.UInt32 => EnumInfo<TEnum, uint>.FromUnderlyingValue(underlyingValue),
-                TypeCode.UInt64 => EnumInfo<TEnum, ulong>.FromUnderlyingValue(underlyingValue),
-                _ => throw NotSupportedExceptions.NotSupportedEnumTypeCode<TEnum>(EnumTypeCode)
-            };
-        }
-
-        /// <summary>
-        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
-        /// represents one or more constants in the <typeparamref name="TEnum"/> type
-        /// the underlying value of which equals to the specified <paramref name="underlyingValue"/>.
-        /// </summary>
-        /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
-        /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
-        /// </returns>
-        /// <exception cref="NotSupportedException">
-        /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
-        /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
-        /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
-        /// </exception>
-        public static EnumInfo<TEnum>? FromUnderlyingValue(uint underlyingValue)
-        {
-            return EnumTypeCode switch
-            {
-                TypeCode.SByte => throw ArgumentExceptions.ArgumentMustBeOfType<sbyte>(underlyingValue),
-                TypeCode.Int16 => throw ArgumentExceptions.ArgumentMustBeOfType<short>(underlyingValue),
-                TypeCode.Int32 => throw ArgumentExceptions.ArgumentMustBeOfType<int>(underlyingValue),
-                TypeCode.Int64 => EnumInfo<TEnum, long>.FromUnderlyingValue(underlyingValue),
-                TypeCode.Byte => throw ArgumentExceptions.ArgumentMustBeOfType<byte>(underlyingValue),
-                TypeCode.UInt16 => throw ArgumentExceptions.ArgumentMustBeOfType<ushort>(underlyingValue),
-                TypeCode.UInt32 => EnumInfo<TEnum, uint>.FromUnderlyingValue(underlyingValue),
-                TypeCode.UInt64 => EnumInfo<TEnum, ulong>.FromUnderlyingValue(underlyingValue),
-                _ => throw NotSupportedExceptions.NotSupportedEnumTypeCode<TEnum>(EnumTypeCode)
-            };
-        }
-
-        /// <summary>
-        /// Gets an instance of the <see cref="EnumInfo{TEnum}"/> type that
-        /// represents one or more constants in the <typeparamref name="TEnum"/> type
-        /// the underlying value of which equals to the specified <paramref name="underlyingValue"/>.
-        /// </summary>
-        /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
-        /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
-        /// </returns>
-        /// <exception cref="NotSupportedException">
-        /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
-        /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
-        /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
-        /// </exception>
-        public static EnumInfo<TEnum>? FromUnderlyingValue(ulong underlyingValue)
-        {
-            return EnumTypeCode switch
-            {
-                TypeCode.SByte => throw ArgumentExceptions.ArgumentMustBeOfType<sbyte>(underlyingValue),
-                TypeCode.Int16 => throw ArgumentExceptions.ArgumentMustBeOfType<short>(underlyingValue),
-                TypeCode.Int32 => throw ArgumentExceptions.ArgumentMustBeOfType<int>(underlyingValue),
-                TypeCode.Int64 => throw ArgumentExceptions.ArgumentMustBeOfType<long>(underlyingValue),
-                TypeCode.Byte => throw ArgumentExceptions.ArgumentMustBeOfType<byte>(underlyingValue),
-                TypeCode.UInt16 => throw ArgumentExceptions.ArgumentMustBeOfType<ushort>(underlyingValue),
-                TypeCode.UInt32 => throw ArgumentExceptions.ArgumentMustBeOfType<uint>(underlyingValue),
-                TypeCode.UInt64 => EnumInfo<TEnum, ulong>.FromUnderlyingValue(underlyingValue),
-                _ => throw NotSupportedExceptions.NotSupportedEnumTypeCode<TEnum>(EnumTypeCode)
-            };
-        }
-
         static EnumInfo()
         {
             ConcreteTypeFactoryByUnderlyingType = InitializeConcreteTypeFactoryByUnderlyingType();
+
+            DefaultValue = default;
 
             EnumType = typeof(TEnum);
             EnumTypeInfo = EnumType.GetTypeInfo();
@@ -426,11 +69,22 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
             EnumUnderlyingType = Enum.GetUnderlyingType(EnumType);
             EnumInfoType = ConcreteTypeFactoryByUnderlyingType[EnumUnderlyingType].Invoke(EnumType);
 
-            FieldsByEnumMemberName = InitializeFieldsByEnumMemberName();
-
             HasFlagsAttribute = EnumType.GetCustomAttribute<FlagsAttribute>() is not null;
 
-            DefaultValue = default;
+            switch (EnumTypeCode)
+            {
+                case TypeCode.SByte:
+                case TypeCode.Int16:
+                case TypeCode.Int32:
+                case TypeCode.Int64:
+                    IsSigned = true;
+                    break;
+
+                default:
+                    break;
+            }
+
+            FieldsByEnumMemberName = InitializeFieldsByEnumMemberName();
         }
 
         private protected EnumInfo(string name, TEnum value)
