@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 
 using EgonsoftHU.Extensions.Bcl.Enumerations.Internals.Converters;
 using EgonsoftHU.Extensions.Bcl.Exceptions;
@@ -39,7 +40,10 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Internals
 
         public abstract ulong ToUInt64(TUnderlying underlyingValue);
 
-        public abstract TEnum ToEnumType(TUnderlying underlyingValue);
+        public TEnum ToEnumType(ref TUnderlying underlyingValue)
+        {
+            return Unsafe.As<TUnderlying, TEnum>(ref underlyingValue);
+        }
 
         private static IEnumValueConverter<TEnum, TUnderlying> CreateInstance()
         {

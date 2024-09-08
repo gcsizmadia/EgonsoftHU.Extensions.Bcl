@@ -13,6 +13,6 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Internals
 
         ulong ToUInt64(TUnderlying underlyingValue);
 
-        TEnum ToEnumType(TUnderlying underlyingValue);
+        TEnum ToEnumType(ref TUnderlying underlyingValue);
     }
 }

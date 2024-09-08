@@ -17,10 +17,5 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Internals.Converters
         {
             return (ulong)underlyingValue;
         }
-
-        public override TEnum ToEnumType(int underlyingValue)
-        {
-            return (TEnum)Enum.ToObject(typeof(TEnum), underlyingValue);
-        }
     }
 }
