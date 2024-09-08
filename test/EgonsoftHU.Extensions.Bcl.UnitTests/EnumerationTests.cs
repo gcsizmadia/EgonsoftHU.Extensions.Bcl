@@ -12,7 +12,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 
 using EgonsoftHU.Extensions.Bcl.Enumerations;
-using EgonsoftHU.Extensions.Bcl.Exceptions;
 
 using FluentAssertions;
 
@@ -32,31 +31,6 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             : base(output, fixture)
         {
         }
-
-        /*
-         * - Enumeration<TEnum>.Default
-         * - Enumeration<TEnum>.DefaultValue
-         * - Enumeration<TEnum>.DefinedMembers
-         * - Enumeration<TEnum>.DefinedMembersExcludingSynonyms
-         * - Enumeration.FromValue<TEnum>(TEnum value)
-         *   - Name
-         *   - Value
-         *   - UInt64Value
-         *   - SerializedValue
-         *   - IsDefaultValue
-         *   - IsDefined
-         *   - Attributes
-         * - Enumeration<TEnum>.FromName(string? name)
-         * - Enumeration<TEnum>.FromValue(TEnum? value)
-         * - Enumeration<TEnum>.FromUnderlyingValue<TUnderlying>(TUnderlying? underlyingValue)
-         * - Bitwise operators
-         * - Comparison operators
-         * - Conversion operators
-         * - Equality operators
-         * - IEnumerable (single member or Flags)
-         * - Flags (defined member created from multiple members using logical AND/OR/XOR operations)
-         * 
-         */
 
         public class DefaultValueTests : UnitTest<DefaultValueTests>
         {
@@ -138,8 +112,7 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             {
                 return
                     values
-                        .Select(value => EnumInfo<WithSynonyms>.FromValue(value))
-                        .OfType<EnumInfo<WithSynonyms>>()
+                        .Select(EnumInfo<WithSynonyms>.FromValue)
                         .ToList();
             }
         }
@@ -158,10 +131,10 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 // Arrange
 
                 // Act
-                var info = EnumInfo<WithNoFlagsWithZero>.FromName(name);
+                Action sut = () => EnumInfo<WithNoFlagsWithZero>.FromName(name!);
 
                 // Assert
-                Assert.Null(info);
+                sut.Should().ThrowExactly<ArgumentException>();
             }
 
             [Theory]
@@ -220,15 +193,14 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 // Arrange
                 string specifiedName = "NotDefined";
                 string expectedParameterName = "name";
-                string expectedMessageWildcardPattern =
-                    $"{ArgumentExceptions.MessageTemplates.EnumMemberNotFound}*{expectedParameterName}*";
+                string expectedMessageWildcardPattern = $"Enum member not found.*{expectedParameterName}*";
 
                 var expectedData =
                     new ListDictionary()
                     {
-                        [DataKeys.Type] = TypeHelper.GetTypeName<WithNoFlagsWithZero>(),
-                        [DataKeys.OriginalValue] = specifiedName,
-                        [DataKeys.InvalidValues] = new[] { specifiedName }
+                        ["Type"] = TypeHelper.GetTypeName<WithNoFlagsWithZero>(),
+                        ["OriginalValue"] = specifiedName,
+                        ["InvalidValues"] = new[] { specifiedName }
                     };
 
                 // Act
@@ -308,15 +280,14 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 // Arrange
                 string specifiedNames = "Zero, One, Two, Five";
                 string expectedParameterName = "name";
-                string expectedMessageWildcardPattern =
-                    $"{ArgumentExceptions.MessageTemplates.EnumMemberNotFound}*{expectedParameterName}*";
+                string expectedMessageWildcardPattern = $"Enum member not found.*{expectedParameterName}*";
 
                 var expectedData =
                     new ListDictionary()
                     {
-                        [DataKeys.Type] = TypeHelper.GetTypeName<WithFlagsWithNoZero>(),
-                        [DataKeys.OriginalValue] = specifiedNames,
-                        [DataKeys.InvalidValues] = new[] { "Zero", "Five" }
+                        ["Type"] = TypeHelper.GetTypeName<WithFlagsWithNoZero>(),
+                        ["OriginalValue"] = specifiedNames,
+                        ["InvalidValues"] = new[] { "Zero", "Five" }
                     };
 
                 // Act
@@ -340,7 +311,7 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 // Arrange
 
                 // Act
-                var info = EnumInfo<WithNoFlagsWithZero>.FromValue(WithNoFlagsWithZero.Three);
+                var info = EnumInfo.FromValue(WithNoFlagsWithZero.Three);
 
                 // Assert
                 Assert.NotNull(info);
@@ -357,7 +328,7 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 // Arrange
 
                 // Act
-                var info = EnumInfo<WithNoFlagsWithZero>.FromValue(default(WithNoFlagsWithZero));
+                var info = EnumInfo<WithNoFlagsWithZero>.FromValue(default);
 
                 // Assert
                 Assert.NotNull(info);
@@ -375,7 +346,7 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 // Arrange
 
                 // Act
-                var info = EnumInfo<WithNoFlagsWithNoZero>.FromValue(default(WithNoFlagsWithNoZero));
+                var info = EnumInfo<WithNoFlagsWithNoZero>.FromValue(default);
 
                 // Assert
                 Assert.NotNull(info);
@@ -388,17 +359,17 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             }
 
             [Theory]
-            [InlineData(null)]
+            [InlineData((DayOfWeek)(-1))]
             [InlineData((DayOfWeek)7)]
-            public void NoFlagsNotDefinedValue(DayOfWeek? value)
+            public void NoFlagsNotDefinedValue(DayOfWeek value)
             {
                 // Arrange
 
                 // Act
-                var info = EnumInfo<DayOfWeek>.FromValue(value);
+                Action sut = () => EnumInfo.FromValue(value);
 
                 // Assert
-                Assert.Null(info);
+                sut.Should().ThrowExactly<ArgumentException>();
             }
 
             [Fact]
@@ -407,10 +378,10 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 // Arrange
 
                 // Act
-                var info = EnumInfo<WithFlagsWithZero>.FromValue((WithFlagsWithZero)16);
+                Action sut = () => EnumInfo.FromValue((WithFlagsWithZero)16);
 
                 // Assert
-                Assert.Null(info);
+                sut.Should().ThrowExactly<ArgumentException>();
             }
 
             [Fact]
@@ -422,7 +393,7 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 int expectedUnderlyingValue = 6;
 
                 // Act
-                var info = EnumInfo<WithFlagsWithZero>.FromValue((WithFlagsWithZero)6);
+                var info = EnumInfo.FromValue((WithFlagsWithZero)6);
 
                 // Assert
                 Assert.NotNull(info);
@@ -501,10 +472,10 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 int underlyingValue = 7;
 
                 // Act
-                var info = EnumInfo<DayOfWeek>.FromUnderlyingValue(underlyingValue);
+                Action sut = () => EnumInfo<DayOfWeek>.FromUnderlyingValue(underlyingValue);
 
                 // Assert
-                Assert.Null(info);
+                sut.Should().ThrowExactly<ArgumentException>();
             }
 
             [Fact]
@@ -514,10 +485,10 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 int underlyingValue = 16;
 
                 // Act
-                var info = EnumInfo<WithFlagsWithZero>.FromUnderlyingValue(underlyingValue);
+                Action sut = () => EnumInfo<WithFlagsWithZero>.FromUnderlyingValue(underlyingValue);
 
                 // Assert
-                Assert.Null(info);
+                sut.Should().ThrowExactly<ArgumentException>();
             }
 
             [Fact]
@@ -554,12 +525,10 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 int expectedValue = 1 | 2 | 8;
 
                 // Act
-                EnumInfo<WithFlagsWithZero> operand = EnumInfo<WithFlagsWithZero>.FromName("Three")!;
+                var operand = EnumInfo<WithFlagsWithZero>.FromName("Three");
                 EnumInfo<WithFlagsWithZero> result = ~operand;
 
                 // Assert
-                Assert.NotNull(result);
-
                 result.IsDefaultValue.Should().BeFalse();
                 result.IsDefined.Should().BeFalse();
                 result.Name.Should().Be(expectedName);
@@ -576,15 +545,13 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
 
                 // Act
                 EnumInfo<WithFlagsWithZero> result =
-                    EnumInfo<WithFlagsWithZero>.FromName("One")!
+                    EnumInfo<WithFlagsWithZero>.FromName("One")
                     |
-                    EnumInfo<WithFlagsWithZero>.FromName("Two")!
+                    EnumInfo<WithFlagsWithZero>.FromName("Two")
                     |
-                    EnumInfo<WithFlagsWithZero>.FromName("Three")!;
+                    EnumInfo<WithFlagsWithZero>.FromName("Three");
 
                 // Assert
-                Assert.NotNull(result);
-
                 result.IsDefaultValue.Should().BeFalse();
                 result.IsDefined.Should().BeFalse();
                 result.Name.Should().Be(expectedName);
@@ -601,22 +568,20 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
 
                 // Act
                 EnumInfo<WithFlagsWithZero> operand1 =
-                    EnumInfo<WithFlagsWithZero>.FromName("Two")!
+                    EnumInfo<WithFlagsWithZero>.FromName("Two")
                     |
-                    EnumInfo<WithFlagsWithZero>.FromName("Three")!
+                    EnumInfo<WithFlagsWithZero>.FromName("Three")
                     |
-                    EnumInfo<WithFlagsWithZero>.FromName("Four")!;
+                    EnumInfo<WithFlagsWithZero>.FromName("Four");
 
                 EnumInfo<WithFlagsWithZero> operand2 =
-                    EnumInfo<WithFlagsWithZero>.FromName("Two")!
+                    EnumInfo<WithFlagsWithZero>.FromName("Two")
                     |
-                    EnumInfo<WithFlagsWithZero>.FromName("Four")!;
+                    EnumInfo<WithFlagsWithZero>.FromName("Four");
 
                 EnumInfo<WithFlagsWithZero> result = operand1 & operand2;
 
                 // Assert
-                Assert.NotNull(result);
-
                 result.IsDefaultValue.Should().BeFalse();
                 result.IsDefined.Should().BeFalse();
                 result.Name.Should().Be(expectedName);
@@ -633,20 +598,18 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
 
                 // Act
                 EnumInfo<WithFlagsWithZero> operand1 =
-                    EnumInfo<WithFlagsWithZero>.FromName("One")!
+                    EnumInfo<WithFlagsWithZero>.FromName("One")
                     |
-                    EnumInfo<WithFlagsWithZero>.FromName("Two")!;
+                    EnumInfo<WithFlagsWithZero>.FromName("Two");
 
                 EnumInfo<WithFlagsWithZero> operand2 =
-                    EnumInfo<WithFlagsWithZero>.FromName("Two")!
+                    EnumInfo<WithFlagsWithZero>.FromName("Two")
                     |
-                    EnumInfo<WithFlagsWithZero>.FromName("Four")!;
+                    EnumInfo<WithFlagsWithZero>.FromName("Four");
 
                 EnumInfo<WithFlagsWithZero> result = operand1 ^ operand2;
 
                 // Assert
-                Assert.NotNull(result);
-
                 result.IsDefaultValue.Should().BeFalse();
                 result.IsDefined.Should().BeFalse();
                 result.Name.Should().Be(expectedName);
@@ -661,8 +624,8 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             public void EqualityOperator()
             {
                 // Arrange
-                EnumInfo<DayOfWeek>? left = DayOfWeek.Friday;
-                EnumInfo<DayOfWeek>? right = DayOfWeek.Friday;
+                EnumInfo<DayOfWeek> left = DayOfWeek.Friday;
+                EnumInfo<DayOfWeek> right = DayOfWeek.Friday;
 
                 // Act
                 bool result = left == right;
@@ -676,8 +639,8 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             public void InequalityOperator()
             {
                 // Arrange
-                EnumInfo<DayOfWeek>? left = DayOfWeek.Friday;
-                EnumInfo<DayOfWeek>? right = DayOfWeek.Saturday;
+                EnumInfo<DayOfWeek> left = DayOfWeek.Friday;
+                EnumInfo<DayOfWeek> right = DayOfWeek.Saturday;
 
                 // Act
                 bool result = left != right;
@@ -690,11 +653,11 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             public void EqualsMethod()
             {
                 // Arrange
-                EnumInfo<DayOfWeek>? left = DayOfWeek.Friday;
-                EnumInfo<DayOfWeek>? right = DayOfWeek.Friday;
+                EnumInfo<DayOfWeek> left = DayOfWeek.Friday;
+                EnumInfo<DayOfWeek> right = DayOfWeek.Friday;
 
                 // Act
-                bool result = left!.Equals(right);
+                bool result = left.Equals(right);
 
                 // Assert
                 result.Should().BeTrue();
@@ -705,8 +668,8 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             public void StaticEqualsMethod()
             {
                 // Arrange
-                EnumInfo<DayOfWeek>? left = DayOfWeek.Friday;
-                EnumInfo<DayOfWeek>? right = DayOfWeek.Friday;
+                EnumInfo<DayOfWeek> left = DayOfWeek.Friday;
+                EnumInfo<DayOfWeek> right = DayOfWeek.Friday;
 
                 // Act
                 bool result = EnumInfo<DayOfWeek>.Equals(left, right);
@@ -723,14 +686,12 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             public void NoFlagsSingleMember()
             {
                 // Arrange
-                EnumInfo<DayOfWeek>? item = DayOfWeek.Friday;
+                EnumInfo<DayOfWeek> item = DayOfWeek.Friday;
                 int expectedCount = 1;
 
                 // Act
 
                 // Assert
-                Assert.NotNull(item);
-
                 IEnumerable<EnumInfo<DayOfWeek>> enumerable = item.As<IEnumerable<EnumInfo<DayOfWeek>>>();
 
                 enumerable.Should().HaveCount(expectedCount);
@@ -742,14 +703,12 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             public void FlagsSingleMember()
             {
                 // Arrange
-                EnumInfo<WithFlagsWithZero>? item = WithFlagsWithZero.Three;
+                EnumInfo<WithFlagsWithZero> item = WithFlagsWithZero.Three;
                 int expectedCount = 1;
 
                 // Act
 
                 // Assert
-                Assert.NotNull(item);
-
                 IEnumerable<EnumInfo<WithFlagsWithZero>> enumerable = item.As<IEnumerable<EnumInfo<WithFlagsWithZero>>>();
 
                 enumerable.Should().HaveCount(expectedCount);
@@ -761,7 +720,7 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             public void FlagsMultipleMembersAsDefined()
             {
                 // Arrange
-                EnumInfo<WithFlagsWithZero>? item =
+                EnumInfo<WithFlagsWithZero> item =
                     WithFlagsWithZero.One
                     |
                     WithFlagsWithZero.Two
@@ -775,8 +734,6 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
                 // Act
 
                 // Assert
-                Assert.NotNull(item);
-
                 IEnumerable<EnumInfo<WithFlagsWithZero>> enumerable = item.As<IEnumerable<EnumInfo<WithFlagsWithZero>>>();
 
                 enumerable.Should().HaveCount(expectedCount);
@@ -788,7 +745,7 @@ namespace EgonsoftHU.Extensions.Bcl.UnitTests
             public void FlagsMultipleMembersAsNotDefined()
             {
                 // Arrange
-                EnumInfo<WithFlagsWithZero>? item =
+                EnumInfo<WithFlagsWithZero> item =
                     WithFlagsWithZero.One
                     |
                     WithFlagsWithZero.Two
