@@ -18,10 +18,4 @@ This code is licensed under MIT license (see LICENSE for details)
 
   <Import Project="$(EgonsoftHUCommonPropsFile)" Condition="Exists('$(EgonsoftHUCommonPropsFile)')" />
 
-  <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>EgonsoftHU.Extensions.Bcl.UnitTests</_Parameter1>
-    </AssemblyAttribute>
-  </ItemGroup>
-
 </Project>
