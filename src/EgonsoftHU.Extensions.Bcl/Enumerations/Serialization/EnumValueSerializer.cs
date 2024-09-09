@@ -93,14 +93,33 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Serialization
             public override EnumInfo<TEnum>? Deserialize<TEnum>(string serializedValue)
             {
                 return
+                    EnumInfo<TEnum>.HasFlagsAttribute
+                        ? DeserializeFlags<TEnum>(GetNames(serializedValue))
+                        : DeserializeSingle<TEnum>(serializedValue);
+            }
+
+            private static EnumInfo<TEnum>? DeserializeSingle<TEnum>(string name)
+                where TEnum : struct, Enum
+            {
+                return
                     EnumInfo<TEnum>
                         .DeclaredMembers
                         .SingleOrDefault(
                             member =>
-                                String.Equals(serializedValue, member.Name, StringComparison.OrdinalIgnoreCase)
+                                String.Equals(name, member.Name, StringComparison.OrdinalIgnoreCase)
                                 ||
-                                String.Equals(serializedValue, member.Attributes.EnumMember?.Value, StringComparison.OrdinalIgnoreCase)
+                                String.Equals(name, member.Attributes.EnumMember?.Value, StringComparison.OrdinalIgnoreCase)
                         );
+            }
+
+            private static EnumInfo<TEnum>? DeserializeFlags<TEnum>(string[] names)
+                where TEnum : struct, Enum
+            {
+                return
+                    names
+                        .Select(DeserializeSingle<TEnum>)
+                        .OfType<EnumInfo<TEnum>>()
+                        .Aggregate((first, second) => first | second);
             }
         }
     }
