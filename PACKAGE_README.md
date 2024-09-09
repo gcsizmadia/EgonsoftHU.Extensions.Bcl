@@ -50,19 +50,47 @@ In this package they are available as extension methods.
 This package contains extension methods for these types:
 
 - `System.Collections.Generic.ICollection<T>`
+  - `AddRange()`
 - `System.Collections.Generic.IDictionary<TKey, TValue>`
+  - `AsReadOnly()`
+  - `AsSorted()`
+  - `DefaultIfKeyNotFound()`
+  - `GetOrThrow()`
 - `System.Collections.Generic.IEnumerable<T>`
+  - `IsNullOrEmpty()`
+  - `DetectChanges()` - Get new, existing and removed items.
 - `System.Collections.Generic.IList<T>`
+  - `AsReadOnly()` up to .NET 6 (An extension method with the same signature is part of .NET 7+.)
 - `System.DateOnly`
+  - `IsInRange()`
 - `System.DateTime`
+  - `IsInRange()`
+  - `ToMinutePrecision()`
+  - `ToSecondPrecision()`
 - `System.DateTimeOffset`
+  - `IsInRange()`
+  - `ToMinutePrecision()`
+  - `ToSecondPrecision()`
 - `System.Exception`
+  - `GetHttpStatusCode()`
+  - `SetHttpStatusCode()`
 - `System.IO.Stream`
+  - `ToByteArray()`
+  - `ToByteArrayAsync()`
+  - `TryResetStreamPosition()`
 - `System.Reflection.Assembly`
 - `System.Reflection.MemberInfo`
 - `System.Reflection.ParameterInfo`
 - `System.String`
+  - `IsNullOrEmpty()`
+  - `IsNullOrWhiteSpace()`
+  - `DefaultIfNullOrEmpty()`
+  - `DefaultIfNullOrWhiteSpace()`
+  - `EnsureTrailingSlash()`
+  - `EnsureNoTrailingSlash()`
 - `System.Type`
+  - `AsNullableValueType()`
+  - `IsNullableValueType()`
 - Numeric types:  
   `System.SByte`, `System.Int16`, `System.Int32`, `System.Int64`,  
   `System.Byte`, `System.UInt16`, `System.UInt32`, `System.UInt64`,  
@@ -77,8 +105,19 @@ This package contains extension methods for these types:
 ## Extension methods with generic type parameters
 
 - `IEnumerable`-related
+  - `AsSingleElementSequence()`
+  - `IsIn()`
+  - `IsNotIn()`
 - `Reflection`-related
+  - `GetPropertyValue()`
+  - `TryPropertyValue()`
+  - `SetPropertyValue()`
+  - `TrySetPropertyValue()`
 - value selectors
+  - `GetStringValueOrNull()`
+  - `GetStringValueOrEmptyString()`
+  - `GetValueOrDefault()`
+  - `GetValue()`
 
 ## Predefined (`const` / `readonly`) values
 
@@ -102,8 +141,10 @@ This package contains extension methods for these types:
     - Easy access to the name or the underlying value of a member.
     - Support for customizing the serialized value through attributes.
     - Implements bitwise / comparison / implicit conversion / equality operators.
+- `EncodingProvider`
+  - `UTF8WithoutBOM` The UTF-8 encoding without the Unicode byte order mark.
 - `StringSyntaxAttribute`
-  - This attribute was introduced in .NET 7, but with this package it is available for `netstandard2.0`, `netstandard2.1`, `net462`, `netcoreapp3.1` and `net6.0` target frameworks as well.
+  -  up to .NET 6 (This attribute is part of .NET 7+.)
 - `StructuralEqualityComparer<T>`
   - Provides a generic `IEqualityComparer<T>` instance for using the non-generic `System.Collections.StructuralComparisons.StructuralEqualityComparer`.
 - `TypeHelper`
