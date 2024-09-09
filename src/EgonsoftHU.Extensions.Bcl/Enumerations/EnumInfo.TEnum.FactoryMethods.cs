@@ -17,10 +17,7 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="name">The name of one or more constants in the <typeparamref name="TEnum"/> type.</param>
         /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="name"/> is <see langword="null"/>, <see cref="String.Empty"/> or consists only of white-space characters;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
         /// </returns>
         /// <exception cref="NotSupportedException">
         /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
@@ -32,7 +29,7 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </exception>
         /// <exception cref="InvalidOperationException">
         /// If the <paramref name="name"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
+        /// a <see cref="FlagsAttribute"/> is not applied to that type.
         /// </exception>
         public static EnumInfo<TEnum> FromName(string name)
         {
@@ -58,19 +55,19 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="value">An enumeration value.</param>
         /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="value"/> is <see langword="null"/> or is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
         /// </returns>
         /// <exception cref="NotSupportedException">
         /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
         /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
         /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
         /// </exception>
+        /// <exception cref="ArgumentException">
+        /// If the <paramref name="value"/> is invalid for the <typeparamref name="TEnum"/> type.
+        /// </exception>
         /// <exception cref="InvalidOperationException">
         /// If the <paramref name="value"/> represents more than one constants in the <typeparamref name="TEnum"/> and
-        /// a <see cref="FlagsAttribute"/> is not applied to that type
+        /// a <see cref="FlagsAttribute"/> is not applied to that type.
         /// </exception>
         public static EnumInfo<TEnum> FromValue(TEnum value)
         {
@@ -96,15 +93,15 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
         /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
         /// </returns>
         /// <exception cref="NotSupportedException">
         /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
         /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
         /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// If the <paramref name="underlyingValue"/> is invalid for the <typeparamref name="TEnum"/> type.
         /// </exception>
         /// <exception cref="InvalidOperationException">
         /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
@@ -133,15 +130,15 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
         /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
         /// </returns>
         /// <exception cref="NotSupportedException">
         /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
         /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
         /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// If the <paramref name="underlyingValue"/> is invalid for the <typeparamref name="TEnum"/> type.
         /// </exception>
         /// <exception cref="InvalidOperationException">
         /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
@@ -170,15 +167,15 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
         /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
         /// </returns>
         /// <exception cref="NotSupportedException">
         /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
         /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
         /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// If the <paramref name="underlyingValue"/> is invalid for the <typeparamref name="TEnum"/> type.
         /// </exception>
         /// <exception cref="InvalidOperationException">
         /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
@@ -207,15 +204,15 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
         /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
         /// </returns>
         /// <exception cref="NotSupportedException">
         /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
         /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
         /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// If the <paramref name="underlyingValue"/> is invalid for the <typeparamref name="TEnum"/> type.
         /// </exception>
         /// <exception cref="InvalidOperationException">
         /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
@@ -244,15 +241,15 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
         /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
         /// </returns>
         /// <exception cref="NotSupportedException">
         /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
         /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
         /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// If the <paramref name="underlyingValue"/> is invalid for the <typeparamref name="TEnum"/> type.
         /// </exception>
         /// <exception cref="InvalidOperationException">
         /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
@@ -281,15 +278,15 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
         /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
         /// </returns>
         /// <exception cref="NotSupportedException">
         /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
         /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
         /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// If the <paramref name="underlyingValue"/> is invalid for the <typeparamref name="TEnum"/> type.
         /// </exception>
         /// <exception cref="InvalidOperationException">
         /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
@@ -318,15 +315,15 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
         /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
         /// </returns>
         /// <exception cref="NotSupportedException">
         /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
         /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
         /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// If the <paramref name="underlyingValue"/> is invalid for the <typeparamref name="TEnum"/> type.
         /// </exception>
         /// <exception cref="InvalidOperationException">
         /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
@@ -355,15 +352,15 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </summary>
         /// <param name="underlyingValue">The underlying value of an enumeration value.</param>
         /// <returns>
-        /// <list type="bullet">
-        /// <item><see langword="null"/> if the <paramref name="underlyingValue"/> is greater than the greatest valid value;</item>
-        /// <item>Otherwise, an instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.</item>
-        /// </list>
+        /// An instance of the <see cref="EnumInfo{TEnum}"/> type that represents the constant(s) in the <typeparamref name="TEnum"/> type.
         /// </returns>
         /// <exception cref="NotSupportedException">
         /// The underlying type of the <typeparamref name="TEnum"/> type must be one of the following types:
         /// <see cref="SByte"/>, <see cref="Int16"/>, <see cref="Int32"/>, <see cref="Int64"/>,
         /// <see cref="Byte"/>, <see cref="UInt16"/>, <see cref="UInt32"/>, <see cref="UInt64"/>
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// If the <paramref name="underlyingValue"/> is invalid for the <typeparamref name="TEnum"/> type.
         /// </exception>
         /// <exception cref="InvalidOperationException">
         /// If the <paramref name="underlyingValue"/> represents more than one constants in the <typeparamref name="TEnum"/> and
