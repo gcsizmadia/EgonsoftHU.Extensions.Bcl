@@ -1,8 +1,8 @@
-﻿# [GenericExtensions Class](help/html/T_EgonsoftHU_Extensions_Bcl_GenericExtensions.htm)
+﻿# [GenericExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_GenericExtensions.md)
 
 Back to [Package Contents](https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl#package-contents)
 
-## AsEnumerable()
+## AsSingleElementSequence()
 
 Suppose you have a method that expects an instance of `IEnumerable<int>` type but you have only a single `int` variable.
 ```C#
@@ -18,7 +18,7 @@ Process(new int[] { x });
 ```
 you can write
 ```C#
-Process(x.AsEnumerable());
+Process(x.AsSingleElementSequence());
 ```
 
 ## IsIn()

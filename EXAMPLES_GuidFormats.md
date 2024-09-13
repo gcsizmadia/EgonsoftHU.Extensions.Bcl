@@ -1,4 +1,4 @@
-﻿# [GuidFormats Class](help/html/T_EgonsoftHU_Extensions_Bcl_Constants_GuidFormats.htm)
+﻿# [GuidFormats Class](help/T_EgonsoftHU_Extensions_Bcl_Constants_GuidFormats.md)
 
 Back to [Package Contents](https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl#package-contents)
 

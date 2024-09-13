@@ -1,4 +1,4 @@
-﻿# [StringExtensions Class](help/html/T_EgonsoftHU_Extensions_Bcl_StringExtensions.htm)
+﻿# [StringExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_StringExtensions.md)
 
 Back to [Package Contents](https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl#package-contents)
 
