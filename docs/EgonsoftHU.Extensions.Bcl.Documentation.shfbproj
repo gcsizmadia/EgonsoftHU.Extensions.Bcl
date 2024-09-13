@@ -32,9 +32,9 @@
       <DocumentationSource sourceFile="..\src\EgonsoftHU.Extensions.Bcl\bin\Release\net8.0\EgonsoftHU.Extensions.Bcl.xml" />
       <DocumentationSource sourceFile="..\src\EgonsoftHU.Extensions.Bcl\bin\Release\net8.0\EgonsoftHU.Extensions.Bcl.dll" />
     </DocumentationSources>
-    <HelpFileFormat>Website</HelpFileFormat>
+    <HelpFileFormat>Markdown</HelpFileFormat>
     <SyntaxFilters>C#, Visual Basic</SyntaxFilters>
-    <PresentationStyle>Default2022</PresentationStyle>
+    <PresentationStyle>Markdown</PresentationStyle>
     <CleanIntermediates>True</CleanIntermediates>
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
