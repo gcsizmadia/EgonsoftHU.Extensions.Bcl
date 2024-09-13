@@ -1,4 +1,4 @@
-﻿# [ThrowExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_ThrowExtensions.md)
+﻿# [ThrowExtensions Class](help/html/T_EgonsoftHU_Extensions_Bcl_ThrowExtensions.htm)
 
 Back to [Package Contents](https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl#package-contents)
 

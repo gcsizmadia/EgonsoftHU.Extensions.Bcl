@@ -24,7 +24,7 @@ C# extension methods for Base Class Library types.
 
 ## Extension methods for throwing `ArgumentOutOfRangeException`
 
-Can't wait for the new static methods in `ArgumentOutOfRangeException` that will be introduced in **.NET 8**?  
+Would you like to use the new static methods in `ArgumentOutOfRangeException` that were introduced in **.NET 8** but your project targets an older framework?
 In this package they are available as extension methods.
 
 - For `IEquatable<T>` type:

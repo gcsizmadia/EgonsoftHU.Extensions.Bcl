@@ -14,7 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{498BDE0B-C1B2-4233-9DEB-56FD73C77231}"
 	ProjectSection(SolutionItems) = preProject
 		EXAMPLES_GenericExtensions.md = EXAMPLES_GenericExtensions.md
-		EXAMPLES_GuidFormat.md = EXAMPLES_GuidFormat.md
+		EXAMPLES_GuidFormats.md = EXAMPLES_GuidFormats.md
 		EXAMPLES_ParameterInfoExtensions.md = EXAMPLES_ParameterInfoExtensions.md
 		EXAMPLES_StringExtensions.md = EXAMPLES_StringExtensions.md
 		EXAMPLES_ThrowExtensions.md = EXAMPLES_ThrowExtensions.md

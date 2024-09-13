@@ -1,4 +1,4 @@
-# [ParameterInfoExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_ParameterInfoExtensions.md)
+﻿# [ParameterInfoExtensions Class](help/html/T_EgonsoftHU_Extensions_Bcl_ParameterInfoExtensions.htm)
 
 Back to [Package Contents](https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl#package-contents)
 

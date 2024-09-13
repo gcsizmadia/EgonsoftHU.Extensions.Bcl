@@ -1,4 +1,4 @@
-# [GenericExtensions Class](help/T_EgonsoftHU_Extensions_Bcl_GenericExtensions.md)
+﻿# [GenericExtensions Class](help/html/T_EgonsoftHU_Extensions_Bcl_GenericExtensions.htm)
 
 Back to [Package Contents](https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl#package-contents)
 

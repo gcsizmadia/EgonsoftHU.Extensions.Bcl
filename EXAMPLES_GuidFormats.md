@@ -1,4 +1,4 @@
-# [GuidFormat Class](help/T_EgonsoftHU_Extensions_Bcl_Constants_GuidFormat.md)
+﻿# [GuidFormats Class](help/html/T_EgonsoftHU_Extensions_Bcl_Constants_GuidFormats.htm)
 
 Back to [Package Contents](https://github.com/gcsizmadia/EgonsoftHU.Extensions.Bcl#package-contents)
 
@@ -28,7 +28,7 @@ using EgonsoftHU.Extensions.Bcl.Constants;
 // Instead of
 string formattedEntityId = entityId.ToString("P");
 // you can write
-string formattedEntityId = entityId.ToString(GuidFormat.Parenthesis);
+string formattedEntityId = entityId.ToString(GuidFormats.Parenthesis);
 
 string entityUrlReference = $"{apiRoot}{entitySetName}{formattedEntityId}";
 ```
@@ -41,7 +41,7 @@ using EgonsoftHU.Extensions.Bcl.Constants;
 // Instead of
 Guid entityId = Guid.ParseExact(formattedEntityId, "P");
 // you can write
-Guid entityId = Guid.ParseExact(formattedEntityId, GuidFormat.Parenthesis);
+Guid entityId = Guid.ParseExact(formattedEntityId, GuidFormats.Parenthesis);
 ```
 
 ## TryParseExact()
@@ -54,7 +54,7 @@ if (Guid.TryParseExact(formattedEntityId, "P", out Guid entityId))
 {
 }
 // you can write
-if (Guid.TryParseExact(formattedEntityId, GuidFormat.Parenthesis, out Guid entityId)
+if (Guid.TryParseExact(formattedEntityId, GuidFormats.Parenthesis, out Guid entityId)
 {
 }
 ```
@@ -64,10 +64,10 @@ if (Guid.TryParseExact(formattedEntityId, GuidFormat.Parenthesis, out Guid entit
 ```C#
 using EgonsoftHU.Extensions.Bcl.Constants;
 
-string input = Guid.NewGuid().ToString(GuidFormat.Brace);
+string input = Guid.NewGuid().ToString(GuidFormats.Brace);
 // e.g. {72802294-8a43-4ba9-a360-3498df3cb0c7}
 
-string output = ChangeGuidFormat(input, GuidFormat.Brace, GuidFormat.Parenthesis);
+string output = ChangeGuidFormat(input, GuidFormats.Brace, GuidFormats.Parenthesis);
 // e.g. (72802294-8a43-4ba9-a360-3498df3cb0c7)
 
 string ChangeGuidFormat(string input, string inputFormat, string outputFormat)
