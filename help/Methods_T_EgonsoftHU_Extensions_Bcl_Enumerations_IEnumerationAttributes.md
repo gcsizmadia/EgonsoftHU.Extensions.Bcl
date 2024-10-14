@@ -6,6 +6,9 @@
 ## Methods
 <table>
 <tr>
+<td><a href="M_EgonsoftHU_Extensions_Bcl_Enumerations_IEnumerationAttributes_GetAll.md">GetAll</a></td>
+<td>Gets all the attributes that are applied to the current enum member.</td></tr>
+<tr>
 <td><a href="M_EgonsoftHU_Extensions_Bcl_Enumerations_IEnumerationAttributes_GetAttribute__1.md">GetAttribute(TAttribute)</a></td>
 <td>Gets a custom attribute of a specified <em>TAttribute</em> type that is applied to the current enum member.</td></tr>
 </table>

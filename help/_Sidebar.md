@@ -492,6 +492,7 @@
             - [DisplayName Property](P_EgonsoftHU_Extensions_Bcl_Enumerations_IEnumerationAttributes_DisplayName.md)
             - [EnumMember Property](P_EgonsoftHU_Extensions_Bcl_Enumerations_IEnumerationAttributes_EnumMember.md)
           - [IEnumerationAttributes Methods](Methods_T_EgonsoftHU_Extensions_Bcl_Enumerations_IEnumerationAttributes.md)
+            - [GetAll Method](M_EgonsoftHU_Extensions_Bcl_Enumerations_IEnumerationAttributes_GetAll.md)
             - [GetAttribute<TAttribute> Method](M_EgonsoftHU_Extensions_Bcl_Enumerations_IEnumerationAttributes_GetAttribute__1.md)
         - [IntervalBoundsOptions Class](T_EgonsoftHU_Extensions_Bcl_Enumerations_IntervalBoundsOptions.md)
           - [IntervalBoundsOptions Methods](Methods_T_EgonsoftHU_Extensions_Bcl_Enumerations_IntervalBoundsOptions.md)

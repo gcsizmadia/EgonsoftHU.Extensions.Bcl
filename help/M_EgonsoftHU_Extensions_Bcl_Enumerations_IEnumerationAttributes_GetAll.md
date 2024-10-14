@@ -1,7 +1,7 @@
-# GetAttribute&lt;TAttribute&gt; Method
+# GetAll Method
 
 
-Gets a custom attribute of a specified *TAttribute* type that is applied to the current enum member.
+Gets all the attributes that are applied to the current enum member.
 
 
 
@@ -11,23 +11,18 @@ Gets a custom attribute of a specified *TAttribute* type that is applied to the 
 
 **C#**
 ``` C#
-TAttribute GetAttribute<TAttribute>()
-where TAttribute : Attribute
-
+ReadOnlyCollection<Attribute> GetAll()
 ```
 **VB**
 ``` VB
-Function GetAttribute(Of TAttribute As Attribute) As TAttribute
+Function GetAll As ReadOnlyCollection(Of Attribute)
 ```
 
 
 
-#### Type Parameters
-<dl><dt /><dd>The type of the attribute.</dd></dl>
-
 #### Return Value
-TAttribute  
-A custom attribute of the specified *TAttribute* type, if applied to the current enum member; otherwise, null.
+<a href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1" target="_blank" rel="noopener noreferrer">ReadOnlyCollection</a>(<a href="https://learn.microsoft.com/dotnet/api/system.attribute" target="_blank" rel="noopener noreferrer">Attribute</a>)  
+A read-only collection of the attributes that are applied to the current enum member.
 
 ## See Also
 

@@ -7,7 +7,7 @@ Provides access to attributes applied to an enum member.
 
 ## Definition
 **Namespace:** <a href="N_EgonsoftHU_Extensions_Bcl_Enumerations.md">EgonsoftHU.Extensions.Bcl.Enumerations</a>  
-**Assembly:** EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 3.0.0+481c3d11ac7f0bce9309a7e968351bc7be32a6e9
+**Assembly:** EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 3.0.1+8c729d04d0fcab10705485e5626d4fdebeaa818d
 
 **C#**
 ``` C#
@@ -38,6 +38,9 @@ Public Interface IEnumerationAttributes
 
 ## Methods
 <table>
+<tr>
+<td><a href="M_EgonsoftHU_Extensions_Bcl_Enumerations_IEnumerationAttributes_GetAll.md">GetAll</a></td>
+<td>Gets all the attributes that are applied to the current enum member.</td></tr>
 <tr>
 <td><a href="M_EgonsoftHU_Extensions_Bcl_Enumerations_IEnumerationAttributes_GetAttribute__1.md">GetAttribute(TAttribute)</a></td>
 <td>Gets a custom attribute of a specified <em>TAttribute</em> type that is applied to the current enum member.</td></tr>

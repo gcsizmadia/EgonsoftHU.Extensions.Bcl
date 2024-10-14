@@ -1,18 +1,18 @@
 # GetTypeName(Type) Method
 
 
-Gets the full name of the <a href="https://learn.microsoft.com/dotnet/api/system.type" target="_blank" rel="noopener noreferrer">Type</a>, if available; otherwise, the name of the <a href="https://learn.microsoft.com/dotnet/api/system.type" target="_blank" rel="noopener noreferrer">Type</a>.
+Gets the fully qualified name of the *type*, including its namespace but not its assembly, if available; otherwise, the name of the *type*.
 
 
 
 ## Definition
 **Namespace:** <a href="N_EgonsoftHU_Extensions_Bcl.md">EgonsoftHU.Extensions.Bcl</a>  
-**Assembly:** EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 3.0.0+481c3d11ac7f0bce9309a7e968351bc7be32a6e9
+**Assembly:** EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 3.0.1+8c729d04d0fcab10705485e5626d4fdebeaa818d
 
 **C#**
 ``` C#
 public static string GetTypeName(
-	Type type
+	Type? type
 )
 ```
 **VB**
@@ -29,7 +29,10 @@ Public Shared Function GetTypeName (
 
 #### Return Value
 <a href="https://learn.microsoft.com/dotnet/api/system.string" target="_blank" rel="noopener noreferrer">String</a>  
-The full name of the <a href="https://learn.microsoft.com/dotnet/api/system.type" target="_blank" rel="noopener noreferrer">Type</a>, if available; otherwise, the name of the <a href="https://learn.microsoft.com/dotnet/api/system.type" target="_blank" rel="noopener noreferrer">Type</a>.
+The fully qualified name of the *type*, including its namespace but not its assembly, if available; otherwise, the name of the *type*.
+
+## Remarks
+If *type* is null then an empty string is returned.
 
 ## See Also
 

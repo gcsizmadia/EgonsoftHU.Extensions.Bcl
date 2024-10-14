@@ -7,7 +7,7 @@ Gets the optional arguments associated with the specific syntax employed.
 
 ## Definition
 **Namespace:** <a href="N_System_Diagnostics_CodeAnalysis.md">System.Diagnostics.CodeAnalysis</a>  
-**Assembly:** EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 3.0.0+481c3d11ac7f0bce9309a7e968351bc7be32a6e9
+**Assembly:** EgonsoftHU.Extensions.Bcl (in EgonsoftHU.Extensions.Bcl.dll) Version: 3.0.1+8c729d04d0fcab10705485e5626d4fdebeaa818d
 
 **C#**
 ``` C#
