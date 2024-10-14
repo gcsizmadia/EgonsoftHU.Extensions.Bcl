@@ -106,9 +106,9 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Serialization
                         .DeclaredMembers
                         .SingleOrDefault(
                             member =>
-                                String.Equals(name, member.Name, StringComparison.OrdinalIgnoreCase)
+                                String.Equals(name, member.Attributes.EnumMember?.Value, StringComparison.Ordinal)
                                 ||
-                                String.Equals(name, member.Attributes.EnumMember?.Value, StringComparison.OrdinalIgnoreCase)
+                                String.Equals(name, member.Name, StringComparison.OrdinalIgnoreCase)
                         );
             }
 
