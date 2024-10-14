@@ -2,6 +2,7 @@
 // This code is licensed under MIT license (see LICENSE for details)
 
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
@@ -43,5 +44,11 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations
         /// </returns>
         TAttribute? GetAttribute<TAttribute>()
             where TAttribute : Attribute;
+
+        /// <summary>
+        /// Gets all the attributes that are applied to the current enum member.
+        /// </summary>
+        /// <returns>A read-only collection of the attributes that are applied to the current enum member.</returns>
+        ReadOnlyCollection<Attribute> GetAll();
     }
 }

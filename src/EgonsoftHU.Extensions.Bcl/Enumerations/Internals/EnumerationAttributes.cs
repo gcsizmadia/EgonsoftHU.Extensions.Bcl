@@ -48,5 +48,10 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Internals
         {
             return attributes.OfType<TAttribute>().FirstOrDefault();
         }
+
+        public ReadOnlyCollection<Attribute> GetAll()
+        {
+            return attributes;
+        }
     }
 }
