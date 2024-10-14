@@ -32,6 +32,15 @@ namespace EgonsoftHU.Extensions.Bcl.Enumerations.Serialization
         /// <summary>
         /// Gets or sets the current serializer for enum values.
         /// </summary>
+        /// <remarks>
+        /// If a custom implementation of this type is used for JSON serialization
+        /// then set this property to that implementation where the JSON serializer options are configured.
+        /// <para>
+        /// When accessing a specific <see cref="EnumInfo{TEnum}"/> type then the current value of this property will be used
+        /// to initialize the <see cref="EnumInfo{TEnum}.SerializedValue"/> property for all the declared members of that enum type;
+        /// therefore, it is highly recommended to set this property only once and only at application startup.
+        /// </para>
+        /// </remarks>
         public static EnumValueSerializer Current { get; set; } = Default;
 
         /// <summary>
