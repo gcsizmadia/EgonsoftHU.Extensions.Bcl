@@ -7,7 +7,7 @@ This code is licensed under MIT license (see LICENSE for details)
   <assemblyIdentity
     type="win32"
     name="EgonsoftHU.Extensions.Bcl"
-    version="3.0.0.0"
+    version="3.0.1.0"
   />
   <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
     <security>
