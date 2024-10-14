@@ -11,25 +11,33 @@ namespace EgonsoftHU.Extensions.Bcl
     public static class TypeHelper
     {
         /// <summary>
-        /// Gets the full name of the <see cref="Type"/>, if available; otherwise, the name of the <see cref="Type"/>.
+        /// Gets the fully qualified name of the <typeparamref name="T"/> type, including its namespace but not its assembly, if available;
+        /// otherwise, the name of the <typeparamref name="T"/> type.
         /// </summary>
         /// <typeparam name="T">The <see cref="Type"/> the name of which to get.</typeparam>
-        /// <returns>The full name of the <see cref="Type"/>, if available; otherwise, the name of the <see cref="Type"/>.</returns>
+        /// <returns>The fully qualified name of the <typeparamref name="T"/> type, including its namespace but not its assembly, if available;
+        /// otherwise, the name of the <typeparamref name="T"/> type.</returns>
         public static string GetTypeName<T>()
         {
             return GetTypeName(typeof(T));
         }
 
         /// <summary>
-        /// Gets the full name of the <see cref="Type"/>, if available; otherwise, the name of the <see cref="Type"/>.
+        /// Gets the fully qualified name of the <paramref name="type"/>, including its namespace but not its assembly, if available;
+        /// otherwise, the name of the <paramref name="type"/>.
         /// </summary>
         /// <param name="type">The <see cref="Type"/> the name of which to get.</param>
-        /// <returns>The full name of the <see cref="Type"/>, if available; otherwise, the name of the <see cref="Type"/>.</returns>
-        public static string GetTypeName(Type type)
+        /// <returns>
+        /// The fully qualified name of the <paramref name="type"/>, including its namespace but not its assembly, if available;
+        /// otherwise, the name of the <paramref name="type"/>.
+        /// </returns>
+        /// <remarks>If <paramref name="type"/> is <see langword="null"/> then an empty string is returned.</remarks>
+        public static string GetTypeName(Type? type)
         {
-            type.ThrowIfNull();
-
-            return type.FullName ?? type.Name;
+            return
+                type is null
+                    ? String.Empty
+                    : type.FullName ?? type.Name;
         }
     }
 }
